@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perla Homes — Boutique real estate agency in Marbella, Costa del Sol</title>
+  <meta name="description" content="Perla Homes is an independent boutique real estate agency in Marbella, Costa del Sol. Property for living, holidays and investment: from modern apartments to exclusive villas.">
+  <meta name="theme-color" content="#1F3B32">
+  <!-- TODO: from client — final domain. Replace https://www.perlahomes.example in canonical, hreflang and og:url/og:image -->
+  <link rel="canonical" href="https://www.perlahomes.example/">
+  <link rel="alternate" hreflang="en" href="https://www.perlahomes.example/?lang=en">
+  <link rel="alternate" hreflang="es" href="https://www.perlahomes.example/?lang=es">
+  <link rel="alternate" hreflang="ru" href="https://www.perlahomes.example/?lang=ru">
+  <link rel="alternate" hreflang="x-default" href="https://www.perlahomes.example/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Perla Homes">
+  <meta property="og:title" content="Perla Homes — Discover Your Pearl">
+  <meta property="og:description" content="An independent boutique real estate agency in Marbella, Costa del Sol.">
+  <meta property="og:image" content="https://www.perlahomes.example/assets/img/hero-villa-1280.jpg">
+  <meta property="og:url" content="https://www.perlahomes.example/">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Manrope:wght@400;500&display=swap&subset=cyrillic,latin-ext" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero-villa-1920.webp" imagesrcset="assets/img/hero-villa-640.webp 640w, assets/img/hero-villa-1280.webp 1280w, assets/img/hero-villa-1920.webp 1920w, assets/img/hero-villa-2400.webp 2400w" imagesizes="100vw">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="header">
+    <nav class="header__inner" aria-label="Main">
+      <ul class="nav nav--left">
+        <li><a href="#properties" data-i18n="nav.properties">Properties</a></li>
+        <li><a href="#costa" data-i18n="nav.costa">Costa del Sol</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+      </ul>
+      <a href="#top" class="logo" data-logo aria-label="Perla Homes">Perla Homes</a>
+      <div class="header__right">
+      <ul class="nav nav--right">
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" class="lang__btn" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang__btn" data-lang="es" aria-pressed="false">ES</button>
+        <button type="button" class="lang__btn" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+      </div>
+      <button type="button" class="burger" aria-expanded="false" aria-controls="mobile-menu" data-i18n-aria="nav.menu" aria-label="Menu"><span></span><span></span></button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <ul>
+        <li><a href="#properties" data-i18n="nav.properties">Properties</a></li>
+        <li><a href="#costa" data-i18n="nav.costa">Costa del Sol</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== 1. Hero ===== -->
+    <section class="hero" id="top">
+      <picture class="hero__media">
+        <source type="image/webp" srcset="assets/img/hero-villa-640.webp 640w, assets/img/hero-villa-1280.webp 1280w, assets/img/hero-villa-1920.webp 1920w, assets/img/hero-villa-2400.webp 2400w" sizes="100vw">
+        <img src="assets/img/hero-villa-1920.jpg" srcset="assets/img/hero-villa-640.jpg 640w, assets/img/hero-villa-1280.jpg 1280w, assets/img/hero-villa-1920.jpg 1920w" sizes="100vw" alt="Modern white Mediterranean villa with an infinity pool at dusk, the sea in the distance" data-i18n-alt="alt.hero" fetchpriority="high" width="1920" height="1072">
+      </picture>
+      <div class="hero__content">
+        <h1 class="hero__title" data-anim="hero">Discover your pearl</h1>
+        <p class="hero__line" data-anim="hero" data-i18n="hero.line">An independent boutique real estate agency in Marbella, Costa del Sol.</p>
+        <div class="hero__actions" data-anim="hero">
+          <a class="btn btn--light" href="#properties" data-i18n="hero.view">View properties</a>
+          <a class="btn btn--ghost" href="#contact" data-i18n="hero.contact">Contact us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. Selected properties — TODO: real properties from client (assets/data/properties.json) ===== -->
+    <section class="section section--pearl" id="properties" data-reveal>
+      <div class="container">
+        <div class="section-head section-head--row">
+          <div>
+            <h2 class="h2" data-i18n="props.title">Selected properties</h2>
+            <p class="lead" data-i18n="props.intro">We help you find property for living, holidays and investment: from modern apartments to exclusive villas.</p>
+          </div>
+          <div class="arrows">
+            <button type="button" class="arrow" data-carousel-prev aria-label="Previous properties" data-i18n-aria="props.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button type="button" class="arrow" data-carousel-next aria-label="Next properties" data-i18n-aria="props.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="carousel" data-carousel>
+        <ul class="carousel__track" id="property-list" data-reveal-items></ul>
+      </div>
+    </section>
+
+    <!-- Featured band — TODO: real featured property from client -->
+    <section class="band band--featured" id="featured" aria-labelledby="featured-name">
+      <picture class="band__media">
+        <source type="image/webp" srcset="assets/img/property-wide-640.webp 640w, assets/img/property-wide-1280.webp 1280w, assets/img/property-wide-1920.webp 1920w, assets/img/property-wide-2400.webp 2400w" sizes="100vw">
+        <img src="assets/img/property-wide-1920.jpg" srcset="assets/img/property-wide-640.jpg 640w, assets/img/property-wide-1280.jpg 1280w, assets/img/property-wide-1920.jpg 1920w" sizes="100vw" alt="Panoramic view of a contemporary villa with a lit pool at dusk" data-i18n-alt="alt.wide" loading="lazy" width="1920" height="815">
+      </picture>
+      <div class="band__content container" data-reveal>
+        <span class="tag" data-i18n="props.featured">Featured</span>
+        <p class="band__price" data-field="price">Price on request</p>
+        <h2 class="band__name" id="featured-name"><span data-field="name">Property</span> <span class="band__sep" aria-hidden="true"></span> <span data-field="district">Marbella area</span></h2>
+        <p class="band__specs"><span data-field="area">— m²</span><span data-field="bedrooms">— bedrooms</span><span data-field="bathrooms">— bathrooms</span></p>
+        <p class="band__desc" data-field="description">Details on request.</p>
+        <a class="btn btn--light" href="#contact" data-request="featured" data-i18n="props.request">Request details</a>
+      </div>
+    </section>
+
+    <!-- ===== 3. Why Costa del Sol ===== -->
+    <section class="section section--milk" id="costa" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2" data-i18n="costa.title">Why Costa del Sol</h2>
+        </div>
+        <div class="costa">
+          <div class="costa__gallery" data-reveal-items>
+            <figure class="photo photo--tall"><picture>
+              <source type="image/webp" srcset="assets/img/costa-sea-640.webp 640w, assets/img/costa-sea-1280.webp 1280w" sizes="(min-width: 900px) 30vw, 50vw">
+              <img src="assets/img/costa-sea-1280.jpg" alt="Calm Mediterranean coastline in morning light" data-i18n-alt="alt.sea" loading="lazy" width="1280" height="960">
+            </picture></figure>
+            <figure class="photo"><picture>
+              <source type="image/webp" srcset="assets/img/costa-golf-640.webp 640w, assets/img/costa-golf-1280.webp 1280w" sizes="(min-width: 900px) 30vw, 50vw">
+              <img src="assets/img/costa-golf-1280.jpg" alt="Green golf course with mountains behind" data-i18n-alt="alt.golf" loading="lazy" width="1280" height="960">
+            </picture></figure>
+            <figure class="photo"><picture>
+              <source type="image/webp" srcset="assets/img/costa-yacht-640.webp 640w, assets/img/costa-yacht-1280.webp 1280w" sizes="(min-width: 900px) 30vw, 50vw">
+              <img src="assets/img/costa-yacht-1280.jpg" alt="Yachts in a marina at golden hour" data-i18n-alt="alt.yacht" loading="lazy" width="1280" height="960">
+            </picture></figure>
+            <figure class="photo photo--tall"><picture>
+              <source type="image/webp" srcset="assets/img/costa-oldtown-640.webp 640w, assets/img/costa-oldtown-1280.webp 1280w" sizes="(min-width: 900px) 30vw, 50vw">
+              <img src="assets/img/costa-oldtown-1280.jpg" alt="White street of an Andalusian old town with flowers" data-i18n-alt="alt.oldtown" loading="lazy" width="1280" height="960">
+            </picture></figure>
+          </div>
+          <div class="costa__text">
+            <ul class="costa__list" data-reveal-items>
+              <li data-i18n="costa.1">A mild Mediterranean climate, the sea and nature</li>
+              <li data-i18n="costa.2">An international environment</li>
+              <li data-i18n="costa.3">Málaga Airport</li>
+              <li data-i18n="costa.4">Schools, healthcare and well-developed infrastructure</li>
+              <li data-i18n="costa.5">Golf, yachting, gastronomy and an active lifestyle</li>
+              <li data-i18n="costa.6">A wide choice of property, from apartments to villas</li>
+            </ul>
+            <p class="costa__note" data-i18n="costa.note">The region suits permanent living, holidays and exploring investment opportunities, with the risks taken into account.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. Call to action ===== -->
+    <section class="band band--cta" aria-labelledby="cta-title">
+      <picture class="band__media">
+        <source type="image/webp" srcset="assets/img/cta-terrace-640.webp 640w, assets/img/cta-terrace-1280.webp 1280w, assets/img/cta-terrace-1920.webp 1920w, assets/img/cta-terrace-2400.webp 2400w" sizes="100vw">
+        <img src="assets/img/cta-terrace-1920.jpg" srcset="assets/img/cta-terrace-640.jpg 640w, assets/img/cta-terrace-1280.jpg 1280w, assets/img/cta-terrace-1920.jpg 1920w" sizes="100vw" alt="Terrace with a sea view at sunset, two chairs and a table" data-i18n-alt="alt.cta" loading="lazy" width="1920" height="815">
+      </picture>
+      <div class="band__content band__content--center container" data-reveal>
+        <h2 class="cta__title" id="cta-title">Discover your pearl</h2>
+        <p class="cta__line" data-i18n="cta.line">The most valuable things are often revealed to those who know how to look deeper.</p>
+        <a class="btn btn--light" href="#contact" data-i18n="cta.button">Contact us</a>
+      </div>
+    </section>
+
+    <!-- ===== 5. About ===== -->
+    <section class="section section--green grain" id="about" data-reveal>
+      <div class="container about">
+        <div class="about__media" data-reveal-items>
+          <!-- TODO: real portrait of the founder from client (replace about-placeholder) -->
+          <figure class="photo photo--portrait"><picture>
+            <source type="image/webp" srcset="assets/img/about-placeholder-640.webp 640w, assets/img/about-placeholder-1280.webp 1280w" sizes="(min-width: 900px) 34vw, 100vw">
+            <img src="assets/img/about-placeholder-1280.jpg" alt="Calm interior corner with a sea view" data-i18n-alt="alt.about" loading="lazy" width="1280" height="1600">
+          </picture></figure>
+          <figure class="photo photo--float"><picture>
+            <source type="image/webp" srcset="assets/img/pearl-shell-640.webp 640w, assets/img/pearl-shell-1280.webp 1280w" sizes="(min-width: 900px) 16vw, 40vw">
+            <img src="assets/img/pearl-shell-640.jpg" alt="A natural pearl in an open oyster shell on wet sand" data-i18n-alt="alt.shell" loading="lazy" width="640" height="800">
+          </picture></figure>
+        </div>
+        <div class="about__text" data-reveal-items>
+          <h2 class="h2" data-i18n="about.title">About Perla Homes</h2>
+          <p data-i18n="about.p1">My story began with a love of the sea. I am passionate about diving, and I know that true beauty does not always lie on the surface. This inspired me to create Perla Homes — an agency where searching for a home is like searching for your own pearl.</p>
+          <p data-i18n="about.p2">I believe in quiet luxury: harmony, quality, attention to detail and trust without loud promises. I work with clients personally, to understand their needs and help them find the right home.</p>
+          <p data-i18n="about.p3">What matters to me is not the number of deals, but understanding the client and their lifestyle — and finding the home that suits them.</p>
+          <p class="about__years"><span class="about__num">5</span> <span data-i18n="about.years">years in real estate</span></p>
+          <!-- TODO: from client — founder's name for a signature line -->
+        </div>
+      </div>
+      <figure class="about__water"><picture>
+        <source type="image/webp" srcset="assets/img/pearl-underwater-640.webp 640w, assets/img/pearl-underwater-1280.webp 1280w, assets/img/pearl-underwater-1920.webp 1920w" sizes="100vw">
+        <img src="assets/img/pearl-underwater-1920.jpg" alt="Sunlight rays under clear turquoise water" data-i18n-alt="alt.underwater" loading="lazy" width="1920" height="1072">
+      </picture></figure>
+    </section>
+
+    <!-- ===== 6. Reviews — TODO: real client reviews. Hidden until the client sends real reviews: remove the `hidden` attribute and add one <li class="review"> per review. Never invent review text. ===== -->
+    <section class="section section--dark reviews" id="reviews" hidden aria-labelledby="reviews-title">
+      <div class="container">
+        <h2 class="h2" id="reviews-title" data-i18n="reviews.title">Reviews</h2>
+        <div class="reviews__slider">
+          <button type="button" class="arrow arrow--light" data-review-prev aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <ul class="reviews__track">
+            <!-- <li class="review"><blockquote>…</blockquote><p class="review__author">…</p></li> -->
+          </ul>
+          <button type="button" class="arrow arrow--light" data-review-next aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. Why choose us ===== -->
+    <section class="section section--pearl" id="why" data-reveal>
+      <div class="container">
+        <div class="section-head">
+          <h2 class="h2" data-i18n="why.title">Why choose us</h2>
+          <p class="lead" data-i18n="why.intro">For us, true luxury is not only the price of a property, but the feeling that you have found your place.</p>
+        </div>
+        <ul class="why" data-reveal-items>
+          <li class="why__card">
+            <figure class="photo"><picture>
+              <source type="image/webp" srcset="assets/img/property-04-640.webp" type="image/webp">
+              <img src="assets/img/property-04-640.jpg" alt="" loading="lazy" width="640" height="480">
+            </picture></figure>
+            <div class="why__body"><h3 class="h3" data-i18n="why.1.t">Personal attention</h3><p data-i18n="why.1.d">The founder works with clients personally.</p></div>
+          </li>
+          <li class="why__card">
+            <figure class="photo"><picture>
+              <source type="image/webp" srcset="assets/img/property-06-640.webp">
+              <img src="assets/img/property-06-640.jpg" alt="" loading="lazy" width="640" height="480">
+            </picture></figure>
+            <div class="why__body"><h3 class="h3" data-i18n="why.2.t">Careful selection</h3><p data-i18n="why.2.d">Property chosen around your lifestyle and wishes.</p></div>
+          </li>
+          <li class="why__card">
+            <figure class="photo"><picture>
+              <source type="image/webp" srcset="assets/img/pearl-shell-640.webp">
+              <img src="assets/img/pearl-shell-640.jpg" alt="" loading="lazy" width="640" height="800">
+            </picture></figure>
+            <div class="why__body"><h3 class="h3" data-i18n="why.3.t">Discretion</h3><p data-i18n="why.3.d">Trust without loud promises.</p></div>
+          </li>
+          <li class="why__card">
+            <figure class="photo"><picture>
+              <source type="image/webp" srcset="assets/img/costa-yacht-640.webp">
+              <img src="assets/img/costa-yacht-640.jpg" alt="" loading="lazy" width="640" height="480">
+            </picture></figure>
+            <div class="why__body"><h3 class="h3" data-i18n="why.4.t">Transparent communication</h3><p data-i18n="why.4.d">Clear coordination of the next steps within the agreed services.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 8. FAQ ===== -->
+    <section class="section section--milk" id="faq" data-reveal>
+      <div class="container container--narrow">
+        <div class="section-head">
+          <h2 class="h2" data-i18n="faq.title">Frequently asked questions</h2>
+        </div>
+        <div class="faq" data-reveal-items>
+          <details class="faq__item"><summary data-i18n="faq.1.q">Can a foreigner buy property in Spain?</summary><div class="faq__a"><p data-i18n="faq.1.a">Yes, including non-residents. To complete the purchase you usually need an NIE and the necessary documents.</p></div></details>
+          <details class="faq__item"><summary data-i18n="faq.2.q">What additional costs should I consider?</summary><div class="faq__a"><p data-i18n="faq.2.a">Taxes, notary and registration fees, and possibly legal and banking support. The amount depends on the property and the transaction.</p></div></details>
+          <details class="faq__item"><summary data-i18n="faq.3.q">Can a non-resident get a mortgage?</summary><div class="faq__a"><p data-i18n="faq.3.a">Yes, some Spanish banks offer financing to non-residents. The terms depend on income, financial situation and the bank.</p></div></details>
+          <details class="faq__item"><summary data-i18n="faq.4.q">How long does a purchase take?</summary><div class="faq__a"><p data-i18n="faq.4.a">It depends on the documents, financing and legal checks. For a completed property it often takes around 1–3 months after the terms are agreed, but this can vary.</p></div></details>
+          <details class="faq__item"><summary data-i18n="faq.5.q">How does buying with Perla Homes work?</summary><div class="faq__a"><p data-i18n="faq.5.a">We get to know you and define your request, make a personal selection, arrange viewings, help you compare options and coordinate the next steps within the agreed services.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. Contact form ===== -->
+    <section class="section section--pearl" id="contact" data-reveal>
+      <div class="container container--narrow">
+        <div class="section-head">
+          <h2 class="h2" data-i18n="form.title">Contact us</h2>
+        </div>
+        <!-- TODO: from client — form backend / e-mail. Until then the form opens WhatsApp with the request pre-filled. -->
+        <form class="form" id="contact-form" novalidate data-reveal-items>
+          <div class="field"><input id="f-name" name="name" type="text" autocomplete="name" required placeholder=" "><label for="f-name" data-i18n="form.name">Name</label></div>
+          <div class="field"><input id="f-email" name="email" type="email" autocomplete="email" required placeholder=" "><label for="f-email" data-i18n="form.email">E-mail</label></div>
+          <div class="field"><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder=" "><label for="f-phone" data-i18n="form.phone">Phone</label></div>
+          <div class="field field--full"><textarea id="f-message" name="message" rows="4" placeholder=" "></textarea><label for="f-message" data-i18n="form.message">Message</label></div>
+          <label class="check field--full"><input type="checkbox" name="consent" required><span class="check__box" aria-hidden="true"></span><span><span data-i18n="form.consent">I accept the</span> <a href="privacy.html" data-i18n="form.privacy">privacy policy</a></span></label>
+          <div class="form__foot field--full">
+            <button class="btn btn--green" type="submit" data-i18n="form.submit">Send request</button>
+            <p class="form__status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 10. Contacts & footer ===== -->
+  <footer class="footer grain">
+    <div class="container footer__grid">
+      <div class="footer__lead">
+        <h2 class="h2" data-i18n="footer.title">Get in touch</h2>
+        <a class="footer__bar" href="https://wa.me/34627986515" target="_blank" rel="noopener" data-i18n="footer.whatsapp">Message on WhatsApp</a>
+        <a class="footer__bar" href="#contact" data-i18n="footer.request">Request details</a>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__h" data-i18n="footer.nav">Navigation</h3>
+        <ul>
+          <li><a href="#properties" data-i18n="nav.properties">Properties</a></li>
+          <li><a href="#costa" data-i18n="nav.costa">Costa del Sol</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3 class="footer__h" data-i18n="footer.contact">Contact</h3>
+        <ul>
+          <li><span class="footer__label" data-i18n="footer.phone">Phone / WhatsApp</span><a href="tel:+34627986515">+34 627 986 515</a></li>
+          <!-- TODO: from client — exact Instagram profile URL -->
+          <li><span class="footer__label">Instagram</span><a href="#" data-todo="instagram-url">Perla Homes</a></li>
+          <li><span data-i18n="footer.location">Marbella, Costa del Sol</span></li>
+          <!-- TODO: from client — e-mail and office address (not in brief) -->
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <a href="#top" class="logo logo--footer" data-logo aria-label="Perla Homes">Perla Homes</a>
+      <p>© <span id="year">2026</span> Perla Homes</p>
+      <p class="footer__legal"><a href="privacy.html" data-i18n="footer.privacy">Privacy policy</a><button type="button" class="linklike" data-cookie-open data-i18n="footer.cookies">Cookie settings</button></p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a class="wa" href="https://wa.me/34627986515" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-i18n-aria="wa.label">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.5A12.4 12.4 0 0 0 5.3 22.2L3.5 28.5l6.5-1.7A12.4 12.4 0 1 0 16 3.5Zm0 22.7c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-3.8 1 1-3.7-.3-.4a10.3 10.3 0 1 1 8.9 4.8Zm5.7-7.7c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.4 8.4 0 0 1-4.2-3.7c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.2-.3Z"/></svg>
+  </a>
+
+  <!-- Cookie banner — TODO: legal text and cookie categories from client -->
+  <div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookies" hidden>
+    <p><span data-i18n="cookie.text">This website uses cookies.</span> <a href="privacy.html" data-i18n="footer.privacy">Privacy policy</a></p>
+    <div class="cookie__actions">
+      <button type="button" class="btn btn--small btn--green" data-cookie="accept" data-i18n="cookie.accept">Accept</button>
+      <button type="button" class="btn btn--small btn--outline" data-cookie="decline" data-i18n="cookie.decline">Decline</button>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

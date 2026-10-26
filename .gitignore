@@ -1,0 +1,8 @@
+# secrets - never commit
+.env
+.env.*
+
+# dependencies & temp
+node_modules/
+temporary screenshots/
+images/raw/
