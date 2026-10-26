@@ -24,10 +24,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Manrope:wght@400;500&display=swap&subset=cyrillic,latin-ext" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/img/hero-villa-1920.webp" imagesrcset="assets/img/hero-villa-640.webp 640w, assets/img/hero-villa-1280.webp 1280w, assets/img/hero-villa-1920.webp 1920w, assets/img/hero-villa-2400.webp 2400w" imagesizes="(max-width: 767px) 1400px, 100vw">
+  <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp" media="(max-width: 767px)" imagesrcset="assets/img/hero-villa-m-640.webp 640w, assets/img/hero-villa-m-960.webp 960w" imagesizes="100vw">
+  <link rel="preload" as="image" type="image/webp" media="(min-width: 768px)" imagesrcset="assets/img/hero-villa-640.webp 640w, assets/img/hero-villa-1280.webp 1280w, assets/img/hero-villa-1920.webp 1920w, assets/img/hero-villa-2400.webp 2400w" imagesizes="100vw">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -70,6 +70,7 @@
     <!-- ===== 1. Hero ===== -->
     <section class="hero" id="top">
       <picture class="hero__media">
+        <source media="(max-width: 767px)" type="image/webp" srcset="assets/img/hero-villa-m-640.webp 640w, assets/img/hero-villa-m-960.webp 960w" sizes="100vw">
         <source type="image/webp" srcset="assets/img/hero-villa-640.webp 640w, assets/img/hero-villa-1280.webp 1280w, assets/img/hero-villa-1920.webp 1920w, assets/img/hero-villa-2400.webp 2400w" sizes="(max-width: 767px) 1400px, 100vw">
         <img src="assets/img/hero-villa-1920.jpg" srcset="assets/img/hero-villa-640.jpg 640w, assets/img/hero-villa-1280.jpg 1280w, assets/img/hero-villa-1920.jpg 1920w" sizes="(max-width: 767px) 1400px, 100vw" alt="Modern white Mediterranean villa with an infinity pool at dusk, the sea in the distance" data-i18n-alt="alt.hero" fetchpriority="high" width="1920" height="1072">
       </picture>
@@ -99,12 +100,13 @@
     </section>
 
     <!-- Featured band — TODO: real featured property from client -->
-    <section class="band band--featured" id="featured" aria-labelledby="featured-name">
+    <section class="band band--featured" id="featured" data-reveal aria-labelledby="featured-name">
       <picture class="band__media">
+        <source media="(max-width: 767px)" type="image/webp" srcset="assets/img/property-wide-m-640.webp 640w, assets/img/property-wide-m-960.webp 960w" sizes="100vw">
         <source type="image/webp" srcset="assets/img/property-wide-640.webp 640w, assets/img/property-wide-1280.webp 1280w, assets/img/property-wide-1920.webp 1920w, assets/img/property-wide-2400.webp 2400w" sizes="(max-width: 767px) 1400px, 100vw">
         <img src="assets/img/property-wide-1920.jpg" srcset="assets/img/property-wide-640.jpg 640w, assets/img/property-wide-1280.jpg 1280w, assets/img/property-wide-1920.jpg 1920w" sizes="(max-width: 767px) 1400px, 100vw" alt="Panoramic view of a contemporary villa with a lit pool at dusk" data-i18n-alt="alt.wide" loading="lazy" width="1920" height="815">
       </picture>
-      <div class="band__content container" data-reveal>
+      <div class="band__content container">
         <span class="tag" data-i18n="props.featured">Featured</span>
         <p class="band__price" data-field="price">Price on request</p>
         <h2 class="band__name" id="featured-name"><span data-field="name">Property</span> <span class="band__sep" aria-hidden="true"></span> <span data-field="district">Marbella area</span></h2>
@@ -144,7 +146,7 @@
               <li data-i18n="costa.1">A mild Mediterranean climate, the sea and nature</li>
               <li data-i18n="costa.2">An international environment</li>
               <li data-i18n="costa.3">Málaga Airport</li>
-              <li data-i18n="costa.4">Schools, healthcare and well-developed infrastructure</li>
+              <li data-i18n="costa.4">Schools, healthcare and well‑developed infrastructure</li>
               <li data-i18n="costa.5">Golf, yachting, gastronomy and an active lifestyle</li>
               <li data-i18n="costa.6">A wide choice of property, from apartments to villas</li>
             </ul>
@@ -154,17 +156,12 @@
       </div>
     </section>
 
-    <!-- ===== 4. Call to action ===== -->
-    <section class="band band--cta" aria-labelledby="cta-title">
+    <!-- ===== 4. Photo pause (terrace) ===== -->
+    <section class="band band--cta" aria-hidden="true" data-reveal>
       <picture class="band__media">
-        <source type="image/webp" srcset="assets/img/cta-terrace-640.webp 640w, assets/img/cta-terrace-1280.webp 1280w, assets/img/cta-terrace-1920.webp 1920w, assets/img/cta-terrace-2400.webp 2400w" sizes="(max-width: 767px) 1400px, 100vw">
-        <img src="assets/img/cta-terrace-1920.jpg" srcset="assets/img/cta-terrace-640.jpg 640w, assets/img/cta-terrace-1280.jpg 1280w, assets/img/cta-terrace-1920.jpg 1920w" sizes="(max-width: 767px) 1400px, 100vw" alt="Terrace with a sea view at sunset, two chairs and a table" data-i18n-alt="alt.cta" loading="lazy" width="1920" height="815">
+        <source type="image/webp" srcset="assets/img/cta-terrace-640.webp 640w, assets/img/cta-terrace-1280.webp 1280w, assets/img/cta-terrace-1920.webp 1920w, assets/img/cta-terrace-2400.webp 2400w" sizes="(max-width: 767px) 800px, 100vw">
+        <img src="assets/img/cta-terrace-1920.jpg" srcset="assets/img/cta-terrace-640.jpg 640w, assets/img/cta-terrace-1280.jpg 1280w, assets/img/cta-terrace-1920.jpg 1920w" sizes="(max-width: 767px) 800px, 100vw" alt="" loading="lazy" width="1920" height="815">
       </picture>
-      <div class="band__content band__content--center container" data-reveal>
-        <h2 class="cta__title" id="cta-title">Discover your pearl</h2>
-        <p class="cta__line" data-i18n="cta.line">The most valuable things are often revealed to those who know how to look deeper.</p>
-        <a class="btn btn--light" href="#contact" data-i18n="cta.button">Contact us</a>
-      </div>
     </section>
 
     <!-- ===== 5. About ===== -->
@@ -284,12 +281,13 @@
     </section>
 
     <!-- ===== Contact banner ===== -->
-    <section class="band band--contact" aria-labelledby="contact-banner-title">
+    <section class="band band--contact" aria-labelledby="contact-banner-title" data-reveal>
       <picture class="band__media">
+        <source media="(max-width: 767px)" type="image/webp" srcset="assets/img/contact-facade-m-640.webp 640w, assets/img/contact-facade-m-960.webp 960w" sizes="100vw">
         <source type="image/webp" srcset="assets/img/contact-facade-640.webp 640w, assets/img/contact-facade-1280.webp 1280w, assets/img/contact-facade-1920.webp 1920w, assets/img/contact-facade-2400.webp 2400w" sizes="(max-width: 767px) 1400px, 100vw">
         <img src="assets/img/contact-facade-1920.jpg" srcset="assets/img/contact-facade-640.jpg 640w, assets/img/contact-facade-1280.jpg 1280w, assets/img/contact-facade-1920.jpg 1920w" sizes="(max-width: 767px) 1400px, 100vw" alt="White Mediterranean facade with an arched wooden door and reflections of sea light on the wall" data-i18n-alt="alt.facade" loading="lazy" width="1920" height="815">
       </picture>
-      <div class="band__content container" data-reveal>
+      <div class="band__content container">
         <div class="contact-banner">
           <h2 class="contact-banner__title" id="contact-banner-title">Discover your pearl</h2>
           <p class="contact-banner__text" data-i18n="banner.text">Searching for a home is like searching for your own pearl: the most valuable things are often revealed to those who know how to look deeper.</p>

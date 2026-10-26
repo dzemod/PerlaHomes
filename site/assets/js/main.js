@@ -36,7 +36,9 @@
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach((el) => {
       const v = t(el.dataset.i18n);
-      if (v) el.textContent = v;
+      // glue the last two words of longer texts so no word sits alone on the last line
+      const glue = v && !/^H[1-3]$/.test(el.tagName) && v.split(' ').length >= 4;
+      if (v) el.textContent = glue ? v.replace(/ (\S+)$/,' $1') : v;
     });
     document.querySelectorAll('[data-i18n-alt]').forEach((el) => { el.alt = t(el.dataset.i18nAlt); });
     document.querySelectorAll('[data-i18n-aria]').forEach((el) => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
@@ -194,6 +196,22 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   /* ---------- Motion: one calm sequence per section ---------- */
+  // One sequence per section: label → heading → text → button → content.
+  // Text: opacity + 16px rise. Photos: opacity + scale 1.04 → 1. Played once.
+  const MOTION = { y: 16, duration: 0.7, ease: 'power2.out', stagger: 0.08 };
+  const PHOTOS = '.photo img, .card__media img, .band__media img';
+
+  function sequence(section) {
+    const items = [];
+    const take = (el) => { if (el && !items.includes(el)) items.push(el); };
+    const head = section.querySelector('.section-head, .band__content > *:not(.contact-banner), .contact-banner');
+    if (head && head.classList.contains('contact-banner')) [...head.children].forEach(take);
+    else if (head && head.classList.contains('section-head')) [...head.children].forEach(take);
+    else section.querySelectorAll('.band__content > *').forEach(take);
+    section.querySelectorAll('[data-reveal-items]').forEach((g) => [...g.children].forEach(take));
+    return items;
+  }
+
   function animate() {
     const gsap = window.gsap;
     if (!gsap || reduceMotion) {
@@ -201,20 +219,27 @@
       return;
     }
     gsap.registerPlugin(window.ScrollTrigger);
-    gsap.fromTo('[data-anim="hero"]', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.4, ease: 'power3.out', stagger: 0.18, delay: 0.15 });
-    gsap.fromTo('.hero__media img', { scale: 1.06 }, { scale: 1, duration: 2.6, ease: 'power2.out' });
+    // Hero photo is the LCP image: it is never hidden, only the text sequence plays.
+    gsap.fromTo('[data-anim="hero"]', { opacity: 0, y: MOTION.y }, {
+      opacity: 1, y: 0, duration: MOTION.duration, ease: MOTION.ease, stagger: MOTION.stagger, delay: 0.1, clearProps: 'transform',
+    });
 
     document.querySelectorAll('[data-reveal]').forEach((section) => {
-      const groups = section.querySelectorAll('[data-reveal-items]');
-      const head = section.querySelector('.section-head');
-      const targets = [];
-      if (head) targets.push(head);
-      groups.forEach((g) => targets.push(...g.children));
-      if (!targets.length) targets.push(section);
-      gsap.fromTo(targets, { opacity: 0, y: 24 }, {
-        opacity: 1, y: 0, duration: 1.1, ease: 'power3.out', stagger: 0.08,
-        scrollTrigger: { trigger: section, start: 'top 78%', once: true },
-      });
+      const items = sequence(section);
+      const photos = [...section.querySelectorAll(PHOTOS)];
+      const trigger = { trigger: section, start: 'top 82%', once: true };
+      if (items.length) {
+        gsap.fromTo(items, { opacity: 0, y: MOTION.y }, {
+          opacity: 1, y: 0, duration: MOTION.duration, ease: MOTION.ease, stagger: MOTION.stagger,
+          clearProps: 'transform', scrollTrigger: trigger,
+        });
+      }
+      if (photos.length) {
+        gsap.fromTo(photos, { opacity: 0, scale: 1.04 }, {
+          opacity: 1, scale: 1, duration: MOTION.duration + 0.3, ease: MOTION.ease, stagger: MOTION.stagger,
+          clearProps: 'transform', scrollTrigger: trigger,
+        });
+      }
     });
   }
 
@@ -228,8 +253,7 @@
     dict = d;
     properties = p;
     applyLang(initial);
-    window.addEventListener('load', animate);
-    if (document.readyState === 'complete') animate();
+    animate();
   }).catch(() => {
     document.querySelectorAll('[data-anim="hero"]').forEach((el) => { el.style.opacity = 1; });
   });
