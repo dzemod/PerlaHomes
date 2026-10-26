@@ -40,6 +40,7 @@ const IMAGES = [
   ['pearl-shell', '4:5', 'A single natural lustrous white pearl resting in an open oyster shell with iridescent nacre, placed on smooth wet sand at the water edge, a thin film of seawater. Close-up macro still life, soft warm natural light, very minimal composition with lots of empty space.'],
   ['about-placeholder', '4:5', 'Calm elegant interior corner of a Mediterranean home in Marbella: a cream boucle armchair, a small travertine side table with a ceramic vase and an olive branch, linen curtain moving softly, a large window showing the calm sea. Warm soft natural light, quiet and personal atmosphere.'],
   ['cta-terrace', '21:9', 'Elegant terrace overlooking the Mediterranean Sea at sunset near Marbella. Two cream outdoor chairs and a small round stone table with two glasses, potted olive tree, travertine floor, glass balustrade, the sun low over a calm sea, warm golden light. Wide cinematic composition with empty space on the left and right.'],
+  ['contact-facade', '21:9', 'Close-up of the white lime-plastered facade of a Mediterranean villa in Marbella, Spain: an elegant tall arched doorway with a recessed dark wooden door, simple stone threshold, a potted olive tree beside it. Soft rippling reflections of sea water light (caustics) dance across the white wall, cast by sunlit water nearby, late afternoon warm low sun, gentle long shadows. Calm, premium, architectural, a sea mood. Straight frontal composition with generous empty white wall on the right side.'],
 ];
 
 async function generate(name, aspect, prompt) {

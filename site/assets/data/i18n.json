@@ -102,7 +102,9 @@
     "alt.p3": "Penthouse terrace with a sea view at sunset",
     "alt.p4": "Bright minimalist living room with a sea view",
     "alt.p5": "Beach villa with a garden and loungers",
-    "alt.p6": "Modern townhouse with a private garden and mountain view"
+    "alt.p6": "Modern townhouse with a private garden and mountain view",
+    "banner.text": "Searching for a home is like searching for your own pearl: the most valuable things are often revealed to those who know how to look deeper.",
+    "alt.facade": "White Mediterranean facade with an arched wooden door and reflections of sea light on the wall"
   },
   "es": {
     "meta.title": "Perla Homes — Agencia inmobiliaria boutique en Marbella, Costa del Sol",
@@ -207,7 +209,9 @@
     "alt.p3": "Terraza de ático con vistas al mar al atardecer",
     "alt.p4": "Salón luminoso y minimalista con vistas al mar",
     "alt.p5": "Villa de playa con jardín y tumbonas",
-    "alt.p6": "Adosado moderno con jardín privado y vistas a la montaña"
+    "alt.p6": "Adosado moderno con jardín privado y vistas a la montaña",
+    "banner.text": "Buscar un hogar es como buscar su propia perla: lo más valioso suele revelarse a quien sabe mirar más hondo.",
+    "alt.facade": "Fachada mediterránea blanca con una puerta de madera en arco y reflejos de la luz del mar en la pared"
   },
   "ru": {
     "meta.title": "Perla Homes — бутиковое агентство недвижимости в Марбелье, Costa del Sol",
@@ -312,6 +316,8 @@
     "alt.p3": "Терраса пентхауса с видом на море на закате",
     "alt.p4": "Светлая минималистичная гостиная с видом на море",
     "alt.p5": "Вилла у пляжа с садом и шезлонгами",
-    "alt.p6": "Современный таунхаус с частным садом и видом на горы"
+    "alt.p6": "Современный таунхаус с частным садом и видом на горы",
+    "banner.text": "Поиск дома похож на поиск собственной жемчужины: самое ценное часто открывается тем, кто умеет смотреть глубже.",
+    "alt.facade": "Белый средиземноморский фасад с арочной деревянной дверью и бликами морского света на стене"
   }
 }
