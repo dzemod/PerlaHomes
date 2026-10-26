@@ -86,19 +86,15 @@
     <!-- ===== 2. Selected properties — TODO: real properties from client (assets/data/properties.json) ===== -->
     <section class="section section--pearl" id="properties" data-reveal>
       <div class="container">
-        <div class="section-head section-head--row">
-          <div>
-            <h2 class="h2" data-i18n="props.title">Selected properties</h2>
-            <p class="lead" data-i18n="props.intro">We help you find property for living, holidays and investment: from modern apartments to exclusive villas.</p>
-          </div>
-          <div class="arrows">
-            <button type="button" class="arrow" data-carousel-prev aria-label="Previous properties" data-i18n-aria="props.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-            <button type="button" class="arrow" data-carousel-next aria-label="Next properties" data-i18n-aria="props.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-          </div>
+        <div class="section-head section-head--left">
+          <h2 class="h2" data-i18n="props.title">Selected properties</h2>
+          <p class="lead" data-i18n="props.intro">We help you find property for living, holidays and investment: from modern apartments to exclusive villas.</p>
         </div>
       </div>
       <div class="carousel" data-carousel>
         <ul class="carousel__track" id="property-list" data-reveal-items></ul>
+        <button type="button" class="arrow carousel__arrow carousel__arrow--prev" data-carousel-prev aria-label="Previous properties" data-i18n-aria="props.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="arrow carousel__arrow carousel__arrow--next" data-carousel-next aria-label="Next properties" data-i18n-aria="props.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
     </section>
 

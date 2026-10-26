@@ -78,23 +78,22 @@
   function cardHTML(p) {
     const img = `assets/img/${p.image}`;
     return `<li class="card">
-      <figure class="photo">
-        <picture>
-          <source type="image/webp" srcset="${img}-640.webp 640w, ${img}-1280.webp 1280w" sizes="(min-width: 600px) 400px, 84vw">
-          <img src="${img}-640.jpg" srcset="${img}-640.jpg 640w, ${img}-1280.jpg 1280w" sizes="(min-width: 600px) 400px, 84vw" alt="${esc(t(p.alt))}" loading="lazy" width="640" height="478">
+      <article class="card__inner">
+        <picture class="card__media">
+          <source type="image/webp" srcset="${img}-640.webp 640w, ${img}-1280.webp 1280w" sizes="(min-width: 900px) 320px, 80vw">
+          <img src="${img}-640.jpg" srcset="${img}-640.jpg 640w, ${img}-1280.jpg 1280w" sizes="(min-width: 900px) 320px, 80vw" alt="${esc(t(p.alt))}" loading="lazy" width="640" height="478">
         </picture>
         <span class="card__badge">${esc(t('props.illustrative'))}</span>
-        <figcaption class="card__overlay">
+        <div class="card__info">
           <h3 class="card__name">${esc(field(p, 'name'))}</h3>
           <p class="card__price">${esc(field(p, 'price'))}</p>
-        </figcaption>
-      </figure>
-      <div class="card__body">
-        <p class="card__district"><span class="pearl-dot" aria-hidden="true"></span>${esc(field(p, 'district'))}</p>
-        <p class="specs"><span>${esc(field(p, 'area'))}</span><span>${esc(field(p, 'bedrooms'))}</span><span>${esc(field(p, 'bathrooms'))}</span></p>
-        <p class="card__desc">${esc(field(p, 'description'))}</p>
-        <a class="btn btn--outline" href="#contact" data-request="${p.id}">${esc(t('props.request'))}</a>
-      </div>
+          <div class="card__details">
+            <p class="card__district"><span class="pearl-dot" aria-hidden="true"></span>${esc(field(p, 'district'))}</p>
+            <p class="card__specs"><span>${esc(field(p, 'area'))}</span><span>${esc(field(p, 'bedrooms'))}</span><span>${esc(field(p, 'bathrooms'))}</span></p>
+            <a class="btn btn--light" href="#contact" data-request="${p.id}">${esc(t('props.request'))}</a>
+          </div>
+        </div>
+      </article>
     </li>`;
   }
 
