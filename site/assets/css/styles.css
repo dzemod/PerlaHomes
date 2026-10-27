@@ -398,6 +398,7 @@ p, li { text-wrap: pretty; }
 .about { display: grid; gap: var(--s5); position: relative; z-index: 2; }
 .about__media { position: relative; padding-bottom: var(--s5); }
 .photo--portrait { aspect-ratio: 4 / 5; box-shadow: 0 30px 60px rgba(8, 18, 15, .35); }
+.photo--founder::after { content: none; } /* client portrait shown untinted */
 .photo--float {
   position: absolute; right: calc(var(--gutter) * -0.5); bottom: 0; width: 42%; aspect-ratio: 4 / 5;
   border: 6px solid var(--green); box-shadow: 0 20px 40px rgba(8, 18, 15, .4);
