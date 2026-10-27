@@ -50,7 +50,7 @@
     "why.3.d": "Trust without loud promises.",
     "why.4.t": "Transparent communication",
     "why.4.d": "Clear coordination of the next steps within the agreed services.",
-    "faq.title": "Frequently asked questions",
+    "faq.title": "FAQ",
     "faq.1.q": "Can a foreigner buy property in Spain?",
     "faq.1.a": "Yes, including non-residents. To complete the purchase you usually need an NIE and the necessary documents.",
     "faq.2.q": "What additional costs should I consider?",
@@ -114,7 +114,9 @@
     "contact.where": "Location",
     "alt.aboutsea": "Clear turquoise sea water over white sand, seen from above",
     "alt.airport": "Modern airport terminal with planes at sunset",
-    "alt.promenade": "Seaside promenade with palm trees in Marbella in the morning"
+    "alt.promenade": "Seaside promenade with palm trees in Marbella in the morning",
+    "faq.line": "Frequent questions from potential clients, with short answers.",
+    "faq.cta": "Didn’t find your answer?"
   },
   "es": {
     "meta.title": "Perla Homes — Agencia inmobiliaria boutique en Marbella, Costa del Sol",
@@ -167,7 +169,7 @@
     "why.3.d": "Confianza sin grandes promesas.",
     "why.4.t": "Comunicación transparente",
     "why.4.d": "Coordinación clara de los siguientes pasos dentro de los servicios acordados.",
-    "faq.title": "Preguntas frecuentes",
+    "faq.title": "FAQ",
     "faq.1.q": "¿Puede un extranjero comprar una propiedad en España?",
     "faq.1.a": "Sí, también los no residentes. Para la compra normalmente se necesita el NIE y la documentación necesaria.",
     "faq.2.q": "¿Qué gastos adicionales hay que tener en cuenta?",
@@ -231,7 +233,9 @@
     "contact.where": "Ubicación",
     "alt.aboutsea": "Agua turquesa y transparente sobre arena blanca, vista desde arriba",
     "alt.airport": "Terminal moderna de aeropuerto con aviones al atardecer",
-    "alt.promenade": "Paseo marítimo con palmeras en Marbella por la mañana"
+    "alt.promenade": "Paseo marítimo con palmeras en Marbella por la mañana",
+    "faq.line": "Preguntas frecuentes de futuros clientes, con respuestas breves.",
+    "faq.cta": "¿No encontró su respuesta?"
   },
   "ru": {
     "meta.title": "Perla Homes — бутиковое агентство недвижимости в Марбелье, Costa del Sol",
@@ -284,7 +288,7 @@
     "why.3.d": "Доверие без громких обещаний.",
     "why.4.t": "Прозрачная коммуникация",
     "why.4.d": "Координация дальнейших этапов в рамках согласованных услуг.",
-    "faq.title": "Частые вопросы",
+    "faq.title": "FAQ",
     "faq.1.q": "Может ли иностранец купить недвижимость в Испании?",
     "faq.1.a": "Да, в том числе нерезидент; для оформления обычно нужен NIE и необходимые документы.",
     "faq.2.q": "Какие дополнительные расходы учитывать?",
@@ -348,6 +352,8 @@
     "contact.where": "Где мы",
     "alt.aboutsea": "Прозрачная бирюзовая вода над белым песком, вид сверху",
     "alt.airport": "Современный терминал аэропорта с самолётами на закате",
-    "alt.promenade": "Набережная с пальмами в Марбелье утром"
+    "alt.promenade": "Набережная с пальмами в Марбелье утром",
+    "faq.line": "Частые вопросы потенциальных клиентов и краткие ответы.",
+    "faq.cta": "Не нашли ответ?"
   }
 }

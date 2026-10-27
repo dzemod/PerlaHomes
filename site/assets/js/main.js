@@ -50,6 +50,7 @@
     document.querySelector('meta[property="og:locale"]').content = OG_LOCALE[lang];
 
     renderProperties();
+    faqSchema();
     store.set('perla-lang', lang);
     const url = new URL(location.href);
     if (lang === 'en') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
@@ -153,6 +154,53 @@
   burger.addEventListener('click', () => setMenu(menu.hidden));
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); burger.focus(); } });
+
+  /* ---------- FAQ accordion: one open at a time, height + fade ---------- */
+  const faqItems = [...document.querySelectorAll('[data-faq] .faq__item')];
+  function setFaq(item, open) {
+    const btn = item.querySelector('.faq__q');
+    const panel = item.querySelector('.faq__a');
+    if (btn.getAttribute('aria-expanded') === String(open)) return;
+    btn.setAttribute('aria-expanded', String(open));
+    item.classList.toggle('is-open', open);
+    const gsap = window.gsap;
+    if (!gsap || reduceMotion) { panel.hidden = !open; return; }
+    gsap.killTweensOf(panel);
+    if (open) {
+      panel.hidden = false;
+      gsap.fromTo(panel, { height: 0, opacity: 0 }, { height: 'auto', opacity: 1, duration: 0.4, ease: 'power2.out', clearProps: 'height,opacity' });
+    } else {
+      gsap.to(panel, { height: 0, opacity: 0, duration: 0.4, ease: 'power2.out', onComplete: () => { panel.hidden = true; gsap.set(panel, { clearProps: 'height,opacity' }); } });
+    }
+  }
+  faqItems.forEach((item) => {
+    item.querySelector('.faq__q').addEventListener('click', () => {
+      const open = !item.classList.contains('is-open');
+      faqItems.forEach((other) => { if (other !== item) setFaq(other, false); });
+      setFaq(item, open);
+    });
+  });
+
+  /* FAQPage structured data in the current language */
+  function faqSchema() {
+    let el = document.getElementById('faq-ld');
+    if (!el) {
+      el = document.createElement('script');
+      el.type = 'application/ld+json';
+      el.id = 'faq-ld';
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      inLanguage: lang,
+      mainEntity: faqItems.map((_, i) => ({
+        '@type': 'Question',
+        name: t(`faq.${i + 1}.q`),
+        acceptedAnswer: { '@type': 'Answer', text: t(`faq.${i + 1}.a`) },
+      })),
+    });
+  }
 
   /* ---------- Contact form -> WhatsApp (TODO: real backend from client) ---------- */
   const form = document.getElementById('contact-form');

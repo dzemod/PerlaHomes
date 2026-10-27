@@ -288,16 +288,38 @@
 
     <!-- ===== 8. FAQ ===== -->
     <section class="section section--milk" id="faq" data-reveal>
-      <div class="container container--narrow">
-        <div class="section-head">
-          <h2 class="h2" data-i18n="faq.title">Frequently asked questions</h2>
+      <div class="container faq-layout">
+        <div class="faq-side">
+          <div class="faq-side__head section-head section-head--left">
+            <h2 class="h2" data-i18n="faq.title">FAQ</h2>
+            <p class="lead" data-i18n="faq.line">Frequent questions from potential clients, with short answers.</p>
+          </div>
+          <div class="faq-side__cta" data-reveal-items>
+            <p class="faq-side__ask" data-i18n="faq.cta">Didn’t find your answer?</p>
+            <a class="btn btn--green faq-side__btn" href="https://wa.me/34627986515" target="_blank" rel="noopener">WhatsApp +34 627 986 515</a>
+          </div>
         </div>
-        <div class="faq" data-reveal-items>
-          <details class="faq__item"><summary data-i18n="faq.1.q">Can a foreigner buy property in Spain?</summary><div class="faq__a"><p data-i18n="faq.1.a">Yes, including non-residents. To complete the purchase you usually need an NIE and the necessary documents.</p></div></details>
-          <details class="faq__item"><summary data-i18n="faq.2.q">What additional costs should I consider?</summary><div class="faq__a"><p data-i18n="faq.2.a">Taxes, notary and registration fees, and possibly legal and banking support. The amount depends on the property and the transaction.</p></div></details>
-          <details class="faq__item"><summary data-i18n="faq.3.q">Can a non-resident get a mortgage?</summary><div class="faq__a"><p data-i18n="faq.3.a">Yes, some Spanish banks offer financing to non-residents. The terms depend on income, financial situation and the bank.</p></div></details>
-          <details class="faq__item"><summary data-i18n="faq.4.q">How long does a purchase take?</summary><div class="faq__a"><p data-i18n="faq.4.a">It depends on the documents, financing and legal checks. For a completed property it often takes around 1–3 months after the terms are agreed, but this can vary.</p></div></details>
-          <details class="faq__item"><summary data-i18n="faq.5.q">How does buying with Perla Homes work?</summary><div class="faq__a"><p data-i18n="faq.5.a">We get to know you and define your request, make a personal selection, arrange viewings, help you compare options and coordinate the next steps within the agreed services.</p></div></details>
+        <div class="faq" data-faq data-reveal-items>
+            <div class="faq__item is-open">
+              <h3 class="faq__h"><button type="button" class="faq__q" id="faq-q1" aria-expanded="true" aria-controls="faq-a1"><span class="faq__num" data-n="01">01</span><span class="faq__text" data-i18n="faq.1.q">Can a foreigner buy property in Spain?</span><span class="faq__icon" aria-hidden="true"></span></button></h3>
+              <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div class="faq__a-inner"><p data-i18n="faq.1.a">Yes, including non-residents. To complete the purchase you usually need an NIE and the necessary documents.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <h3 class="faq__h"><button type="button" class="faq__q" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span class="faq__num" data-n="02">02</span><span class="faq__text" data-i18n="faq.2.q">What additional costs should I consider?</span><span class="faq__icon" aria-hidden="true"></span></button></h3>
+              <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden><div class="faq__a-inner"><p data-i18n="faq.2.a">Taxes, notary and registration fees, and possibly legal and banking support. The amount depends on the property and the transaction.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <h3 class="faq__h"><button type="button" class="faq__q" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span class="faq__num" data-n="03">03</span><span class="faq__text" data-i18n="faq.3.q">Can a non-resident get a mortgage?</span><span class="faq__icon" aria-hidden="true"></span></button></h3>
+              <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden><div class="faq__a-inner"><p data-i18n="faq.3.a">Yes, some Spanish banks offer financing to non-residents. The terms depend on income, financial situation and the bank.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <h3 class="faq__h"><button type="button" class="faq__q" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><span class="faq__num" data-n="04">04</span><span class="faq__text" data-i18n="faq.4.q">How long does a purchase take?</span><span class="faq__icon" aria-hidden="true"></span></button></h3>
+              <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden><div class="faq__a-inner"><p data-i18n="faq.4.a">It depends on the documents, financing and legal checks. For a completed property it often takes around 1–3 months after the terms are agreed, but this can vary.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <h3 class="faq__h"><button type="button" class="faq__q" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><span class="faq__num" data-n="05">05</span><span class="faq__text" data-i18n="faq.5.q">How does buying with Perla Homes work?</span><span class="faq__icon" aria-hidden="true"></span></button></h3>
+              <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5" hidden><div class="faq__a-inner"><p data-i18n="faq.5.a">We get to know you and define your request, make a personal selection, arrange viewings, help you compare options and coordinate the next steps within the agreed services.</p></div></div>
+            </div>
         </div>
       </div>
     </section>
