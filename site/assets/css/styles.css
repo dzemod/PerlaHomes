@@ -416,12 +416,13 @@ p, li { text-wrap: pretty; }
 #about { overflow: hidden; }
 .about { display: grid; gap: var(--s5); position: relative; z-index: 2; }
 /* Layered composition: sea photo behind, up-right; portrait in front; thin gold frame offset behind both */
-.about__media { position: relative; padding: 18% 0 var(--s4); }
+.about__media { --collage-pad: var(--s4); position: relative; padding: calc(18% + var(--collage-pad)) 0 calc(var(--s4) + var(--collage-pad)); }
+@media (min-width: 900px) { .about__media { --collage-pad: var(--s5); } }
 .photo--portrait { position: relative; z-index: 2; width: 78%; aspect-ratio: 4 / 5; box-shadow: 0 30px 60px rgba(8, 18, 15, .35); }
 .photo--founder::after { content: none; } /* client portrait shown untinted */
-.photo--sea { position: absolute; z-index: 1; top: 0; right: 0; width: 50%; aspect-ratio: 4 / 5; box-shadow: 0 20px 40px rgba(8, 18, 15, .3); }
+.photo--sea { position: absolute; z-index: 1; top: var(--collage-pad); right: 0; width: 50%; aspect-ratio: 4 / 5; box-shadow: 0 20px 40px rgba(8, 18, 15, .3); }
 .about__frame {
-  position: absolute; z-index: 0; top: 9%; right: 6%; bottom: 0; left: 10%;
+  position: absolute; z-index: 0; top: calc(var(--collage-pad) + 7%); right: 6%; bottom: var(--collage-pad); left: 10%;
   border: 1px solid rgba(184, 155, 94, .55); pointer-events: none;
 }
 .about__text .h2 { margin-bottom: var(--s4); }
