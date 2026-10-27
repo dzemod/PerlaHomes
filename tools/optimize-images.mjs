@@ -14,8 +14,10 @@ fs.mkdirSync(siteDir, { recursive: true });
 
 const WIDTHS = [640, 1280, 1920, 2400];
 
+const only = process.argv.slice(2);
 for (const f of fs.readdirSync(rawDir)) {
   const name = path.parse(f).name;
+  if (only.length && !only.includes(name)) continue;
   const src = sharp(path.join(rawDir, f)).rotate();
   const { width } = await src.metadata();
   const full = src.clone().resize({ width: Math.min(width, 2400), withoutEnlargement: true });
@@ -33,6 +35,7 @@ for (const f of fs.readdirSync(rawDir)) {
 // so a narrow crop is much lighter than the wide original.  name -> [aspect w/h, horizontal centre 0..1]
 const MOBILE_CROPS = { 'hero-villa': [9 / 16, 0.6], 'property-wide': [3 / 4, 0.5], 'contact-facade': [3 / 4, 0.68] };
 for (const [name, [aspect, cx]] of Object.entries(MOBILE_CROPS)) {
+  if (only.length && !only.includes(name)) continue;
   const file = fs.readdirSync(rawDir).find((f) => path.parse(f).name === name);
   if (!file) continue;
   const buf = fs.readFileSync(path.join(rawDir, file));

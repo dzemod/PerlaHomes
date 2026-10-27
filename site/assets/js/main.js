@@ -226,7 +226,7 @@
 
     document.querySelectorAll('[data-reveal]').forEach((section) => {
       const items = sequence(section);
-      const photos = [...section.querySelectorAll(PHOTOS)];
+      const photos = [...section.querySelectorAll(PHOTOS)].filter((img) => !img.closest('[data-wipe]'));
       const trigger = { trigger: section, start: 'top 82%', once: true };
       if (items.length) {
         gsap.fromTo(items, { opacity: 0, y: MOTION.y }, {
@@ -238,6 +238,34 @@
         gsap.fromTo(photos, { opacity: 0, scale: 1.04 }, {
           opacity: 1, scale: 1, duration: MOTION.duration + 0.3, ease: MOTION.ease, stagger: MOTION.stagger,
           clearProps: 'transform', scrollTrigger: trigger,
+        });
+      }
+    });
+
+    // Photo cards: clip-path wipe left → right with the image settling 1.08 → 1,
+    // then the gold line draws, then title and text rise.
+    // data-wipe="stagger": one trigger, cards 0.15s apart. data-wipe="each": every row on its own.
+    function wipe(item) {
+      const photo = item.querySelector('.photo');
+      const img = photo.querySelector('img');
+      const line = item.querySelector('.gold-line');
+      const text = [...item.querySelectorAll('.gold-line ~ *')];
+      return gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .fromTo(photo, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'power3.inOut', clearProps: 'clipPath' })
+        .fromTo(img, { scale: 1.08 }, { scale: 1, duration: 1.6, clearProps: 'transform' }, 0)
+        .fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.6, clearProps: 'transform' }, 0.65)
+        .fromTo(text, { opacity: 0, y: MOTION.y }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, clearProps: 'transform' }, 0.8);
+    }
+    document.querySelectorAll('[data-wipe]').forEach((group) => {
+      const items = [...group.children];
+      if (group.dataset.wipe === 'stagger') {
+        const tl = gsap.timeline({ paused: true });
+        items.forEach((item, i) => tl.add(wipe(item), i * 0.15));
+        window.ScrollTrigger.create({ trigger: group, start: 'top 80%', once: true, onEnter: () => tl.play() });
+      } else {
+        items.forEach((item) => {
+          const tl = wipe(item).pause();
+          window.ScrollTrigger.create({ trigger: item, start: 'top 80%', once: true, onEnter: () => tl.play() });
         });
       }
     });

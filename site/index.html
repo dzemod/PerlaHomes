@@ -122,59 +122,103 @@
         <div class="section-head">
           <h2 class="h2" data-i18n="costa.title">Why Costa del Sol</h2>
         </div>
-        <div class="costa">
-          <div class="costa__gallery" data-reveal-items>
-            <figure class="photo photo--tall"><picture>
-              <source type="image/webp" srcset="assets/img/costa-sea-640.webp 640w, assets/img/costa-sea-1280.webp 1280w" sizes="(min-width: 900px) 30vw, 50vw">
-              <img src="assets/img/costa-sea-1280.jpg" alt="Calm Mediterranean coastline in morning light" data-i18n-alt="alt.sea" loading="lazy" width="1280" height="960">
+        <ul class="costa-rows" data-wipe="each">
+          <li class="costa-row">
+            <figure class="photo costa-row__photo"><picture>
+              <source type="image/webp" srcset="assets/img/costa-sea-640.webp 640w, assets/img/costa-sea-1280.webp 1280w" sizes="(min-width: 900px) 58vw, 100vw">
+              <img src="assets/img/costa-sea-1280.jpg" srcset="assets/img/costa-sea-640.jpg 640w, assets/img/costa-sea-1280.jpg 1280w" sizes="(min-width: 900px) 58vw, 100vw" alt="" data-i18n-alt="alt.sea" loading="lazy" width="1280" height="960">
             </picture></figure>
-            <figure class="photo"><picture>
-              <source type="image/webp" srcset="assets/img/costa-golf-640.webp 640w, assets/img/costa-golf-1280.webp 1280w" sizes="(min-width: 900px) 30vw, 50vw">
-              <img src="assets/img/costa-golf-1280.jpg" alt="Green golf course with mountains behind" data-i18n-alt="alt.golf" loading="lazy" width="1280" height="960">
+            <div class="costa-row__card">
+              <span class="gold-line" aria-hidden="true"></span>
+              <h3 class="h3" data-i18n="costa.1.t"></h3>
+              <p data-i18n="costa.1"></p>
+            </div>
+          </li>
+          <li class="costa-row costa-row--flip">
+            <figure class="photo costa-row__photo"><picture>
+              <source type="image/webp" srcset="assets/img/costa-oldtown-640.webp 640w, assets/img/costa-oldtown-1280.webp 1280w" sizes="(min-width: 900px) 58vw, 100vw">
+              <img src="assets/img/costa-oldtown-1280.jpg" srcset="assets/img/costa-oldtown-640.jpg 640w, assets/img/costa-oldtown-1280.jpg 1280w" sizes="(min-width: 900px) 58vw, 100vw" alt="" data-i18n-alt="alt.oldtown" loading="lazy" width="1280" height="960">
             </picture></figure>
-            <figure class="photo"><picture>
-              <source type="image/webp" srcset="assets/img/costa-yacht-640.webp 640w, assets/img/costa-yacht-1280.webp 1280w" sizes="(min-width: 900px) 30vw, 50vw">
-              <img src="assets/img/costa-yacht-1280.jpg" alt="Yachts in a marina at golden hour" data-i18n-alt="alt.yacht" loading="lazy" width="1280" height="960">
+            <div class="costa-row__card">
+              <span class="gold-line" aria-hidden="true"></span>
+              <h3 class="h3" data-i18n="costa.2.t"></h3>
+              <p data-i18n="costa.2"></p>
+            </div>
+          </li>
+          <li class="costa-row">
+            <figure class="photo costa-row__photo"><picture>
+              <source type="image/webp" srcset="assets/img/costa-airport-640.webp 640w, assets/img/costa-airport-1280.webp 1280w" sizes="(min-width: 900px) 58vw, 100vw">
+              <img src="assets/img/costa-airport-1280.jpg" srcset="assets/img/costa-airport-640.jpg 640w, assets/img/costa-airport-1280.jpg 1280w" sizes="(min-width: 900px) 58vw, 100vw" alt="" data-i18n-alt="alt.airport" loading="lazy" width="1280" height="960">
             </picture></figure>
-            <figure class="photo photo--tall"><picture>
-              <source type="image/webp" srcset="assets/img/costa-oldtown-640.webp 640w, assets/img/costa-oldtown-1280.webp 1280w" sizes="(min-width: 900px) 30vw, 50vw">
-              <img src="assets/img/costa-oldtown-1280.jpg" alt="White street of an Andalusian old town with flowers" data-i18n-alt="alt.oldtown" loading="lazy" width="1280" height="960">
+            <div class="costa-row__card">
+              <span class="gold-line" aria-hidden="true"></span>
+              <h3 class="h3" data-i18n="costa.3.t"></h3>
+              <p data-i18n="costa.3"></p>
+            </div>
+          </li>
+          <li class="costa-row costa-row--flip">
+            <figure class="photo costa-row__photo"><picture>
+              <source type="image/webp" srcset="assets/img/costa-infrastructure-640.webp 640w, assets/img/costa-infrastructure-1280.webp 1280w" sizes="(min-width: 900px) 58vw, 100vw">
+              <img src="assets/img/costa-infrastructure-1280.jpg" srcset="assets/img/costa-infrastructure-640.jpg 640w, assets/img/costa-infrastructure-1280.jpg 1280w" sizes="(min-width: 900px) 58vw, 100vw" alt="" data-i18n-alt="alt.promenade" loading="lazy" width="1280" height="960">
             </picture></figure>
-          </div>
-          <div class="costa__text">
-            <ul class="costa__list" data-reveal-items>
-              <li data-i18n="costa.1">A mild Mediterranean climate, the sea and nature</li>
-              <li data-i18n="costa.2">An international environment</li>
-              <li data-i18n="costa.3">Málaga Airport</li>
-              <li data-i18n="costa.4">Schools, healthcare and well‑developed infrastructure</li>
-              <li data-i18n="costa.5">Golf, yachting, gastronomy and an active lifestyle</li>
-              <li data-i18n="costa.6">A wide choice of property, from apartments to villas</li>
-            </ul>
-            <p class="costa__note" data-i18n="costa.note">The region suits permanent living, holidays and exploring investment opportunities, with the risks taken into account.</p>
-          </div>
-        </div>
+            <div class="costa-row__card">
+              <span class="gold-line" aria-hidden="true"></span>
+              <h3 class="h3" data-i18n="costa.4.t"></h3>
+              <p data-i18n="costa.4"></p>
+            </div>
+          </li>
+          <li class="costa-row">
+            <figure class="photo costa-row__photo"><picture>
+              <source type="image/webp" srcset="assets/img/costa-yacht-640.webp 640w, assets/img/costa-yacht-1280.webp 1280w" sizes="(min-width: 900px) 58vw, 100vw">
+              <img src="assets/img/costa-yacht-1280.jpg" srcset="assets/img/costa-yacht-640.jpg 640w, assets/img/costa-yacht-1280.jpg 1280w" sizes="(min-width: 900px) 58vw, 100vw" alt="" data-i18n-alt="alt.yacht" loading="lazy" width="1280" height="960">
+            </picture></figure>
+            <div class="costa-row__card">
+              <span class="gold-line" aria-hidden="true"></span>
+              <h3 class="h3" data-i18n="costa.5.t"></h3>
+              <p data-i18n="costa.5"></p>
+            </div>
+          </li>
+          <li class="costa-row costa-row--flip">
+            <figure class="photo costa-row__photo"><picture>
+              <source type="image/webp" srcset="assets/img/property-01-640.webp 640w, assets/img/property-01-1280.webp 1280w" sizes="(min-width: 900px) 58vw, 100vw">
+              <img src="assets/img/property-01-1280.jpg" srcset="assets/img/property-01-640.jpg 640w, assets/img/property-01-1280.jpg 1280w" sizes="(min-width: 900px) 58vw, 100vw" alt="" data-i18n-alt="alt.p1" loading="lazy" width="1280" height="960">
+            </picture></figure>
+            <div class="costa-row__card">
+              <span class="gold-line" aria-hidden="true"></span>
+              <h3 class="h3" data-i18n="costa.6.t"></h3>
+              <p data-i18n="costa.6"></p>
+            </div>
+          </li>
+        </ul>
+        <div data-reveal-items><p class="costa__note" data-i18n="costa.note">The region suits permanent living, holidays and exploring investment opportunities, with the risks taken into account.</p></div>
       </div>
     </section>
 
-    <!-- ===== 4. Photo pause (terrace) ===== -->
-    <section class="band band--cta" aria-hidden="true" data-reveal>
+    <!-- ===== 4. Marbella band ===== -->
+    <section class="band band--hq" aria-labelledby="hq-title" data-reveal>
       <picture class="band__media">
-        <source type="image/webp" srcset="assets/img/cta-terrace-640.webp 640w, assets/img/cta-terrace-1280.webp 1280w, assets/img/cta-terrace-1920.webp 1920w, assets/img/cta-terrace-2400.webp 2400w" sizes="(max-width: 767px) 800px, 100vw">
-        <img src="assets/img/cta-terrace-1920.jpg" srcset="assets/img/cta-terrace-640.jpg 640w, assets/img/cta-terrace-1280.jpg 1280w, assets/img/cta-terrace-1920.jpg 1920w" sizes="(max-width: 767px) 800px, 100vw" alt="" loading="lazy" width="1920" height="815">
+        <source type="image/webp" srcset="assets/img/cta-terrace-640.webp 640w, assets/img/cta-terrace-1280.webp 1280w, assets/img/cta-terrace-1920.webp 1920w, assets/img/cta-terrace-2400.webp 2400w" sizes="(max-width: 767px) 1400px, 100vw">
+        <img src="assets/img/cta-terrace-1920.jpg" srcset="assets/img/cta-terrace-640.jpg 640w, assets/img/cta-terrace-1280.jpg 1280w, assets/img/cta-terrace-1920.jpg 1920w" sizes="(max-width: 767px) 1400px, 100vw" alt="" loading="lazy" width="1920" height="815">
       </picture>
+      <div class="band__content container">
+        <p class="hq__kicker" data-i18n="footer.location">Marbella, Costa del Sol</p>
+        <h2 class="hq__title" id="hq-title" data-i18n="hq.title">Quiet luxury</h2>
+        <p class="hq__text" data-i18n="hq.text">For us, true luxury is not only the price of a property, but the feeling that you have found your place.</p>
+      </div>
     </section>
 
     <!-- ===== 5. About ===== -->
     <section class="section section--green grain" id="about" data-reveal>
       <div class="container about">
-        <div class="about__media" data-reveal-items>
-          <figure class="photo photo--portrait photo--founder"><picture>
-            <source type="image/webp" srcset="assets/img/founder-portrait-640.webp 640w, assets/img/founder-portrait-976.webp 976w" sizes="(min-width: 900px) 34vw, 100vw">
-            <img src="assets/img/founder-portrait-976.jpg" srcset="assets/img/founder-portrait-640.jpg 640w, assets/img/founder-portrait-976.jpg 976w" sizes="(min-width: 900px) 34vw, 100vw" alt="Founder of Perla Homes" data-i18n-alt="alt.about" loading="lazy" width="976" height="1220">
+        <div class="about__media">
+          <span class="about__frame" aria-hidden="true"></span>
+          <figure class="photo photo--sea"><picture>
+            <source type="image/webp" srcset="assets/img/about-sea-640.webp 640w, assets/img/about-sea-1280.webp 1280w" sizes="(min-width: 900px) 20vw, 50vw">
+            <img src="assets/img/about-sea-640.jpg" srcset="assets/img/about-sea-640.jpg 640w, assets/img/about-sea-1280.jpg 1280w" sizes="(min-width: 900px) 20vw, 50vw" alt="Clear turquoise sea water over white sand, seen from above" data-i18n-alt="alt.aboutsea" loading="lazy" width="640" height="800">
           </picture></figure>
-          <figure class="photo photo--float"><picture>
-            <source type="image/webp" srcset="assets/img/pearl-shell-640.webp 640w, assets/img/pearl-shell-1280.webp 1280w" sizes="(min-width: 900px) 16vw, 40vw">
-            <img src="assets/img/pearl-shell-640.jpg" alt="A natural pearl in an open oyster shell on wet sand" data-i18n-alt="alt.shell" loading="lazy" width="640" height="800">
+          <figure class="photo photo--portrait photo--founder"><picture>
+            <source type="image/webp" srcset="assets/img/founder-portrait-640.webp 640w, assets/img/founder-portrait-976.webp 976w" sizes="(min-width: 900px) 30vw, 80vw">
+            <img src="assets/img/founder-portrait-976.jpg" srcset="assets/img/founder-portrait-640.jpg 640w, assets/img/founder-portrait-976.jpg 976w" sizes="(min-width: 900px) 30vw, 80vw" alt="Founder of Perla Homes" data-i18n-alt="alt.about" loading="lazy" width="976" height="1220">
           </picture></figure>
         </div>
         <div class="about__text" data-reveal-items>
@@ -207,36 +251,36 @@
       <div class="container">
         <div class="section-head">
           <h2 class="h2" data-i18n="why.title">Why choose us</h2>
-          <p class="lead" data-i18n="why.intro">For us, true luxury is not only the price of a property, but the feeling that you have found your place.</p>
+          <p class="lead" data-i18n="why.intro">What sets us apart: the founder’s personal attention, careful selection around your lifestyle and wishes, discretion and transparent communication.</p>
         </div>
-        <ul class="why" data-reveal-items>
+        <ul class="why" data-wipe="stagger">
           <li class="why__card">
             <figure class="photo"><picture>
               <source type="image/webp" srcset="assets/img/property-04-640.webp" type="image/webp">
               <img src="assets/img/property-04-640.jpg" alt="" loading="lazy" width="640" height="480">
             </picture></figure>
-            <div class="why__body"><h3 class="h3" data-i18n="why.1.t">Personal attention</h3><p data-i18n="why.1.d">The founder works with clients personally.</p></div>
+            <div class="why__body"><span class="gold-line" aria-hidden="true"></span><h3 class="h3" data-i18n="why.1.t">Personal attention</h3><p data-i18n="why.1.d">The founder works with clients personally.</p></div>
           </li>
           <li class="why__card">
             <figure class="photo"><picture>
               <source type="image/webp" srcset="assets/img/property-06-640.webp">
               <img src="assets/img/property-06-640.jpg" alt="" loading="lazy" width="640" height="480">
             </picture></figure>
-            <div class="why__body"><h3 class="h3" data-i18n="why.2.t">Careful selection</h3><p data-i18n="why.2.d">Property chosen around your lifestyle and wishes.</p></div>
+            <div class="why__body"><span class="gold-line" aria-hidden="true"></span><h3 class="h3" data-i18n="why.2.t">Careful selection</h3><p data-i18n="why.2.d">Property chosen around your lifestyle and wishes.</p></div>
           </li>
           <li class="why__card">
             <figure class="photo"><picture>
               <source type="image/webp" srcset="assets/img/pearl-shell-640.webp">
               <img src="assets/img/pearl-shell-640.jpg" alt="" loading="lazy" width="640" height="800">
             </picture></figure>
-            <div class="why__body"><h3 class="h3" data-i18n="why.3.t">Discretion</h3><p data-i18n="why.3.d">Trust without loud promises.</p></div>
+            <div class="why__body"><span class="gold-line" aria-hidden="true"></span><h3 class="h3" data-i18n="why.3.t">Discretion</h3><p data-i18n="why.3.d">Trust without loud promises.</p></div>
           </li>
           <li class="why__card">
             <figure class="photo"><picture>
               <source type="image/webp" srcset="assets/img/costa-yacht-640.webp">
               <img src="assets/img/costa-yacht-640.jpg" alt="" loading="lazy" width="640" height="480">
             </picture></figure>
-            <div class="why__body"><h3 class="h3" data-i18n="why.4.t">Transparent communication</h3><p data-i18n="why.4.d">Clear coordination of the next steps within the agreed services.</p></div>
+            <div class="why__body"><span class="gold-line" aria-hidden="true"></span><h3 class="h3" data-i18n="why.4.t">Transparent communication</h3><p data-i18n="why.4.d">Clear coordination of the next steps within the agreed services.</p></div>
           </li>
         </ul>
       </div>
@@ -258,27 +302,6 @@
       </div>
     </section>
 
-    <!-- ===== 9. Contact form ===== -->
-    <section class="section section--pearl" id="contact" data-reveal>
-      <div class="container container--narrow">
-        <div class="section-head">
-          <h2 class="h2" data-i18n="form.title">Contact us</h2>
-        </div>
-        <!-- TODO: from client — form backend / e-mail. Until then the form opens WhatsApp with the request pre-filled. -->
-        <form class="form" id="contact-form" novalidate data-reveal-items>
-          <div class="field"><input id="f-name" name="name" type="text" autocomplete="name" required placeholder=" "><label for="f-name" data-i18n="form.name">Name</label></div>
-          <div class="field"><input id="f-email" name="email" type="email" autocomplete="email" required placeholder=" "><label for="f-email" data-i18n="form.email">E-mail</label></div>
-          <div class="field"><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder=" "><label for="f-phone" data-i18n="form.phone">Phone</label></div>
-          <div class="field field--full"><textarea id="f-message" name="message" rows="4" placeholder=" "></textarea><label for="f-message" data-i18n="form.message">Message</label></div>
-          <label class="check field--full"><input type="checkbox" name="consent" required><span class="check__box" aria-hidden="true"></span><span><span data-i18n="form.consent">I accept the</span> <a href="privacy.html" data-i18n="form.privacy">privacy policy</a></span></label>
-          <div class="form__foot field--full">
-            <button class="btn btn--green" type="submit" data-i18n="form.submit">Send request</button>
-            <p class="form__status" role="status" aria-live="polite"></p>
-          </div>
-        </form>
-      </div>
-    </section>
-
     <!-- ===== Contact banner ===== -->
     <section class="band band--contact" aria-labelledby="contact-banner-title" data-reveal>
       <picture class="band__media">
@@ -295,6 +318,41 @@
             <a class="btn btn--ghost" href="https://wa.me/34627986515" target="_blank" rel="noopener">WhatsApp</a>
           </div>
         </div>
+      </div>
+    </section>
+    <!-- ===== 9. Contact ===== -->
+    <section class="section section--milk" id="contact" data-reveal>
+      <div class="container contact">
+        <div class="contact__info" data-reveal-items>
+          <h2 class="h2" data-i18n="form.title">Contact us</h2>
+          <p class="contact__line" data-i18n="contact.line">I work with clients personally, to understand their needs and help them find the right home.</p>
+          <div class="contact__item">
+            <span class="contact__label" data-i18n="footer.phone">Phone / WhatsApp</span>
+            <a class="contact__phone" href="tel:+34627986515">+34 627 986 515</a>
+            <a class="contact__link" href="https://wa.me/34627986515" target="_blank" rel="noopener" data-i18n="footer.whatsapp">Message on WhatsApp</a>
+          </div>
+          <div class="contact__item">
+            <span class="contact__label">Instagram</span>
+            <!-- TODO: from client — exact Instagram profile URL -->
+            <a class="contact__link" href="#" data-todo="instagram-url">Perla Homes</a>
+          </div>
+          <div class="contact__item">
+            <span class="contact__label" data-i18n="contact.where">Location</span>
+            <span data-i18n="footer.location">Marbella, Costa del Sol</span>
+          </div>
+        </div>
+        <!-- TODO: from client — form backend / e-mail. Until then the form opens WhatsApp with the request pre-filled. -->
+        <form class="form" id="contact-form" novalidate data-reveal-items>
+          <div class="field"><input id="f-name" name="name" type="text" autocomplete="name" required placeholder=" "><label for="f-name" data-i18n="form.name">Name</label></div>
+          <div class="field"><input id="f-email" name="email" type="email" autocomplete="email" required placeholder=" "><label for="f-email" data-i18n="form.email">E-mail</label></div>
+          <div class="field field--full"><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder=" "><label for="f-phone" data-i18n="form.phone">Phone</label></div>
+          <div class="field field--full"><textarea id="f-message" name="message" rows="4" placeholder=" "></textarea><label for="f-message" data-i18n="form.message">Message</label></div>
+          <label class="check field--full"><input type="checkbox" name="consent" required><span class="check__box" aria-hidden="true"></span><span><span data-i18n="form.consent">I accept the</span> <a href="privacy.html" data-i18n="form.privacy">privacy policy</a></span></label>
+          <div class="form__foot field--full">
+            <button class="btn btn--green" type="submit" data-i18n="form.submit">Send request</button>
+            <p class="form__status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
       </div>
     </section>
   </main>
