@@ -34,6 +34,8 @@
   function applyLang(next) {
     lang = LANGS.includes(next) ? next : 'en';
     document.documentElement.lang = lang;
+    const prefLang = document.getElementById('f-lang');
+    if (prefLang) prefLang.value = lang;
     document.querySelectorAll('[data-i18n]').forEach((el) => {
       const v = t(el.dataset.i18n);
       // glue the last two words of longer texts so no word sits alone on the last line
@@ -204,30 +206,40 @@
 
   /* ---------- Contact form -> WhatsApp (TODO: real backend from client) ---------- */
   const form = document.getElementById('contact-form');
-  const status = form.querySelector('.form__status');
+  const success = form.querySelector('.form__success');
+  const invalid = (el, bad) => {
+    el.closest('.field').classList.toggle('is-invalid', bad);
+    el.setAttribute('aria-invalid', String(bad));
+  };
+  form.addEventListener('input', (e) => {
+    if (e.target.closest('.field.is-invalid')) invalid(e.target, false);
+    success.hidden = true;
+  });
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = form.name.value.trim();
     const email = form.email.value.trim();
     const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const consent = form.consent.checked;
-    form.name.parentElement.classList.toggle('is-invalid', !name);
-    form.email.parentElement.classList.toggle('is-invalid', !okEmail);
-    form.querySelector('.check').classList.toggle('is-invalid', !consent);
+    invalid(form.name, !name);
+    invalid(form.email, !okEmail);
+    invalid(form.consent, !consent);
     if (!name || !okEmail || !consent) {
-      status.textContent = t('form.error');
-      status.classList.add('is-error');
+      success.hidden = true;
+      form.querySelector('[aria-invalid="true"]').focus();
       return;
     }
-    status.textContent = t('form.sending');
-    status.classList.remove('is-error');
     const lines = [
       `${t('form.name')}: ${name}`,
       `${t('form.email')}: ${email}`,
       form.phone.value.trim() && `${t('form.phone')}: ${form.phone.value.trim()}`,
+      `${t('form.lang')}: ${form.language.selectedOptions[0].text}`,
       form.message.value.trim(),
     ].filter(Boolean);
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
+    success.hidden = false;
+    form.reset();
+    form.language.value = lang;
   });
 
   /* ---------- Cookie banner (TODO: legal text + categories from client) ---------- */

@@ -190,7 +190,6 @@
             </div>
           </li>
         </ul>
-        <div data-reveal-items><p class="costa__note" data-i18n="costa.note">The region suits permanent living, holidays and exploring investment opportunities, with the risks taken into account.</p></div>
       </div>
     </section>
 
@@ -212,10 +211,6 @@
       <div class="container about">
         <div class="about__media">
           <span class="about__frame" aria-hidden="true"></span>
-          <figure class="photo photo--sea"><picture>
-            <source type="image/webp" srcset="assets/img/about-sea-640.webp 640w, assets/img/about-sea-1280.webp 1280w" sizes="(min-width: 900px) 20vw, 50vw">
-            <img src="assets/img/about-sea-640.jpg" srcset="assets/img/about-sea-640.jpg 640w, assets/img/about-sea-1280.jpg 1280w" sizes="(min-width: 900px) 20vw, 50vw" alt="Clear turquoise sea water over white sand, seen from above" data-i18n-alt="alt.aboutsea" loading="lazy" width="640" height="800">
-          </picture></figure>
           <figure class="photo photo--portrait photo--founder"><picture>
             <source type="image/webp" srcset="assets/img/founder-portrait-640.webp 640w, assets/img/founder-portrait-976.webp 976w" sizes="(min-width: 900px) 30vw, 80vw">
             <img src="assets/img/founder-portrait-976.jpg" srcset="assets/img/founder-portrait-640.jpg 640w, assets/img/founder-portrait-976.jpg 976w" sizes="(min-width: 900px) 30vw, 80vw" alt="Founder of Perla Homes" data-i18n-alt="alt.about" loading="lazy" width="976" height="1220">
@@ -345,35 +340,46 @@
     <!-- ===== 9. Contact ===== -->
     <section class="section section--milk" id="contact" data-reveal>
       <div class="container contact">
-        <div class="contact__info" data-reveal-items>
+        <div class="contact__head" data-reveal-items>
           <h2 class="h2" data-i18n="form.title">Contact us</h2>
           <p class="contact__line" data-i18n="contact.line">I work with clients personally, to understand their needs and help them find the right home.</p>
-          <div class="contact__item">
-            <span class="contact__label" data-i18n="footer.phone">Phone / WhatsApp</span>
-            <a class="contact__phone" href="tel:+34627986515">+34 627 986 515</a>
-            <a class="contact__link" href="https://wa.me/34627986515" target="_blank" rel="noopener" data-i18n="footer.whatsapp">Message on WhatsApp</a>
-          </div>
-          <div class="contact__item">
-            <span class="contact__label">Instagram</span>
-            <!-- TODO: from client — exact Instagram profile URL -->
-            <a class="contact__link" href="#" data-todo="instagram-url">Perla Homes</a>
-          </div>
-          <div class="contact__item">
-            <span class="contact__label" data-i18n="contact.where">Location</span>
-            <span data-i18n="footer.location">Marbella, Costa del Sol</span>
-          </div>
         </div>
         <!-- TODO: from client — form backend / e-mail. Until then the form opens WhatsApp with the request pre-filled. -->
         <form class="form" id="contact-form" novalidate data-reveal-items>
-          <div class="field"><input id="f-name" name="name" type="text" autocomplete="name" required placeholder=" "><label for="f-name" data-i18n="form.name">Name</label></div>
-          <div class="field"><input id="f-email" name="email" type="email" autocomplete="email" required placeholder=" "><label for="f-email" data-i18n="form.email">E-mail</label></div>
-          <div class="field field--full"><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder=" "><label for="f-phone" data-i18n="form.phone">Phone</label></div>
-          <div class="field field--full"><textarea id="f-message" name="message" rows="4" placeholder=" "></textarea><label for="f-message" data-i18n="form.message">Message</label></div>
-          <label class="check field--full"><input type="checkbox" name="consent" required><span class="check__box" aria-hidden="true"></span><span><span data-i18n="form.consent">I accept the</span> <a href="privacy.html" data-i18n="form.privacy">privacy policy</a></span></label>
+          <div class="field">
+            <label for="f-name" data-i18n="form.name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+            <p class="field__error" id="f-name-err" data-i18n="form.err.name">Please enter your name.</p>
+          </div>
+          <div class="field">
+            <label for="f-email" data-i18n="form.email">E-mail</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-err">
+            <p class="field__error" id="f-email-err" data-i18n="form.err.email">Please enter a valid e-mail.</p>
+          </div>
+          <div class="field">
+            <label for="f-phone" data-i18n="form.phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field field--select">
+            <label for="f-lang" data-i18n="form.lang">Preferred language</label>
+            <select id="f-lang" name="language">
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="ru">Русский</option>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label for="f-message" data-i18n="form.message">Message</label>
+            <textarea id="f-message" name="message" rows="4"></textarea>
+          </div>
+          <div class="field field--full">
+            <label class="check"><input type="checkbox" name="consent" required aria-describedby="f-consent-err"><span class="check__box" aria-hidden="true"></span><span><span data-i18n="form.consent">I accept the</span> <a href="privacy.html" data-i18n="form.privacy">privacy policy</a></span></label>
+            <p class="field__error" id="f-consent-err" data-i18n="form.err.consent">Please accept the privacy policy.</p>
+          </div>
           <div class="form__foot field--full">
             <button class="btn btn--green" type="submit" data-i18n="form.submit">Send request</button>
-            <p class="form__status" role="status" aria-live="polite"></p>
           </div>
+          <p class="form__success field--full" role="status" aria-live="polite" hidden><span class="gold-line" aria-hidden="true"></span><span data-i18n="form.sending">Opening WhatsApp with your request.</span></p>
         </form>
       </div>
     </section>
