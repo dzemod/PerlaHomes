@@ -304,6 +304,15 @@
         .fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.6, clearProps: 'transform' }, 0.65)
         .fromTo(text, { opacity: 0, y: MOTION.y }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, clearProps: 'transform' }, 0.8);
     }
+    // Footer: rules draw left → right, columns rise one by one, the wordmark slowly lifts.
+    const footer = document.querySelector('[data-footer]');
+    if (footer) {
+      gsap.timeline({ scrollTrigger: { trigger: footer, start: 'top 85%', once: true }, defaults: { ease: MOTION.ease } })
+        .fromTo(footer.querySelectorAll('.footer__rule'), { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: 'power3.inOut', stagger: 0.2, clearProps: 'transform' }, 0)
+        .fromTo(footer.querySelectorAll('[data-footer-item]'), { opacity: 0, y: MOTION.y }, { opacity: 1, y: 0, duration: MOTION.duration, stagger: 0.12, clearProps: 'transform' }, 0.15)
+        .fromTo(footer.querySelector('.footer__mark'), { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.8, ease: 'power2.out', clearProps: 'transform' }, 0.3);
+    }
+
     document.querySelectorAll('[data-wipe]').forEach((group) => {
       const items = [...group.children];
       if (group.dataset.wipe === 'stagger') {

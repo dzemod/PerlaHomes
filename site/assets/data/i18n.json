@@ -116,7 +116,9 @@
     "alt.airport": "Modern airport terminal with planes at sunset",
     "alt.promenade": "Seaside promenade with palm trees in Marbella in the morning",
     "faq.line": "Frequent questions from potential clients, with short answers.",
-    "faq.cta": "Didn’t find your answer?"
+    "faq.cta": "Didn’t find your answer?",
+    "footer.langs": "Languages",
+    "footer.top": "Back to top"
   },
   "es": {
     "meta.title": "Perla Homes — Agencia inmobiliaria boutique en Marbella, Costa del Sol",
@@ -235,7 +237,9 @@
     "alt.airport": "Terminal moderna de aeropuerto con aviones al atardecer",
     "alt.promenade": "Paseo marítimo con palmeras en Marbella por la mañana",
     "faq.line": "Preguntas frecuentes de futuros clientes, con respuestas breves.",
-    "faq.cta": "¿No encontró su respuesta?"
+    "faq.cta": "¿No encontró su respuesta?",
+    "footer.langs": "Idiomas",
+    "footer.top": "Volver arriba"
   },
   "ru": {
     "meta.title": "Perla Homes — бутиковое агентство недвижимости в Марбелье, Costa del Sol",
@@ -354,6 +358,8 @@
     "alt.airport": "Современный терминал аэропорта с самолётами на закате",
     "alt.promenade": "Набережная с пальмами в Марбелье утром",
     "faq.line": "Частые вопросы потенциальных клиентов и краткие ответы.",
-    "faq.cta": "Не нашли ответ?"
+    "faq.cta": "Не нашли ответ?",
+    "footer.langs": "Языки",
+    "footer.top": "Наверх"
   }
 }

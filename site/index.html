@@ -379,38 +379,72 @@
     </section>
   </main>
 
-  <!-- ===== 10. Contacts & footer ===== -->
-  <footer class="footer grain">
-    <div class="container footer__grid">
-      <div class="footer__lead">
-        <h2 class="h2" data-i18n="footer.title">Get in touch</h2>
-        <a class="footer__bar" href="https://wa.me/34627986515" target="_blank" rel="noopener" data-i18n="footer.whatsapp">Message on WhatsApp</a>
-        <a class="footer__bar" href="#contact" data-i18n="footer.request">Request details</a>
+  <!-- ===== 10. Footer ===== -->
+  <footer class="footer grain" data-footer>
+    <div class="container footer__inner">
+      <div class="footer__top" data-footer-item>
+        <h2 class="footer__title" data-i18n="footer.title">Get in touch</h2>
+        <div class="footer__motto">
+          <p class="footer__pearl">Discover your pearl</p>
+          <p class="footer__line" data-i18n="hero.line">An independent boutique real estate agency in Marbella, Costa del Sol.</p>
+        </div>
       </div>
-      <div class="footer__col">
-        <h3 class="footer__h" data-i18n="footer.nav">Navigation</h3>
-        <ul>
-          <li><a href="#properties" data-i18n="nav.properties">Properties</a></li>
-          <li><a href="#costa" data-i18n="nav.costa">Costa del Sol</a></li>
-          <li><a href="#about" data-i18n="nav.about">About</a></li>
-          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h3 class="footer__h" data-i18n="footer.contact">Contact</h3>
-        <ul>
-          <li><span class="footer__label" data-i18n="footer.phone">Phone / WhatsApp</span><a href="tel:+34627986515">+34 627 986 515</a></li>
-          <!-- TODO: from client — exact Instagram profile URL -->
-          <li><span class="footer__label">Instagram</span><a href="#" data-todo="instagram-url">Perla Homes</a></li>
-          <li><span data-i18n="footer.location">Marbella, Costa del Sol</span></li>
-          <!-- TODO: from client — e-mail and office address (not in brief) -->
-        </ul>
+      <span class="footer__rule" aria-hidden="true"></span>
+      <div class="footer__grid">
+        <nav class="footer__col" aria-labelledby="footer-nav" data-footer-item>
+          <h3 class="footer__h" id="footer-nav" data-i18n="footer.nav">Navigation</h3>
+          <ul>
+            <li><a class="ulink" href="#properties" data-i18n="nav.properties">Properties</a></li>
+            <li><a class="ulink" href="#costa" data-i18n="nav.costa">Costa del Sol</a></li>
+            <li><a class="ulink" href="#about" data-i18n="nav.about">About</a></li>
+            <li><a class="ulink" href="#faq" data-i18n="nav.faq">FAQ</a></li>
+            <li><a class="ulink" href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer__col" data-footer-item>
+          <h3 class="footer__h" data-i18n="footer.contact">Contact</h3>
+          <ul>
+            <li><span class="footer__label" data-i18n="footer.phone">Phone / WhatsApp</span><a class="ulink" href="tel:+34627986515">+34 627 986 515</a></li>
+            <li><a class="ulink" href="https://wa.me/34627986515" target="_blank" rel="noopener" data-i18n="footer.whatsapp">Message on WhatsApp</a></li>
+            <!-- TODO: from client — exact Instagram profile URL -->
+            <li><span class="footer__label">Instagram</span><a class="ulink" href="#" data-todo="instagram-url">Perla Homes</a></li>
+            <li><span class="footer__text" data-i18n="footer.location">Marbella, Costa del Sol</span></li>
+            <!-- TODO: from client — e-mail and office address (not in brief) -->
+          </ul>
+        </div>
+        <div class="footer__col" data-footer-item>
+          <h3 class="footer__h" data-i18n="footer.langs">Languages</h3>
+          <ul class="footer__langs" role="group" aria-label="Language">
+            <li><button type="button" class="ulink lang__btn" data-lang="en" aria-pressed="true">EN</button></li>
+            <li><button type="button" class="ulink lang__btn" data-lang="es" aria-pressed="false">ES</button></li>
+            <li><button type="button" class="ulink lang__btn" data-lang="ru" aria-pressed="false">RU</button></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__col--top" data-footer-item>
+          <a class="ulink footer__totop" href="#top"><span data-i18n="footer.top">Back to top</span> <span aria-hidden="true">↑</span></a>
+        </div>
       </div>
     </div>
+    <div class="footer__mark" aria-hidden="true">
+      <svg viewBox="0 0 1200 140" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <radialGradient id="footer-pearl" cx="35%" cy="30%" r="75%">
+            <stop offset="0" stop-color="#FFFFFF"/>
+            <stop offset="0.55" stop-color="#F1ECE2"/>
+            <stop offset="1" stop-color="#C9BFA9"/>
+          </radialGradient>
+        </defs>
+        <circle cx="16" cy="70" r="11" fill="url(#footer-pearl)" stroke="#B89B5E" stroke-width="1"/>
+        <text x="40" y="110" textLength="1156" lengthAdjust="spacing">PERLA HOMES</text>
+      </svg>
+    </div>
     <div class="container footer__bottom">
-      <a href="#top" class="logo logo--footer" data-logo aria-label="Perla Homes">Perla Homes</a>
-      <p>© <span id="year">2026</span> Perla Homes</p>
-      <p class="footer__legal"><a href="privacy.html" data-i18n="footer.privacy">Privacy policy</a><button type="button" class="linklike" data-cookie-open data-i18n="footer.cookies">Cookie settings</button></p>
+      <span class="footer__rule" aria-hidden="true"></span>
+      <div class="footer__legal">
+        <p>© <span id="year">2026</span> Perla Homes</p>
+        <a class="ulink" href="privacy.html" data-i18n="footer.privacy">Privacy policy</a>
+        <button type="button" class="ulink linklike" data-cookie-open data-i18n="footer.cookies">Cookie settings</button>
+      </div>
     </div>
   </footer>
 
