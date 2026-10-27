@@ -432,7 +432,11 @@ p, li { text-wrap: pretty; }
 .about__num { font-family: var(--font-display); font-weight: 300; font-size: 64px; line-height: 1; color: var(--gold); }
 .about__years span:last-child { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .18em; font-size: 13px; }
 @media (min-width: 900px) {
-  .about { grid-template-columns: 5fr 6fr; gap: var(--s6); align-items: center; }
+  .about { grid-template-columns: 5fr 6fr; gap: var(--s6); align-items: start; }
+  /* heading cap top on the sea photo's top edge: same offset as the collage (--collage-pad),
+     minus the space above the capitals inside the line box (0.228em for Jost at line-height 1.25) */
+  .about__text { padding-top: var(--s5); }
+  .about__text .h2 { margin-top: -0.228em; }
 }
 
 /* ---------- Reviews (hidden until real reviews) ---------- */
