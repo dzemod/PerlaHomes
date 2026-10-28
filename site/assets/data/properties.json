@@ -1,12 +1,83 @@
 {
-  "_TODO": "TODO: real properties from client. Fill each field with a string, or with {\"en\":\"…\",\"es\":\"…\",\"ru\":\"…\"} for translated text. Fields left as null show a neutral placeholder (\"Price on request\", \"— m²\" …). image = file name in assets/img without size/extension.",
+  "_TODO": "Selected properties: real developments from the client. price = number in EUR (formatted per language). status = \"construction\" | \"built\" | null. null fields are not shown on the site — TODO: from client (location where null, bedrooms, bathrooms, area, description, Lakün status). Photos: assets/img/properties/<id>/<id>-1.webp (main) … -4, made by tools/make-properties.mjs. featured = the separate Featured band (unchanged).",
   "properties": [
-    { "id": 1, "image": "property-01", "alt": "alt.p1", "name": null, "district": null, "price": null, "area": null, "bedrooms": null, "bathrooms": null, "description": null },
-    { "id": 2, "image": "property-02", "alt": "alt.p2", "name": null, "district": null, "price": null, "area": null, "bedrooms": null, "bathrooms": null, "description": null },
-    { "id": 3, "image": "property-03", "alt": "alt.p3", "name": null, "district": null, "price": null, "area": null, "bedrooms": null, "bathrooms": null, "description": null },
-    { "id": 4, "image": "property-04", "alt": "alt.p4", "name": null, "district": null, "price": null, "area": null, "bedrooms": null, "bathrooms": null, "description": null },
-    { "id": 5, "image": "property-05", "alt": "alt.p5", "name": null, "district": null, "price": null, "area": null, "bedrooms": null, "bathrooms": null, "description": null },
-    { "id": 6, "image": "property-06", "alt": "alt.p6", "name": null, "district": null, "price": null, "area": null, "bedrooms": null, "bathrooms": null, "description": null }
+    {
+      "id": "jardines-de-las-lagunas-2",
+      "name": "Jardines De Las Lagunas II",
+      "price": 470900,
+      "status": "construction",
+      "location": null,
+      "bedrooms": null,
+      "bathrooms": null,
+      "area": null,
+      "description": null
+    },
+    {
+      "id": "biubay",
+      "name": "Biubay",
+      "price": 6500000,
+      "status": "construction",
+      "location": "Estepona",
+      "bedrooms": null,
+      "bathrooms": null,
+      "area": null,
+      "description": null
+    },
+    {
+      "id": "atelier-4",
+      "name": "Atelier 4",
+      "price": 3200000,
+      "status": "built",
+      "location": "Estepona",
+      "bedrooms": null,
+      "bathrooms": null,
+      "area": null,
+      "description": null
+    },
+    {
+      "id": "santa-clara-homes",
+      "name": "Santa Clara Homes",
+      "price": 1250000,
+      "status": "built",
+      "location": null,
+      "bedrooms": null,
+      "bathrooms": null,
+      "area": null,
+      "description": null
+    },
+    {
+      "id": "lakun",
+      "name": "Lakün",
+      "price": 580000,
+      "status": null,
+      "location": null,
+      "bedrooms": null,
+      "bathrooms": null,
+      "area": null,
+      "description": null
+    },
+    {
+      "id": "elysea-suites",
+      "name": "Elysea Suites",
+      "price": 985000,
+      "status": "construction",
+      "location": null,
+      "bedrooms": null,
+      "bathrooms": null,
+      "area": null,
+      "description": null
+    }
   ],
-  "featured": { "id": "featured", "image": "property-wide", "alt": "alt.wide", "name": null, "district": null, "price": null, "area": null, "bedrooms": null, "bathrooms": null, "description": null }
+  "featured": {
+    "id": "featured",
+    "image": "property-wide",
+    "alt": "alt.wide",
+    "name": null,
+    "district": null,
+    "price": null,
+    "area": null,
+    "bedrooms": null,
+    "bathrooms": null,
+    "description": null
+  }
 }

@@ -130,7 +130,10 @@
     "about.f2.v": "Personal",
     "about.f2.l": "Founder’s attention",
     "about.f3.v": "Marbella",
-    "about.f3.l": "Costa del Sol"
+    "about.f3.l": "Costa del Sol",
+    "props.status.construction": "Under construction",
+    "props.status.built": "Ready",
+    "props.interested": "I’m interested in {name}."
   },
   "es": {
     "meta.title": "Perla Homes — Agencia inmobiliaria boutique en Marbella, Costa del Sol",
@@ -263,7 +266,10 @@
     "about.f2.v": "Personal",
     "about.f2.l": "Atención directa",
     "about.f3.v": "Marbella",
-    "about.f3.l": "Costa del Sol"
+    "about.f3.l": "Costa del Sol",
+    "props.status.construction": "En construcción",
+    "props.status.built": "Terminado",
+    "props.interested": "Me interesa {name}."
   },
   "ru": {
     "meta.title": "Perla Homes — бутиковое агентство недвижимости в Марбелье, Costa del Sol",
@@ -396,6 +402,9 @@
     "about.f2.v": "Лично",
     "about.f2.l": "Внимание основателя",
     "about.f3.v": "Марбелья",
-    "about.f3.l": "Costa del Sol"
+    "about.f3.l": "Costa del Sol",
+    "props.status.construction": "Строится",
+    "props.status.built": "Готово",
+    "props.interested": "Меня интересует {name}."
   }
 }

@@ -94,7 +94,7 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 h1, h2, h3, summary { text-wrap: balance; }
 p, li { text-wrap: pretty; }
 /* short texts: balance the lines so no word sits alone on the last line */
-.lead, .hero__line, .why__body p, .costa-card__body p, .faq__a p, .contact-banner__text, .band__desc, .card__specs { text-wrap: balance; }
+.lead, .hero__line, .why__body p, .costa-card__body p, .faq__a p, .contact-banner__text, .band__desc { text-wrap: balance; }
 /* The only outline on the site: keyboard focus ring (:focus-visible never matches mouse or touch on buttons/links) */
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -284,91 +284,26 @@ p, li { text-wrap: pretty; }
   content: ""; position: absolute; inset: 0; background: var(--green-700); mix-blend-mode: multiply; opacity: .08; pointer-events: none;
 }
 
-/* ---------- Property carousel (tall photo cards) ---------- */
-/* Mobile: track bleeds to the screen edge for swiping. Desktop: clipped to the grid, arrows in the side margins. */
-.carousel { position: relative; overflow: hidden; --card-gap: 12px; --details-h: 140px; margin-block: calc(var(--s3) * -1); }
-.carousel__track {
-  display: flex; gap: var(--card-gap);
-  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none;
-  overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y;
-  padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
-  padding-block: var(--s3); /* room for the card shadow; equal so arrows centre on the cards */
+/* ---------- Selected properties: 3 × 2 grid of real developments ---------- */
+/* Each card is a 5-row subgrid (photo, location, name, price, button): these lines align across a row
+   even when a name wraps; the location line is reserved when empty. No lines or outlines. */
+.pgrid { display: grid; gap: 32px; }
+@media (min-width: 600px) { .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .pgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.pcard { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
+.pcard__media { position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: var(--milk); }
+.pcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.pcard:hover .pcard__media img, .pcard:focus-within .pcard__media img { transform: scale(1.04); }
+.pcard__tag {
+  position: absolute; top: 16px; left: 16px; padding: 6px 12px; background: var(--pearl); color: var(--green-700);
+  font-family: var(--font-display); font-size: 12px; line-height: 1.4; text-transform: uppercase; letter-spacing: .12em;
 }
-@media (min-width: 900px) {
-  .carousel { overflow: visible; max-width: calc(var(--container) + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
-  .carousel__track { padding-inline: 0; scroll-padding-inline: 0; }
-}
-.carousel__track::-webkit-scrollbar { display: none; }
-.card { flex: 0 0 calc((100% - var(--card-gap)) / 1.2); scroll-snap-align: start; }
-@media (min-width: 600px) { .card { flex-basis: calc((100% - 2 * var(--card-gap)) / 2.2); } }
-@media (min-width: 900px) { .card { flex-basis: calc((100% - 2 * var(--card-gap)) / 3); } }
-@media (min-width: 1200px) { .card { flex-basis: calc((100% - 3 * var(--card-gap)) / 4); } }
-
-.card__inner {
-  position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; isolation: isolate;
-  background: var(--green-900); color: var(--pearl); text-align: center;
-  box-shadow: 0 1px 3px rgba(31, 59, 50, .06), 0 8px 14px rgba(31, 59, 50, .08); /* stays inside the track padding */
-}
-.card__media, .card__media img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.card__media img { object-fit: cover; transition: transform 1.4s var(--ease); }
-.card__media::after { /* bottom gradient + warm green colour treatment */
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(22, 48, 42, .78), rgba(22, 48, 42, .25) 38%, rgba(22, 48, 42, 0) 60%);
-}
-.card__inner::after { /* deeper shade behind the details */
-  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(to top, rgba(22, 48, 42, .55), rgba(22, 48, 42, 0) 70%);
-  opacity: 0; transition: opacity .4s var(--ease);
-}
-.card__badge {
-  position: absolute; z-index: 2; top: 14px; left: 14px;
-  padding: 2px 6px; font-size: 10px; letter-spacing: .06em; color: rgba(248, 245, 239, .8);
-  background: rgba(22, 48, 42, .28);
-}
-.card__info {
-  position: absolute; z-index: 2; inset: auto 0 0; padding: 0 var(--s3) var(--s3);
-  transition: transform .4s var(--ease);
-}
-.card__name { font-family: var(--font-display); text-transform: uppercase; font-weight: 300; font-size: 19px; line-height: 1.3; letter-spacing: .14em; }
-.card__price { margin-top: 4px; font-family: var(--font-display); font-size: 13px; letter-spacing: .1em; color: rgba(248, 245, 239, .85); }
-.card__details {
-  height: var(--details-h); padding-top: var(--s2);
-  display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 10px;
-  transition: opacity .4s var(--ease);
-}
-.card__district { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(248, 245, 239, .9); }
-.pearl-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: radial-gradient(circle at 35% 30%, var(--pearl), var(--milk) 55%, var(--sand)); }
-.card__specs { font-size: 13px; color: rgba(248, 245, 239, .8); }
-.card__specs span + span::before { content: "·"; margin-inline: 8px; color: var(--sand); }
-.card .btn { align-self: stretch; margin-top: 6px; }
-
-/* Desktop with a pointer: details reveal on hover / keyboard focus */
-@media (hover: hover) and (min-width: 900px) {
-  .card__info { transform: translateY(var(--details-h)); }
-  .card__details { opacity: 0; }
-  .card:hover .card__media img, .card:focus-within .card__media img { transform: scale(1.05); }
-  .card:hover .card__inner::after, .card:focus-within .card__inner::after { opacity: 1; }
-  .card:hover .card__info, .card:focus-within .card__info { transform: none; }
-  .card:hover .card__details, .card:focus-within .card__details { opacity: 1; }
-}
-@media (hover: none), (max-width: 899px) {
-  .card__inner::after { opacity: 1; background: linear-gradient(to top, rgba(22, 48, 42, .7), rgba(22, 48, 42, .35) 55%, rgba(22, 48, 42, 0) 85%); }
-}
-
-/* Side arrows, vertically centred on the cards */
-.carousel__arrow {
-  position: absolute; z-index: 3; top: 50%; margin-top: -24px;
-  color: var(--ink); background: var(--milk);
-}
-.carousel__arrow--prev { left: max(calc(16px - (100vw - 100%) / 2), calc(var(--gutter) - 72px)); }
-.carousel__arrow--next { right: max(calc(16px - (100vw - 100%) / 2), calc(var(--gutter) - 72px)); }
-.carousel__arrow:disabled { opacity: 0; pointer-events: none; }
-@media (max-width: 1499px) {
-  .carousel__arrow { width: 40px; height: 40px; margin-top: -20px; }
-  .carousel__arrow--prev { left: 12px; }
-  .carousel__arrow--next { right: 12px; }
-}
-@media (max-width: 899px) { .carousel__arrow { display: none; } } /* swipe instead */
+.pcard__loc { min-height: calc(12px * 1.4); margin-top: 20px; font-family: var(--font-display); font-size: 12px; line-height: 1.4; text-transform: uppercase; letter-spacing: .15em; color: var(--taupe); }
+.pcard__name { margin-top: 6px; font-family: var(--font-display); font-weight: 300; text-transform: uppercase; font-size: 19px; line-height: 1.3; letter-spacing: .14em; color: var(--green-700); }
+.pcard__price { margin-top: 6px; font-family: var(--font-display); font-size: 17px; line-height: 1.4; letter-spacing: .04em; color: var(--ink); }
+.pcard__btn { justify-self: start; align-self: end; margin-top: 20px; }
+.pcard__btn::before { transition-duration: .25s; }
+@media (max-width: 599px) { .pcard__btn { justify-self: stretch; } }
 
 /* ---------- Full-width bands ---------- */
 .band { position: relative; color: var(--pearl); overflow: hidden; display: flex; align-items: flex-end; min-height: 76svh; background: var(--green-900); }

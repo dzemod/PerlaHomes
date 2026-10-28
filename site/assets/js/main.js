@@ -106,25 +106,27 @@
   };
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+  // Selected properties: real developments. Missing fields are not shown — a TODO comment marks them in the markup.
+  const LOCALES = { en: 'en-GB', es: 'es-ES', ru: 'ru-RU' };
+  const price = (n) => new Intl.NumberFormat(LOCALES[lang] || 'en-GB', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+  const todo = (what) => `<!-- TODO: from client — ${what} -->`;
+
   function cardHTML(p) {
-    const img = `assets/img/${p.image}`;
-    return `<li class="card">
-      <article class="card__inner">
-        <picture class="card__media">
-          <source type="image/webp" srcset="${img}-640.webp 640w, ${img}-1280.webp 1280w" sizes="(min-width: 900px) 320px, 80vw">
-          <img src="${img}-640.jpg" srcset="${img}-640.jpg 640w, ${img}-1280.jpg 1280w" sizes="(min-width: 900px) 320px, 80vw" alt="${esc(t(p.alt))}" loading="lazy" width="640" height="478">
-        </picture>
-        <span class="card__badge">${esc(t('props.illustrative'))}</span>
-        <div class="card__info">
-          <h3 class="card__name">${esc(field(p, 'name'))}</h3>
-          <p class="card__price">${esc(field(p, 'price'))}</p>
-          <div class="card__details">
-            <p class="card__district"><span class="pearl-dot" aria-hidden="true"></span>${esc(field(p, 'district'))}</p>
-            <p class="card__specs"><span>${esc(field(p, 'area'))}</span><span>${esc(field(p, 'bedrooms'))}</span><span>${esc(field(p, 'bathrooms'))}</span></p>
-            <a class="btn btn--light" href="#contact" data-request="${p.id}">${esc(t('props.request'))}</a>
-          </div>
-        </div>
-      </article>
+    const img = `assets/img/properties/${p.id}/${p.id}-1`;
+    const name = local(p.name);
+    const loc = local(p.location);
+    const alt = loc ? `${name}, ${loc}` : name;
+    const missing = ['location', 'status', 'bedrooms', 'bathrooms', 'area', 'description'].filter((k) => p[k] === null || p[k] === undefined);
+    const tag = p.status ? `<span class="pcard__tag">${esc(t(`props.status.${p.status}`))}</span>` : '';
+    return `<li class="pcard">${missing.length ? todo(missing.join(', ')) : ''}
+      <div class="pcard__media">
+        <img src="${img}-800.webp" srcset="${img}-800.webp 800w, ${img}.webp 1600w" sizes="(min-width: 1200px) 420px, (min-width: 600px) 46vw, 100vw" alt="${esc(alt)}" loading="lazy" width="800" height="600">
+        ${tag}
+      </div>
+      <p class="pcard__loc">${loc ? esc(loc) : ''}</p>
+      <h3 class="pcard__name">${esc(name)}</h3>
+      <p class="pcard__price">${p.price ? esc(price(p.price)) : ''}</p>
+      <a class="btn btn--outline pcard__btn" href="#contact" data-request="${esc(p.id)}">${esc(t('props.request'))}</a>
     </li>`;
   }
 
@@ -134,7 +136,6 @@
     list.innerHTML = properties.properties.map(cardHTML).join('');
     const f = properties.featured;
     document.querySelectorAll('#featured [data-field]').forEach((el) => { el.textContent = field(f, el.dataset.field); });
-    updateArrows();
   }
 
   /* Request details -> prefill the contact form */
@@ -142,29 +143,16 @@
     const btn = e.target.closest('[data-request]');
     if (!btn || !properties) return;
     const id = btn.dataset.request;
-    const p = id === 'featured' ? properties.featured : properties.properties.find((x) => String(x.id) === id);
-    if (!p) return;
     const msg = document.getElementById('f-message');
-    msg.value = `${t('form.requestFor')} ${field(p, 'name')}, ${field(p, 'district')}`;
+    if (id === 'featured') {
+      const f = properties.featured;
+      msg.value = `${t('form.requestFor')} ${field(f, 'name')}, ${field(f, 'district')}`;
+      return;
+    }
+    const p = properties.properties.find((x) => String(x.id) === id);
+    if (p) msg.value = t('props.interested').replace('{name}', local(p.name));
   });
 
-  /* ---------- Carousel ---------- */
-  const track = document.getElementById('property-list');
-  const prev = document.querySelector('[data-carousel-prev]');
-  const next = document.querySelector('[data-carousel-next]');
-  function step() {
-    const card = track.querySelector('.card');
-    return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 24) : 400;
-  }
-  function updateArrows() {
-    const max = track.scrollWidth - track.clientWidth - 2;
-    prev.disabled = track.scrollLeft <= 2;
-    next.disabled = track.scrollLeft >= max;
-  }
-  prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
-  next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
-  track.addEventListener('scroll', () => requestAnimationFrame(updateArrows), { passive: true });
-  window.addEventListener('resize', updateArrows);
 
   /* ---------- Header ---------- */
   const header = document.getElementById('header');

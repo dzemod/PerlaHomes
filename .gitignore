@@ -6,3 +6,7 @@
 node_modules/
 temporary screenshots/
 images/raw/
+
+# client property galleries (raw, large)
+images/properties-raw/
+*.zip
