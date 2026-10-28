@@ -222,12 +222,16 @@
           </picture></figure>
         </div>
         <div class="about__text" data-reveal-items>
-          <h2 class="h2" data-i18n="about.title">About Perla Homes</h2>
-          <p data-i18n="about.p1">My story began with a love of the sea. I am passionate about diving, and I know that true beauty does not always lie on the surface. This inspired me to create Perla Homes — an agency where searching for a home is like searching for your own pearl.</p>
-          <p data-i18n="about.p2">I believe in quiet luxury: harmony, quality, attention to detail and trust without loud promises. I work with clients personally, to understand their needs and help them find the right home.</p>
+          <p class="eyebrow" data-i18n="about.title">About Perla Homes</p>
+          <h2 class="h2" data-i18n="about.heading">My story began with a love of the sea</h2>
+          <p data-i18n="about.p1">I am passionate about diving, and I know that true beauty does not always lie on the surface. This inspired me to create Perla Homes — an agency where searching for a home is like searching for your own pearl.</p>
+          <blockquote class="about__quote"><p data-i18n="about.quote">I believe in quiet luxury: harmony, quality, attention to detail and trust without loud promises.</p></blockquote>
+          <p data-i18n="about.p2">I work with clients personally, to understand their needs and help them find the right home.</p>
           <p data-i18n="about.p3">What matters to me is not the number of deals, but understanding the client and their lifestyle — and finding the home that suits them.</p>
-          <p class="about__years"><span class="about__num">5</span> <span data-i18n="about.years">years in real estate</span></p>
           <!-- TODO: from client — founder's name for a signature line -->
+        </div>
+        <div class="about__foot" data-reveal-items>
+          <p class="about__years"><span class="about__num">5</span> <span data-i18n="about.years">years in real estate</span></p>
         </div>
       </div>
     </section>
@@ -346,9 +350,15 @@
     <section class="section section--green grain" id="contact" data-reveal>
       <div class="container contact">
         <div class="contact__head" data-reveal-items>
+          <p class="eyebrow" data-i18n="nav.contact">Contact</p>
           <h2 class="contact__title" data-i18n="contact.title">Let’s find your pearl</h2>
           <p class="contact__line" data-i18n="contact.line">I work with clients personally, to understand their needs and help them find the right home.</p>
-          <a class="btn btn--light contact__wa" href="https://wa.me/34627986515" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.5A12.4 12.4 0 0 0 5.3 22.2L3.5 28.5l6.5-1.7A12.4 12.4 0 1 0 16 3.5Zm0 22.7c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-3.8 1 1-3.7-.3-.4a10.3 10.3 0 1 1 8.9 4.8Zm5.7-7.7c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.4 8.4 0 0 1-4.2-3.7c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.2-.3Z"/></svg><span>WhatsApp +34 627 986 515</span></a>
+          <a class="btn btn--line contact__wa" href="https://wa.me/34627986515" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.5A12.4 12.4 0 0 0 5.3 22.2L3.5 28.5l6.5-1.7A12.4 12.4 0 1 0 16 3.5Zm0 22.7c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-3.8 1 1-3.7-.3-.4a10.3 10.3 0 1 1 8.9 4.8Zm5.7-7.7c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.4 8.4 0 0 1-4.2-3.7c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.2-.3Z"/></svg><span>WhatsApp +34 627 986 515</span></a>
+          <ul class="contact__list">
+            <li><span class="contact__label" data-i18n="footer.phone">Phone / WhatsApp</span><a class="contact__value" href="tel:+34627986515">+34 627 986 515</a></li>
+            <li><span class="contact__label">Instagram</span><a class="contact__value" href="https://www.instagram.com/perlahomes.es/" target="_blank" rel="noopener">@perlahomes.es</a></li>
+            <li><span class="contact__label" data-i18n="contact.where">Location</span><span class="contact__value" data-i18n="footer.location">Marbella, Costa del Sol</span></li>
+          </ul>
         </div>
         <!-- TODO: from client — form backend / e-mail. Until then the form opens WhatsApp with the request pre-filled. -->
         <form class="form" id="contact-form" novalidate data-reveal-items>
@@ -376,7 +386,7 @@
           </div>
           <div class="field field--full">
             <label for="f-message" data-i18n="form.message">Message</label>
-            <textarea id="f-message" name="message" rows="4"></textarea>
+            <textarea id="f-message" name="message" rows="3"></textarea>
           </div>
           <div class="field field--full">
             <label class="check"><input type="checkbox" name="consent" required aria-describedby="f-consent-err"><span class="check__box" aria-hidden="true"></span><span><span data-i18n="form.consent">I accept the</span> <a href="privacy.html" data-i18n="form.privacy">privacy policy</a></span></label>

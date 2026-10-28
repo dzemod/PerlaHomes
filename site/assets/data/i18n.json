@@ -34,8 +34,8 @@
     "costa.5": "Golf, yachting, gastronomy and an active lifestyle",
     "costa.6": "A wide choice of property, from apartments to villas",
     "about.title": "About Perla Homes",
-    "about.p1": "My story began with a love of the sea. I am passionate about diving, and I know that true beauty does not always lie on the surface. This inspired me to create Perla Homes — an agency where searching for a home is like searching for your own pearl.",
-    "about.p2": "I believe in quiet luxury: harmony, quality, attention to detail and trust without loud promises. I work with clients personally, to understand their needs and help them find the right home.",
+    "about.p1": "I am passionate about diving, and I know that true beauty does not always lie on the surface. This inspired me to create Perla Homes — an agency where searching for a home is like searching for your own pearl.",
+    "about.p2": "I work with clients personally, to understand their needs and help them find the right home.",
     "about.p3": "What matters to me is not the number of deals, but understanding the client and their lifestyle — and finding the home that suits them.",
     "about.years": "years in real estate",
     "reviews.title": "Reviews",
@@ -124,7 +124,9 @@
     "footer.top": "Back to top",
     "costa.intro": "The region suits permanent living, holidays and considering investment opportunities, with the risks taken into account.",
     "contact.title": "Let’s find your pearl",
-    "lang.label": "Language"
+    "lang.label": "Language",
+    "about.heading": "My story began with a love of the sea",
+    "about.quote": "I believe in quiet luxury: harmony, quality, attention to detail and trust without loud promises."
   },
   "es": {
     "meta.title": "Perla Homes — Agencia inmobiliaria boutique en Marbella, Costa del Sol",
@@ -161,8 +163,8 @@
     "costa.5": "Golf, náutica, gastronomía y un estilo de vida activo",
     "costa.6": "Amplia oferta inmobiliaria, desde apartamentos hasta villas",
     "about.title": "Sobre Perla Homes",
-    "about.p1": "Mi historia comenzó con el amor por el mar. Practico buceo y sé que la verdadera belleza no siempre está en la superficie. Eso me inspiró a crear Perla Homes: una agencia donde buscar un hogar es como buscar su propia perla.",
-    "about.p2": "Creo en el lujo silencioso: armonía, calidad, atención al detalle y confianza sin grandes promesas. Trabajo personalmente con cada cliente para entender sus necesidades y ayudarle a encontrar el hogar adecuado.",
+    "about.p1": "Practico buceo y sé que la verdadera belleza no siempre está en la superficie. Eso me inspiró a crear Perla Homes: una agencia donde buscar un hogar es como buscar su propia perla.",
+    "about.p2": "Trabajo personalmente con cada cliente para entender sus necesidades y ayudarle a encontrar el hogar adecuado.",
     "about.p3": "Para mí no importa el número de operaciones, sino entender al cliente y su estilo de vida, y encontrar el hogar que le conviene.",
     "about.years": "años en el sector inmobiliario",
     "reviews.title": "Opiniones",
@@ -251,7 +253,9 @@
     "footer.top": "Volver arriba",
     "costa.intro": "La región es adecuada para vivir de forma permanente, para las vacaciones y para valorar oportunidades de inversión, teniendo en cuenta los riesgos.",
     "contact.title": "Encontremos su perla",
-    "lang.label": "Idioma"
+    "lang.label": "Idioma",
+    "about.heading": "Mi historia comenzó con el amor por el mar",
+    "about.quote": "Creo en el lujo silencioso: armonía, calidad, atención al detalle y confianza sin grandes promesas."
   },
   "ru": {
     "meta.title": "Perla Homes — бутиковое агентство недвижимости в Марбелье, Costa del Sol",
@@ -288,8 +292,8 @@
     "costa.5": "Гольф, яхтинг, гастрономия и активный образ жизни",
     "costa.6": "Широкий выбор недвижимости — от апартаментов до вилл",
     "about.title": "О Perla Homes",
-    "about.p1": "Моя история началась с любви к морю. Я увлекаюсь дайвингом и знаю: настоящая красота не всегда лежит на поверхности. Это вдохновило меня создать Perla Homes — агентство, где поиск дома похож на поиск собственной жемчужины.",
-    "about.p2": "Я верю в тихую роскошь: гармонию, качество, внимание к деталям и доверие без громких обещаний. Лично участвую в работе с клиентами, стремясь понять их потребности и помочь найти подходящий дом.",
+    "about.p1": "Я увлекаюсь дайвингом и знаю: настоящая красота не всегда лежит на поверхности. Это вдохновило меня создать Perla Homes — агентство, где поиск дома похож на поиск собственной жемчужины.",
+    "about.p2": "Лично участвую в работе с клиентами, стремясь понять их потребности и помочь найти подходящий дом.",
     "about.p3": "Для меня важны не количество сделок, а умение понять клиента, его образ жизни и найти подходящий дом.",
     "about.years": "лет в сфере недвижимости",
     "reviews.title": "Отзывы",
@@ -378,6 +382,8 @@
     "footer.top": "Наверх",
     "costa.intro": "Регион подходит для постоянного проживания, отдыха и рассмотрения инвестиционных возможностей с учётом рисков.",
     "contact.title": "Найдём вашу жемчужину",
-    "lang.label": "Язык"
+    "lang.label": "Язык",
+    "about.heading": "Моя история началась с любви к морю",
+    "about.quote": "Я верю в тихую роскошь: гармонию, качество, внимание к деталям и доверие без громких обещаний."
   }
 }
