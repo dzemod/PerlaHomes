@@ -25,7 +25,7 @@
   --sand: #D8C8AE;       /* thin borders */
   --taupe: #7A6F62;      /* secondary text on pearl (AA 4.5:1; on milk use --ink) */
   --ink: #1A1F1C;        /* body text on light */
-  --gold: #B8975A;       /* accent only: logo, 1px lines, eyebrows on --green-900, hover underlines */
+  --gold: #B8975A;       /* accent only: 1px lines, small labels on --green-900, hover underlines */
 
   /* Roles, built from the palette only */
   --ink-soft: var(--taupe);
@@ -51,7 +51,7 @@
   --section-space: 96px;    /* vertical padding of every section */
   --head-gap: 24px;         /* heading → text */
   --content-gap: 40px;      /* text → content */
-  --header-h: 72px;
+  --header-h: 76px;        /* 48px logo + 14px above and below */
 
   --ease: cubic-bezier(.22, 1, .36, 1);
   --ease-spring: cubic-bezier(.34, 1.4, .64, 1);
@@ -65,7 +65,8 @@
 
 @media (min-width: 768px) { :root { --gutter: 40px; } }
 @media (min-width: 900px) { :root { --section-space: 140px; --content-gap: 64px; } }
-@media (min-width: 1200px) { :root { --gutter: 64px; --header-h: 88px; } }
+@media (min-width: 1100px) { :root { --header-h: 104px; } } /* 64px logo + 20px above and below */
+@media (min-width: 1200px) { :root { --gutter: 64px; } }
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -93,7 +94,6 @@ p, li { text-wrap: pretty; }
 :focus-visible { outline: 2px solid var(--green-700); outline-offset: 4px; }
 /* on green: thin gold ring (4.4:1 / 5.1:1) */
 .header :focus-visible, .section--green :focus-visible, .section--dark :focus-visible, .band :focus-visible, .hero :focus-visible, .footer :focus-visible, .card :focus-visible { outline: 1px solid var(--gold); }
-.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip { position: fixed; top: var(--s1); left: var(--s1); z-index: 100; padding: var(--s1) var(--s2); background: var(--pearl); color: var(--ink); transform: translateY(-160%); }
 .skip:focus { transform: none; }
@@ -181,11 +181,9 @@ p, li { text-wrap: pretty; }
   display: flex; align-items: center; justify-content: space-between; gap: var(--s3);
   max-width: calc(var(--container) + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter);
 }
-/* Perla lockup (inline SVG symbol #perla-logo): gold on the green / photo header, 32px → 40px tall */
-.logo { display: flex; align-items: center; color: var(--gold); transition: opacity .3s var(--ease); }
-.logo svg { display: block; height: 32px; width: auto; aspect-ratio: 178 / 40; transition: opacity .3s var(--ease); }
-/* over the hero photo: soft green shade keeps the thin gold lines legible */
-.header:not(.is-solid):not(.is-open) .logo svg { filter: drop-shadow(0 0 10px rgba(22, 48, 42, .75)) drop-shadow(0 1px 2px rgba(22, 48, 42, .6)); }
+/* Official round Perla emblem (assets/img/logo-perla-256): 48px → 64px, shown as is */
+.logo { display: block; border-radius: 50%; transition: opacity .3s var(--ease); }
+.logo__img { display: block; width: 48px; height: 48px; }
 .logo:hover { opacity: .85; }
 .logo:active { opacity: .7; }
 .header__right { display: none; align-items: center; gap: var(--s4); }
@@ -243,7 +241,7 @@ p, li { text-wrap: pretty; }
 .lang--menu .lang__opt[aria-current="true"] { color: var(--pearl); }
 
 @media (min-width: 1100px) {
-  .logo svg { height: 40px; }
+  .logo__img { width: 64px; height: 64px; }
   .header__right { display: flex; }
   .burger, .mobile-menu { display: none; }
 }
@@ -604,8 +602,8 @@ p, li { text-wrap: pretty; }
 
 /* Giant wordmark across the full width */
 .footer__mark { margin-top: var(--content-gap); max-width: calc(var(--container) + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
-.footer__mark { color: var(--gold); }
-.footer__mark svg { display: block; height: clamp(56px, 7vw, 112px); width: auto; aspect-ratio: 178 / 40; }
+.footer__logo { display: block; width: 96px; height: 96px; }
+@media (min-width: 900px) { .footer__logo { width: 120px; height: 120px; } }
 
 .footer__bottom { padding-block: var(--s4) var(--s4); font-size: 13px; color: var(--on-dark-soft); }
 .footer__legal { display: flex; flex-wrap: wrap; align-items: center; gap: 4px var(--s3); }
