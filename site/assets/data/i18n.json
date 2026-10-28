@@ -121,7 +121,10 @@
     "faq.line": "Frequent questions from potential clients, with short answers.",
     "faq.cta": "Didn’t find your answer?",
     "footer.langs": "Languages",
-    "footer.top": "Back to top"
+    "footer.top": "Back to top",
+    "costa.intro": "The region suits permanent living, holidays and considering investment opportunities, with the risks taken into account.",
+    "contact.title": "Let’s find your pearl",
+    "lang.label": "Language"
   },
   "es": {
     "meta.title": "Perla Homes — Agencia inmobiliaria boutique en Marbella, Costa del Sol",
@@ -245,7 +248,10 @@
     "faq.line": "Preguntas frecuentes de futuros clientes, con respuestas breves.",
     "faq.cta": "¿No encontró su respuesta?",
     "footer.langs": "Idiomas",
-    "footer.top": "Volver arriba"
+    "footer.top": "Volver arriba",
+    "costa.intro": "La región es adecuada para vivir de forma permanente, para las vacaciones y para valorar oportunidades de inversión, teniendo en cuenta los riesgos.",
+    "contact.title": "Encontremos su perla",
+    "lang.label": "Idioma"
   },
   "ru": {
     "meta.title": "Perla Homes — бутиковое агентство недвижимости в Марбелье, Costa del Sol",
@@ -369,6 +375,9 @@
     "faq.line": "Частые вопросы потенциальных клиентов и краткие ответы.",
     "faq.cta": "Не нашли ответ?",
     "footer.langs": "Языки",
-    "footer.top": "Наверх"
+    "footer.top": "Наверх",
+    "costa.intro": "Регион подходит для постоянного проживания, отдыха и рассмотрения инвестиционных возможностей с учётом рисков.",
+    "contact.title": "Найдём вашу жемчужину",
+    "lang.label": "Язык"
   }
 }

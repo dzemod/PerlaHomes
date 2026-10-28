@@ -45,6 +45,14 @@
     document.querySelectorAll('[data-i18n-alt]').forEach((el) => { el.alt = t(el.dataset.i18nAlt); });
     document.querySelectorAll('[data-i18n-aria]').forEach((el) => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
     document.querySelectorAll('.lang__btn').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    document.querySelectorAll('.lang__opt').forEach((b) => {
+      if (b.dataset.lang === lang) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+    });
+    document.querySelectorAll('[data-lang-dd]').forEach((dd) => {
+      dd.querySelector('.lang__code').textContent = lang.toUpperCase();
+      const name = dd.querySelector(`.lang__opt[data-lang="${lang}"]`).textContent;
+      dd.querySelector('.lang__toggle').setAttribute('aria-label', `${t('lang.label')}: ${name}`);
+    });
 
     document.title = t('meta.title');
     document.querySelector('meta[name="description"]').content = t('meta.description');
@@ -60,6 +68,36 @@
   }
 
   document.querySelectorAll('.lang__btn').forEach((b) => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+  /* Language dropdown: current code + chevron; keyboard: arrows, Home/End, Escape, Tab */
+  document.querySelectorAll('[data-lang-dd]').forEach((dd) => {
+    const toggle = dd.querySelector('.lang__toggle');
+    const opts = [...dd.querySelectorAll('.lang__opt')];
+    const isOpen = () => dd.classList.contains('is-open');
+    const setOpen = (open, focus) => {
+      dd.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open && focus) (opts.find((o) => o.dataset.lang === lang) || opts[0]).focus();
+      if (!open && focus) toggle.focus();
+    };
+    toggle.addEventListener('click', () => setOpen(!isOpen(), false));
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); setOpen(true, true); }
+    });
+    opts.forEach((o) => o.addEventListener('click', () => { applyLang(o.dataset.lang); setOpen(false, true); }));
+    dd.addEventListener('keydown', (e) => {
+      if (!isOpen()) return;
+      const i = opts.indexOf(document.activeElement);
+      const go = (n) => { e.preventDefault(); opts[(n + opts.length) % opts.length].focus(); };
+      if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); setOpen(false, true); }
+      else if (e.key === 'ArrowDown') go(i + 1);
+      else if (e.key === 'ArrowUp') go(i < 0 ? -1 : i - 1);
+      else if (e.key === 'Home') go(0);
+      else if (e.key === 'End') go(-1);
+    });
+    dd.addEventListener('focusout', (e) => { if (!dd.contains(e.relatedTarget)) setOpen(false, false); });
+    document.addEventListener('click', (e) => { if (isOpen() && !dd.contains(e.target)) setOpen(false, false); });
+  });
 
   /* ---------- Properties (assets/data/properties.json) ---------- */
   // A field may be null (placeholder), a string, or {en, es, ru}.
@@ -303,25 +341,22 @@
     });
 
     // Photo cards: clip-path wipe left → right with the image settling 1.08 → 1,
-    // then the gold line draws, then title and text rise.
+    // then title and text rise.
     // data-wipe="stagger": one trigger, cards 0.15s apart. data-wipe="each": every row on its own.
     function wipe(item) {
       const photo = item.querySelector('.photo');
       const img = photo.querySelector('img');
-      const line = item.querySelector('.gold-line');
-      const text = [...item.querySelectorAll('.gold-line ~ *')];
+      const text = [...item.querySelectorAll('h3, p')];
       return gsap.timeline({ defaults: { ease: 'power3.out' } })
         .fromTo(photo, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'power3.inOut', clearProps: 'clipPath' })
         .fromTo(img, { scale: 1.08 }, { scale: 1, duration: 1.6, clearProps: 'transform' }, 0)
-        .fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.6, clearProps: 'transform' }, 0.65)
-        .fromTo(text, { opacity: 0, y: MOTION.y }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, clearProps: 'transform' }, 0.8);
+        .fromTo(text, { opacity: 0, y: MOTION.y }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, clearProps: 'transform' }, 0.6);
     }
-    // Footer: rules draw left → right, columns rise one by one, the wordmark slowly lifts.
+    // Footer: columns rise one by one, the wordmark slowly lifts.
     const footer = document.querySelector('[data-footer]');
     if (footer) {
       gsap.timeline({ scrollTrigger: { trigger: footer, start: 'top 85%', once: true }, defaults: { ease: MOTION.ease } })
-        .fromTo(footer.querySelectorAll('.footer__rule'), { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: 'power3.inOut', stagger: 0.2, clearProps: 'transform' }, 0)
-        .fromTo(footer.querySelectorAll('[data-footer-item]'), { opacity: 0, y: MOTION.y }, { opacity: 1, y: 0, duration: MOTION.duration, stagger: 0.12, clearProps: 'transform' }, 0.15)
+        .fromTo(footer.querySelectorAll('[data-footer-item]'), { opacity: 0, y: MOTION.y }, { opacity: 1, y: 0, duration: MOTION.duration, stagger: 0.12, clearProps: 'transform' }, 0)
         .fromTo(footer.querySelector('.footer__mark'), { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.8, ease: 'power2.out', clearProps: 'transform' }, 0.3);
     }
 
