@@ -339,12 +339,11 @@
         .fromTo(img, { scale: 1.08 }, { scale: 1, duration: 1.6, clearProps: 'transform' }, 0)
         .fromTo(text, { opacity: 0, y: MOTION.y }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, clearProps: 'transform' }, 0.6);
     }
-    // Footer: columns rise one by one, the wordmark slowly lifts.
+    // Footer: columns rise one by one.
     const footer = document.querySelector('[data-footer]');
     if (footer) {
       gsap.timeline({ scrollTrigger: { trigger: footer, start: 'top 85%', once: true }, defaults: { ease: MOTION.ease } })
-        .fromTo(footer.querySelectorAll('[data-footer-item]'), { opacity: 0, y: MOTION.y }, { opacity: 1, y: 0, duration: MOTION.duration, stagger: 0.12, clearProps: 'transform' }, 0)
-        .fromTo(footer.querySelector('.footer__mark'), { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.8, ease: 'power2.out', clearProps: 'transform' }, 0.3);
+        .fromTo(footer.querySelectorAll('[data-footer-item]'), { opacity: 0, y: MOTION.y }, { opacity: 1, y: 0, duration: MOTION.duration, stagger: 0.12, clearProps: 'transform' }, 0);
     }
 
     document.querySelectorAll('[data-wipe]').forEach((group) => {
@@ -373,6 +372,9 @@
     properties = p;
     applyLang(initial);
     animate();
+    // The property cards render after load and push later sections down: re-run a /#section jump
+    const target = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+    if (target) requestAnimationFrame(() => target.scrollIntoView({ behavior: 'instant' }));
   }).catch(() => {
     document.querySelectorAll('[data-anim="hero"]').forEach((el) => { el.style.opacity = 1; });
   });

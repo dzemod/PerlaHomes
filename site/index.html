@@ -410,57 +410,49 @@
   </main>
 
   <!-- ===== 10. Footer ===== -->
-  <footer class="footer grain" data-footer>
-    <div class="container footer__inner">
-      <div class="footer__top" data-footer-item>
-        <h2 class="footer__title" data-i18n="footer.title">Get in touch</h2>
-        <div class="footer__motto">
-          <p class="footer__pearl">Discover your pearl</p>
+  <!-- Compact: logo + line | Navigation | Contact | Languages, then one bottom bar. No lines anywhere. -->
+  <footer class="footer" data-footer>
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand" data-footer-item>
+          <picture><source type="image/webp" srcset="assets/img/logo-perla-256.webp"><img class="footer__logo" src="assets/img/logo-perla-256.png" alt="Perla Homes" width="96" height="96"></picture>
           <p class="footer__line" data-i18n="hero.line">An independent boutique real estate agency in Marbella, Costa del Sol.</p>
         </div>
-      </div>
-      <div class="footer__grid">
-        <nav class="footer__col" aria-labelledby="footer-nav" data-footer-item>
+        <nav class="footer__col footer__col--nav" aria-labelledby="footer-nav" data-footer-item>
           <h3 class="footer__h" id="footer-nav" data-i18n="footer.nav">Navigation</h3>
-          <ul>
-            <li><a class="ulink" href="#properties" data-i18n="nav.properties">Properties</a></li>
-            <li><a class="ulink" href="#costa" data-i18n="nav.costa">Costa del Sol</a></li>
-            <li><a class="ulink" href="#about" data-i18n="nav.about">About</a></li>
-            <li><a class="ulink" href="#faq" data-i18n="nav.faq">FAQ</a></li>
-            <li><a class="ulink" href="#contact" data-i18n="nav.contact">Contact</a></li>
+          <ul class="footer__links">
+            <li><a class="flink" href="#properties" data-i18n="nav.properties">Properties</a></li>
+            <li><a class="flink" href="#costa" data-i18n="nav.costa">Costa del Sol</a></li>
+            <li><a class="flink" href="#about" data-i18n="nav.about">About</a></li>
+            <li><a class="flink" href="#faq" data-i18n="nav.faq">FAQ</a></li>
+            <li><a class="flink" href="#contact" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </nav>
-        <div class="footer__col" data-footer-item>
+        <div class="footer__col footer__col--contact" data-footer-item>
           <h3 class="footer__h" data-i18n="footer.contact">Contact</h3>
-          <ul>
-            <li><span class="footer__label" data-i18n="footer.phone">Phone / WhatsApp</span><a class="ulink" href="tel:+34627986515">+34 627 986 515</a></li>
-            <li><a class="ulink" href="https://wa.me/34627986515" target="_blank" rel="noopener" data-i18n="footer.whatsapp">Message on WhatsApp</a></li>
-                        <li><span class="footer__label">Instagram</span><a class="ulink" href="https://www.instagram.com/perlahomes.es/" target="_blank" rel="noopener">Perla Homes</a></li>
-            <li><span class="footer__text" data-i18n="footer.location">Marbella, Costa del Sol</span></li>
+          <ul class="footer__pairs">
+            <li><span class="footer__label" data-i18n="footer.phone">Phone / WhatsApp</span><a class="flink" href="tel:+34627986515">+34 627 986 515</a><a class="flink" href="https://wa.me/34627986515" target="_blank" rel="noopener" data-i18n="footer.whatsapp">Message on WhatsApp</a></li>
+            <li><span class="footer__label">Instagram</span><a class="flink" href="https://www.instagram.com/perlahomes.es/" target="_blank" rel="noopener">@perlahomes.es</a></li>
+            <li><span class="footer__label" data-i18n="contact.where">Location</span><span class="footer__value" data-i18n="footer.location">Marbella, Costa del Sol</span></li>
             <!-- TODO: from client — e-mail and office address (not in brief) -->
           </ul>
         </div>
-        <div class="footer__col" data-footer-item>
+        <div class="footer__col footer__col--langs" data-footer-item>
           <h3 class="footer__h" data-i18n="footer.langs">Languages</h3>
-          <ul class="footer__langs" role="group" aria-label="Language" data-i18n-aria="lang.label">
-            <li><button type="button" class="ulink lang__btn" data-lang="en" lang="en" aria-pressed="true">English</button></li>
-            <li><button type="button" class="ulink lang__btn" data-lang="es" lang="es" aria-pressed="false">Español</button></li>
-            <li><button type="button" class="ulink lang__btn" data-lang="ru" lang="ru" aria-pressed="false">Русский</button></li>
+          <ul class="footer__links footer__langs" role="group" aria-label="Language" data-i18n-aria="lang.label">
+            <li><button type="button" class="flink lang__btn" data-lang="en" lang="en" aria-pressed="true">English</button></li>
+            <li><button type="button" class="flink lang__btn" data-lang="es" lang="es" aria-pressed="false">Español</button></li>
+            <li><button type="button" class="flink lang__btn" data-lang="ru" lang="ru" aria-pressed="false">Русский</button></li>
           </ul>
         </div>
-        <div class="footer__col footer__col--top" data-footer-item>
-          <a class="ulink footer__totop" href="#top"><span data-i18n="footer.top">Back to top</span> <span aria-hidden="true">↑</span></a>
-        </div>
       </div>
-    </div>
-    <div class="footer__mark">
-      <picture><source type="image/webp" srcset="assets/img/logo-perla-256.webp"><img class="footer__logo" src="assets/img/logo-perla-256.png" alt="Perla Homes" width="120" height="120"></picture>
-    </div>
-    <div class="container footer__bottom">
-      <div class="footer__legal">
+      <div class="footer__bottom">
         <p>© <span id="year">2026</span> Perla Homes</p>
-        <a class="ulink" href="privacy.html" data-i18n="footer.privacy">Privacy policy</a>
-        <button type="button" class="ulink linklike" data-cookie-open data-i18n="footer.cookies">Cookie settings</button>
+        <div class="footer__legal">
+          <a class="flink" href="privacy.html" data-i18n="footer.privacy">Privacy policy</a>
+          <button type="button" class="flink" data-cookie-open data-i18n="footer.cookies">Cookie settings</button>
+          <a class="flink" href="#top"><span data-i18n="footer.top">Back to top</span> <span aria-hidden="true">↑</span></a>
+        </div>
       </div>
     </div>
   </footer>
