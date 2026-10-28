@@ -18,18 +18,6 @@
   };
   const t = (key) => (dict[lang] && dict[lang][key]) || (dict.en && dict.en[key]) || '';
 
-  /* ---------- Logo: single source in assets/img/logo.svg ---------- */
-  fetch('assets/img/logo.svg')
-    .then((r) => (r.ok ? r.text() : Promise.reject()))
-    .then((svg) => {
-      const clean = svg.replace(/<!--[\s\S]*?-->/g, '').trim();
-      document.querySelectorAll('[data-logo]').forEach((el) => {
-        el.innerHTML = clean;
-        el.querySelector('svg').setAttribute('aria-hidden', 'true');
-      });
-    })
-    .catch(() => { /* text fallback stays */ });
-
   /* ---------- i18n ---------- */
   function applyLang(next) {
     lang = LANGS.includes(next) ? next : 'en';
