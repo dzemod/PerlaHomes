@@ -571,50 +571,59 @@ p, li { text-wrap: pretty; }
   .faq__a-inner { padding: 0 0 var(--s3) calc(32px + 12px); }
 }
 
-/* ---------- Contact: deep green, two columns on the 12-column grid ---------- */
-/* Left (1–5): eyebrow, heading, line, WhatsApp, contact list. Right (7–12): form.
-   Desktop: both columns stretch to the same height, so tops and bottoms line up. */
-.contact { display: grid; gap: var(--content-gap); }
-.contact__head { display: flex; flex-direction: column; align-items: flex-start; }
+/* ---------- Contact: minimal two-column layout on deep green ---------- */
+/* Top: label, heading, intro (full width, on the page's left margin line).
+   Below, 56px down: form in columns 1–5, contact info in columns 7–10 (top = first form label),
+   social icons at the bottom of the info column. No lines anywhere. */
+#contact { padding-block: clamp(48px, 8vh, 112px); }
+.contact { display: grid; gap: 56px var(--col-gap); }
+.contact .eyebrow { margin-bottom: var(--s2); }
 .contact__title { font-family: var(--font-display); font-weight: 300; text-transform: uppercase; font-size: clamp(32px, 4vw, 56px); line-height: 1.1; letter-spacing: .08em; }
-.contact__line { max-width: 40ch; margin-top: var(--head-gap); color: var(--on-dark-soft); font-size: clamp(16px, 1.2vw, 18px); text-wrap: balance; }
-.contact__wa { margin-top: var(--s4); gap: 12px; }
-.contact__wa svg { width: 20px; height: 20px; fill: currentColor; }
-.contact__list { width: 100%; margin-top: var(--s3); margin-bottom: var(--s3); } /* phones: clear break before the form */
-.contact__list { display: flex; flex-direction: column; gap: var(--s3); }
-.contact__list li { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.contact__line { max-width: 480px; margin-top: var(--s2); font-size: 17px; line-height: 1.6; color: color-mix(in srgb, var(--pearl) 85%, transparent); text-wrap: balance; }
+.contact__info { display: flex; flex-direction: column; gap: var(--s5); }
+.contact__list { display: flex; flex-direction: column; gap: 32px; }
+.contact__list li { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+/* labels pearl, not gold: gold text is 4.4:1 on --green-700, below AA */
 .contact__label { font-family: var(--font-display); font-size: 12px; line-height: 1.4; text-transform: uppercase; letter-spacing: .15em; color: var(--on-dark-soft); }
 .contact__value { font-size: 17px; line-height: 1.5; color: var(--pearl); }
-/* links on --green-700 stay pearl: gold text is 4.4:1 here, below AA */
+.contact__value--sub { font-size: 15px; color: color-mix(in srgb, var(--pearl) 85%, transparent); }
+/* links on --green-700 stay pearl (gold is below AA here): colour only, opacity on hover */
 a.contact__value { transition: opacity .25s var(--ease); }
 a.contact__value:hover { opacity: .7; }
 a.contact__value:active { opacity: .5; }
+/* 20px icons, 24px apart; each link keeps a 44px touch area */
+.contact__social { display: flex; margin-inline: -12px; }
+.contact__icon { display: grid; place-items: center; width: 44px; height: 44px; color: var(--pearl); transition: opacity .25s var(--ease); }
+.contact__icon svg { width: 20px; height: 20px; }
+.contact__icon .icon-line { fill: none; stroke: currentColor; stroke-width: 1.5; }
+.contact__icon .icon-line circle:last-child { fill: currentColor; stroke: none; }
+.contact__icon .icon-fill { fill: currentColor; }
+.contact__icon:hover { opacity: .7; }
+.contact__icon:active { opacity: .5; }
 @media (min-width: 900px) {
-  .contact { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: stretch; }
-  .contact__head { grid-column: 1 / span 5; }
-  .contact__wa { margin-bottom: var(--s3); }
-  .contact__list { margin-top: auto; margin-bottom: 0; } /* last row ends on the form's bottom edge */
-  .form { grid-column: 7 / span 6; align-content: space-between; }
+  .contact { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .contact__head { grid-column: 1 / -1; }
+  .form { grid-column: 1 / span 5; }
+  .contact__info { grid-column: 7 / span 4; gap: 0; }
+  .contact__social { margin-top: auto; margin-bottom: -12px; } /* icons sit on the form's bottom edge */
 }
-@media (max-width: 599px) { .contact__wa { width: 100%; } }
 
-/* ---------- Form: soft filled fields on green, no borders ---------- */
-.form { display: grid; gap: var(--s4) var(--s3); }
-@media (min-width: 700px) { .form { grid-template-columns: repeat(2, minmax(0, 1fr)); } .field--full { grid-column: 1 / -1; } }
+/* ---------- Form: one column, soft filled fields on green, no borders ---------- */
+.form { display: grid; gap: 20px; }
 .field { position: relative; display: flex; flex-direction: column; gap: var(--s1); }
 .field > label:not(.check) {
-  font-family: var(--font-display); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; line-height: 1.4; color: var(--on-dark-soft);
+  font-family: var(--font-display); text-transform: uppercase; letter-spacing: .15em; font-size: 12px; line-height: 1.4; color: color-mix(in srgb, var(--pearl) 70%, transparent);
 }
 .field input, .field textarea, .field select {
-  width: 100%; height: 48px; padding: 0 var(--s2); border: 0; border-radius: 0;
-  background: color-mix(in srgb, var(--pearl) 8%, transparent); font: inherit; font-size: 17px; line-height: 1.5; color: var(--pearl);
+  width: 100%; height: 44px; padding: 0 14px; border: 0; border-radius: 0;
+  background: color-mix(in srgb, var(--pearl) 8%, transparent); font: inherit; font-size: 16px; line-height: 1.5; color: var(--pearl);
   transition: background-color .25s var(--ease);
 }
-.field textarea { height: auto; padding: 12px var(--s2); resize: none; }
-.field select { appearance: none; cursor: pointer; padding-right: 44px; }
+.field textarea { height: auto; padding: 8px 14px; line-height: 1.4; resize: none; }
+.field select { appearance: none; cursor: pointer; padding-right: 40px; }
 .field select option { color: var(--ink); background: var(--pearl); }
 .field--select::after { /* thin pearl chevron */
-  content: ""; position: absolute; right: 20px; bottom: 22px; width: 8px; height: 8px;
+  content: ""; position: absolute; right: 18px; bottom: 19px; width: 7px; height: 7px;
   border-right: 1px solid var(--pearl); border-bottom: 1px solid var(--pearl); transform: rotate(45deg); pointer-events: none;
 }
 .field input:hover, .field textarea:hover, .field select:hover { background: color-mix(in srgb, var(--pearl) 11%, transparent); }
@@ -644,9 +653,8 @@ a.contact__value:active { opacity: .5; }
 .check a:hover { opacity: .7; }
 .check a:active { opacity: .5; }
 .form__foot { display: flex; }
-.form__foot .btn { min-height: 56px; }
+.form__foot .btn { width: 100%; min-height: 52px; font-size: 13px; letter-spacing: .2em; }
 .form__foot .btn::before { transition-duration: .25s; }
-@media (max-width: 599px) { .form__foot .btn { width: 100%; } }
 .form__success { color: var(--pearl); animation: field-error .5s var(--ease) both; }
 .form__success[hidden] { display: none; }
 
