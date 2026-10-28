@@ -126,7 +126,11 @@
     "contact.title": "Let’s find your pearl",
     "lang.label": "Language",
     "about.heading": "My story began with a love of the sea",
-    "about.quote": "I believe in quiet luxury: harmony, quality, attention to detail and trust without loud promises."
+    "about.quote": "I believe in quiet luxury: harmony, quality, attention to detail and trust without loud promises.",
+    "about.f2.v": "Personal",
+    "about.f2.l": "Founder’s attention",
+    "about.f3.v": "Marbella",
+    "about.f3.l": "Costa del Sol"
   },
   "es": {
     "meta.title": "Perla Homes — Agencia inmobiliaria boutique en Marbella, Costa del Sol",
@@ -255,7 +259,11 @@
     "contact.title": "Encontremos su perla",
     "lang.label": "Idioma",
     "about.heading": "Mi historia comenzó con el amor por el mar",
-    "about.quote": "Creo en el lujo silencioso: armonía, calidad, atención al detalle y confianza sin grandes promesas."
+    "about.quote": "Creo en el lujo silencioso: armonía, calidad, atención al detalle y confianza sin grandes promesas.",
+    "about.f2.v": "Personal",
+    "about.f2.l": "Atención directa",
+    "about.f3.v": "Marbella",
+    "about.f3.l": "Costa del Sol"
   },
   "ru": {
     "meta.title": "Perla Homes — бутиковое агентство недвижимости в Марбелье, Costa del Sol",
@@ -384,6 +392,10 @@
     "contact.title": "Найдём вашу жемчужину",
     "lang.label": "Язык",
     "about.heading": "Моя история началась с любви к морю",
-    "about.quote": "Я верю в тихую роскошь: гармонию, качество, внимание к деталям и доверие без громких обещаний."
+    "about.quote": "Я верю в тихую роскошь: гармонию, качество, внимание к деталям и доверие без громких обещаний.",
+    "about.f2.v": "Лично",
+    "about.f2.l": "Внимание основателя",
+    "about.f3.v": "Марбелья",
+    "about.f3.l": "Costa del Sol"
   }
 }
