@@ -510,29 +510,26 @@ p, li { text-wrap: pretty; }
   .faq__a-inner { padding: 0 0 var(--s3) calc(32px + 12px); }
 }
 
-/* ---------- Contact: minimal two-column layout on deep green ---------- */
-/* Top: label, heading, intro (full width, on the page's left margin line).
-   Below, 56px down: form in columns 1–5, contact info in columns 7–10 (top = first form label),
-   social icons at the bottom of the info column. No lines anywhere. */
-#contact { padding-block: clamp(48px, 8vh, 112px); }
-.contact { display: grid; gap: 56px var(--col-gap); }
-.contact .eyebrow { margin-bottom: var(--s2); }
-.contact__title { font-family: var(--font-display); font-weight: 300; text-transform: uppercase; font-size: clamp(32px, 4vw, 56px); line-height: 1.1; letter-spacing: .08em; }
-.contact__line { max-width: 480px; margin-top: var(--s2); font-size: 17px; line-height: 1.6; color: color-mix(in srgb, var(--pearl) 85%, transparent); text-wrap: balance; }
-.contact__info { display: flex; flex-direction: column; gap: var(--s5); }
-.contact__list { display: flex; flex-direction: column; gap: 32px; }
+/* ---------- Contact: light and compact ---------- */
+/* Top: label, heading, intro. 40px down: form in columns 1–7 (2-column fields, consent + Send in one row),
+   contact info in columns 9–12 (top = first form label), icons right under it. No lines anywhere. */
+#contact { padding-block: clamp(48px, 7vh, 80px); }
+.contact { display: grid; gap: 40px var(--col-gap); }
+.contact .eyebrow { margin-bottom: var(--s2); color: var(--ink-soft); } /* ink on milk: taupe is 4.0:1 there, below AA */
+.contact__title { font-family: var(--font-display); font-weight: 300; text-transform: uppercase; font-size: clamp(32px, 4vw, 56px); line-height: 1.1; letter-spacing: .08em; color: var(--green-700); }
+.contact__line { max-width: 480px; margin-top: var(--s2); font-size: 17px; line-height: 1.6; color: var(--ink); text-wrap: balance; }
+.contact__info { display: flex; flex-direction: column; gap: var(--s3); }
+.contact__list { display: flex; flex-direction: column; gap: var(--s3); }
 .contact__list li { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
-/* labels pearl, not gold: gold text is 4.4:1 on --green-700, below AA */
-.contact__label { font-family: var(--font-display); font-size: 12px; line-height: 1.4; text-transform: uppercase; letter-spacing: .15em; color: var(--on-dark-soft); }
-.contact__value { font-size: 17px; line-height: 1.5; color: var(--pearl); }
-.contact__value--sub { font-size: 15px; color: color-mix(in srgb, var(--pearl) 85%, transparent); }
-/* links on --green-700 stay pearl (gold is below AA here): colour only, opacity on hover */
-a.contact__value { transition: opacity .25s var(--ease); }
+.contact__label { font-family: var(--font-display); font-size: 12px; line-height: 1.4; text-transform: uppercase; letter-spacing: .15em; color: var(--ink-soft); }
+.contact__value { font-size: 17px; line-height: 1.5; color: var(--ink); }
+a.contact__value { color: var(--green-700); transition: opacity .25s var(--ease); }
 a.contact__value:hover { opacity: .7; }
 a.contact__value:active { opacity: .5; }
+.contact__value--sub { font-size: 15px; }
 /* 20px icons, 24px apart; each link keeps a 44px touch area */
-.contact__social { display: flex; margin-inline: -12px; }
-.contact__icon { display: grid; place-items: center; width: 44px; height: 44px; color: var(--pearl); transition: opacity .25s var(--ease); }
+.contact__social { display: flex; margin-inline: -12px; margin-block: -12px; }
+.contact__icon { display: grid; place-items: center; width: 44px; height: 44px; color: var(--green-700); transition: opacity .25s var(--ease); }
 .contact__icon svg { width: 20px; height: 20px; }
 .contact__icon .icon-line { fill: none; stroke: currentColor; stroke-width: 1.5; }
 .contact__icon .icon-line circle:last-child { fill: currentColor; stroke: none; }
@@ -542,59 +539,63 @@ a.contact__value:active { opacity: .5; }
 @media (min-width: 900px) {
   .contact { grid-template-columns: repeat(12, minmax(0, 1fr)); }
   .contact__head { grid-column: 1 / -1; }
-  .form { grid-column: 1 / span 5; }
-  .contact__info { grid-column: 7 / span 4; gap: 0; }
-  .contact__social { margin-top: auto; margin-bottom: -12px; } /* icons sit on the form's bottom edge */
+  .form { grid-column: 1 / span 7; }
+  .contact__info { grid-column: 9 / span 4; align-self: start; }
 }
 
-/* ---------- Form: one column, soft filled fields on green, no borders ---------- */
-.form { display: grid; gap: 20px; }
+/* ---------- Form: pearl fields on milk, no borders ---------- */
+.form { display: grid; gap: 16px; }
+@media (min-width: 700px) { .form { grid-template-columns: repeat(2, minmax(0, 1fr)); } .field--full { grid-column: 1 / -1; } }
 .field { position: relative; display: flex; flex-direction: column; gap: var(--s1); }
 .field > label:not(.check) {
-  font-family: var(--font-display); text-transform: uppercase; letter-spacing: .15em; font-size: 12px; line-height: 1.4; color: color-mix(in srgb, var(--pearl) 70%, transparent);
+  font-family: var(--font-display); text-transform: uppercase; letter-spacing: .15em; font-size: 12px; line-height: 1.4; color: var(--green-700);
 }
 .field input, .field textarea, .field select {
   width: 100%; height: 44px; padding: 0 14px; border: 0; border-radius: 0;
-  background: color-mix(in srgb, var(--pearl) 8%, transparent); font: inherit; font-size: 16px; line-height: 1.5; color: var(--pearl);
+  background: var(--pearl); font: inherit; font-size: 16px; line-height: 1.5; color: var(--ink);
   transition: background-color .25s var(--ease);
 }
 .field textarea { height: auto; padding: 8px 14px; line-height: 1.4; resize: none; }
 .field select { appearance: none; cursor: pointer; padding-right: 40px; }
 .field select option { color: var(--ink); background: var(--pearl); }
-.field--select::after { /* thin pearl chevron */
+.field--select::after { /* thin chevron */
   content: ""; position: absolute; right: 18px; bottom: 19px; width: 7px; height: 7px;
-  border-right: 1px solid var(--pearl); border-bottom: 1px solid var(--pearl); transform: rotate(45deg); pointer-events: none;
+  border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); transform: rotate(45deg); pointer-events: none;
 }
-.field input:hover, .field textarea:hover, .field select:hover { background: color-mix(in srgb, var(--pearl) 11%, transparent); }
-/* focus shown by the lighter fill (fields match :focus-visible on click, so no ring here) */
-.field input:focus, .field textarea:focus, .field select:focus { outline: none; background: color-mix(in srgb, var(--pearl) 14%, transparent); }
-.field input:-webkit-autofill { -webkit-text-fill-color: var(--pearl); caret-color: var(--pearl); transition: background-color 9999s; }
-.field:focus-within > label:not(.check) { color: var(--pearl); }
-.field.is-invalid input { background: color-mix(in srgb, var(--pearl) 14%, transparent); }
-.field__error { display: none; font-size: 14px; line-height: 1.4; color: var(--pearl); } /* 11:1 on green */
+.field input:hover, .field textarea:hover, .field select:hover { background: color-mix(in srgb, var(--pearl) 50%, #fff); }
+/* focus: white fill; the ring only for keyboard users (main.js sets .is-keyboard on <html> after Tab) */
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; background: #fff; }
+.is-keyboard .field input:focus, .is-keyboard .field textarea:focus, .is-keyboard .field select:focus { outline: 2px solid var(--gold); outline-offset: 3px; }
+.field input:-webkit-autofill { -webkit-text-fill-color: var(--ink); caret-color: var(--ink); transition: background-color 9999s; }
+.field.is-invalid input { background: #fff; }
+.field__error { display: none; font-size: 14px; line-height: 1.4; color: var(--ink); }
 .field.is-invalid .field__error { display: block; animation: field-error .4s var(--ease) both; }
 @keyframes field-error { from { opacity: 0; transform: translateY(-4px); } }
-.check { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--on-dark-soft); cursor: pointer; }
+.check { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--ink); cursor: pointer; }
 .check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.check__box { flex: 0 0 18px; height: 18px; margin-top: 3px; background: color-mix(in srgb, var(--pearl) 15%, transparent); display: grid; place-items: center; transition: transform .3s var(--ease), background-color .25s var(--ease); }
-.check__box::after { /* green tick on gold */
+.check__box { flex: 0 0 18px; height: 18px; margin-top: 3px; background: var(--pearl); display: grid; place-items: center; transition: transform .3s var(--ease), background-color .25s var(--ease); }
+.check__box::after { /* pearl tick on green */
   content: ""; width: 5px; height: 9px; margin-top: -3px;
-  border-right: 1.5px solid var(--green-700); border-bottom: 1.5px solid var(--green-700);
+  border-right: 1.5px solid var(--pearl); border-bottom: 1.5px solid var(--pearl);
   opacity: 0; transform: rotate(45deg) scale(.4); transition: transform .3s var(--ease-spring), opacity .2s var(--ease);
 }
-.check:hover .check__box { background: color-mix(in srgb, var(--pearl) 25%, transparent); }
-.check input:checked + .check__box { background: var(--gold); }
+.check:hover .check__box { background: #fff; }
+.check input:checked + .check__box { background: var(--green-700); }
 .check input:checked + .check__box::after { opacity: 1; transform: rotate(45deg) scale(1); }
 .check input:focus-visible + .check__box { outline: 2px solid var(--gold); outline-offset: 3px; }
 .check:active .check__box { transform: scale(.92); }
-/* on --green-700 the link is full pearl + medium weight against the 80% label (gold would be 4.4:1) */
-.check a { color: var(--pearl); font-weight: 500; transition: opacity .25s var(--ease); }
+.check a { color: var(--green-700); font-weight: 500; transition: opacity .25s var(--ease); }
 .check a:hover { opacity: .7; }
 .check a:active { opacity: .5; }
-.form__foot { display: flex; }
-.form__foot .btn { width: 100%; min-height: 52px; font-size: 13px; letter-spacing: .2em; }
-.form__foot .btn::before { transition-duration: .25s; }
-.form__success { color: var(--pearl); animation: field-error .5s var(--ease) both; }
+/* consent left, Send right (stacked on phones) */
+.form__end { display: flex; flex-direction: column; gap: var(--s3); }
+.form__send { min-height: 48px; padding: 0 48px; font-size: 13px; letter-spacing: .2em; }
+.form__send::before { transition-duration: .25s; }
+@media (min-width: 700px) {
+  .form__end { flex-direction: row; align-items: center; justify-content: space-between; }
+  .form__send { flex: 0 0 auto; }
+}
+.form__success { color: var(--green-700); animation: field-error .5s var(--ease) both; }
 .form__success[hidden] { display: none; }
 
 /* ---------- Footer ---------- */

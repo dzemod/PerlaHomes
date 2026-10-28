@@ -154,6 +154,11 @@
   });
 
 
+  /* Keyboard vs pointer: text fields match :focus-visible even on click, so their ring is keyed to this class */
+  const root = document.documentElement;
+  document.addEventListener('keydown', (e) => { if (e.key === 'Tab') root.classList.add('is-keyboard'); });
+  document.addEventListener('pointerdown', () => root.classList.remove('is-keyboard'));
+
   /* ---------- Header ---------- */
   const header = document.getElementById('header');
   const burger = header.querySelector('.burger');

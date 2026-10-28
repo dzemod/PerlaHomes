@@ -351,7 +351,7 @@
       </div>
     </section>
     <!-- ===== 9. Contact ===== -->
-    <section class="section section--green grain" id="contact" data-reveal>
+    <section class="section section--milk" id="contact" data-reveal>
       <div class="container contact">
         <div class="contact__head" data-reveal-items>
           <p class="eyebrow" data-i18n="nav.contact">Contact</p>
@@ -386,12 +386,12 @@
             <label for="f-message" data-i18n="form.message">Message</label>
             <textarea id="f-message" name="message" rows="3"></textarea>
           </div>
-          <div class="field field--full">
-            <label class="check"><input type="checkbox" name="consent" required aria-describedby="f-consent-err"><span class="check__box" aria-hidden="true"></span><span><span data-i18n="form.consent">I accept the</span> <a href="privacy.html" data-i18n="form.privacy">privacy policy</a></span></label>
-            <p class="field__error" id="f-consent-err" data-i18n="form.err.consent">Please accept the privacy policy.</p>
-          </div>
-          <div class="form__foot field--full">
-            <button class="btn btn--light" type="submit" data-i18n="form.submit">Send request</button>
+          <div class="form__end field--full">
+            <div class="field form__consent">
+              <label class="check"><input type="checkbox" name="consent" required aria-describedby="f-consent-err"><span class="check__box" aria-hidden="true"></span><span><span data-i18n="form.consent">I accept the</span> <a href="privacy.html" data-i18n="form.privacy">privacy policy</a></span></label>
+              <p class="field__error" id="f-consent-err" data-i18n="form.err.consent">Please accept the privacy policy.</p>
+            </div>
+            <button class="btn btn--green form__send" type="submit" data-i18n="form.submit">Send request</button>
           </div>
           <p class="form__success field--full" role="status" aria-live="polite" hidden><span data-i18n="form.sending">Opening WhatsApp with your request.</span></p>
         </form>
