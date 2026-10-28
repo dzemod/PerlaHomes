@@ -213,34 +213,32 @@
     </section>
 
     <!-- ===== 5. About ===== -->
-    <!-- Left (cols 1–5): top group (label, heading, quote) and bottom group (paragraphs, facts), space-between.
-         Right (cols 7–12): portrait + caption. Phones: label, heading, photo, caption, quote, paragraphs, facts. -->
+    <!-- Desktop (≥1024): two equal halves — text on the left (on the page's left margin line), full-bleed portrait on the right.
+         Below 1024: portrait first, edge to edge, then the text. -->
     <section class="section section--milk" id="about" data-reveal>
-      <div class="container about">
-        <div class="about__main">
-          <div class="about__top" data-reveal-items>
-            <p class="eyebrow" data-i18n="about.title">About Perla Homes</p>
-            <h2 class="h2" data-i18n="about.heading">My story began with a love of the sea</h2>
-            <blockquote class="about__quote"><p data-i18n="about.quote">I believe in quiet luxury: harmony, quality, attention to detail and trust without loud promises.</p></blockquote>
-          </div>
-          <div class="about__bottom" data-reveal-items>
-            <p data-i18n="about.p1">I am passionate about diving, and I know that true beauty does not always lie on the surface. This inspired me to create Perla Homes — an agency where searching for a home is like searching for your own pearl.</p>
-            <p data-i18n="about.p2">I work with clients personally, to understand their needs and help them find the right home.</p>
-            <p data-i18n="about.p3">What matters to me is not the number of deals, but understanding the client and their lifestyle — and finding the home that suits them.</p>
-            <ul class="about__facts">
-              <li><span class="about__value">5</span><span class="about__label" data-i18n="about.years">years in real estate</span></li>
-              <li><span class="about__value" data-i18n="about.f2.v">Personal</span><span class="about__label" data-i18n="about.f2.l">Founder’s attention</span></li>
-              <li><span class="about__value" data-i18n="about.f3.v">Marbella</span><span class="about__label" data-i18n="about.f3.l">Costa del Sol</span></li>
-            </ul>
-          </div>
-        </div>
+      <div class="about">
         <figure class="about__figure">
-          <div class="photo photo--portrait photo--founder"><picture>
-            <source type="image/webp" srcset="assets/img/founder-portrait-640.webp 640w, assets/img/founder-portrait-976.webp 976w" sizes="(min-width: 900px) 45vw, 100vw">
-            <img src="assets/img/founder-portrait-976.jpg" srcset="assets/img/founder-portrait-640.jpg 640w, assets/img/founder-portrait-976.jpg 976w" sizes="(min-width: 900px) 45vw, 100vw" alt="Founder of Perla Homes" data-i18n-alt="alt.about" loading="lazy" width="976" height="1220">
+          <div class="photo photo--founder"><picture>
+            <source type="image/webp" srcset="assets/img/founder-portrait-640.webp 640w, assets/img/founder-portrait-976.webp 976w" sizes="(min-width: 1024px) 50vw, 100vw">
+            <img src="assets/img/founder-portrait-976.jpg" srcset="assets/img/founder-portrait-640.jpg 640w, assets/img/founder-portrait-976.jpg 976w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Founder of Perla Homes" data-i18n-alt="alt.about" loading="lazy" width="976" height="1220">
           </picture></div>
           <figcaption class="about__caption" data-i18n="alt.about">Founder of Perla Homes</figcaption><!-- TODO: from client — founder's name -->
         </figure>
+        <div class="about__content" data-reveal-items>
+          <p class="eyebrow" data-i18n="about.title">About Perla Homes</p>
+          <h2 class="h2" data-i18n="about.heading">My story began with a love of the sea</h2>
+          <blockquote class="about__quote"><p data-i18n="about.quote">I believe in quiet luxury: harmony, quality, attention to detail and trust without loud promises.</p></blockquote>
+          <div class="about__paras">
+            <p data-i18n="about.p1">I am passionate about diving, and I know that true beauty does not always lie on the surface. This inspired me to create Perla Homes — an agency where searching for a home is like searching for your own pearl.</p>
+            <p data-i18n="about.p2">I work with clients personally, to understand their needs and help them find the right home.</p>
+            <p data-i18n="about.p3">What matters to me is not the number of deals, but understanding the client and their lifestyle — and finding the home that suits them.</p>
+          </div>
+          <ul class="about__facts">
+            <li><span class="about__value">5</span><span class="about__label" data-i18n="about.years">years in real estate</span></li>
+            <li><span class="about__value" data-i18n="about.f2.v">Personal</span><span class="about__label" data-i18n="about.f2.l">Founder’s attention</span></li>
+            <li><span class="about__value" data-i18n="about.f3.v">Marbella</span><span class="about__label" data-i18n="about.f3.l">Costa del Sol</span></li>
+          </ul>
+        </div>
       </div>
     </section>
 

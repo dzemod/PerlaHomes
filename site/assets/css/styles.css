@@ -181,7 +181,7 @@ p, li { text-wrap: pretty; }
 }
 .header::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: var(--green-700); box-shadow: 0 8px 32px rgba(22, 48, 42, .18);
+  background: var(--green-700); /* no shadow: green header vs light sections is the separation */
   opacity: 0; transition: opacity .5s var(--ease);
 }
 .header.is-solid::before, .header.is-open::before { opacity: 1; }
@@ -438,62 +438,65 @@ p, li { text-wrap: pretty; }
   .costa-card__body { padding: var(--s3) var(--s4) var(--s4); }
 }
 
-/* ---------- About (light, Drumelia-style) ---------- */
-/* Desktop: left column 1–5 = top group (label, heading, quote) + bottom group (paragraphs, facts),
-   pushed apart with space-between; right column 7–12 = portrait 4:5 + caption.
-   Label top = photo top, facts bottom = caption bottom. No lines anywhere.
-   Phones: one column — label, heading, photo, caption, quote, paragraphs, facts. */
-#about { overflow: hidden; }
-.about { display: flex; flex-direction: column; }
-.about__main, .about__top { display: contents; }
-.about .eyebrow { order: 1; color: var(--ink-soft); } /* ink on milk: taupe is 4.0:1 there, below AA */
-.about .h2 { order: 2; margin-bottom: var(--s4); color: var(--green-700); }
-.about__figure { order: 3; margin: 0; }
-.about__quote { order: 4; margin: var(--s4) 0; max-width: 540px; font-family: var(--font-display); font-weight: 300; font-size: 22px; line-height: 1.4; color: var(--green-700); text-wrap: pretty; }
-.about__bottom { order: 5; }
-.photo--portrait { position: relative; width: 100%; aspect-ratio: 4 / 5; }
+/* ---------- About: editorial split ---------- */
+/* ≥1024: two equal halves. Left: text in normal flow on the page's left margin line, centred vertically.
+   Right: portrait full-bleed to the right screen edge and the full section height, caption on the photo.
+   Below 1024: portrait edge to edge (4:5), then the text. No lines anywhere. */
+#about { padding-block: 0; overflow: hidden; }
+.about__figure { position: relative; margin: 0; }
+.about__figure .photo { aspect-ratio: 4 / 5; }
+.about__figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
 .photo--founder::after { content: none; } /* client portrait shown untinted */
-.about__caption { margin-top: var(--s2); font-family: var(--font-display); font-size: 15px; line-height: 1.4; text-transform: uppercase; letter-spacing: .15em; color: var(--green-700); }
-.about__bottom p { max-width: 540px; font-size: 17px; line-height: 1.7; color: var(--ink); text-wrap: pretty; }
-.about__bottom p + p { margin-top: var(--s3); }
-/* phones: value left, label right — labels share one column */
+.about__figure::after { /* soft shade under the caption, lower 30% only */
+  content: ""; position: absolute; inset: 70% 0 0; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(22, 48, 42, 0), rgba(22, 48, 42, .55));
+}
+.about__caption {
+  position: absolute; z-index: 1; left: var(--s3); right: var(--s3); bottom: var(--s3);
+  font-family: var(--font-display); font-size: 13px; line-height: 1.4; text-transform: uppercase; letter-spacing: .15em; color: var(--pearl);
+}
+.about__content { padding: 48px var(--gutter); }
+.about .eyebrow { margin-bottom: var(--s2); color: var(--ink-soft); } /* ink on milk: taupe is 4.0:1 there, below AA */
+.about .h2 { margin-bottom: var(--s3); color: var(--green-700); }
+.about__quote { margin: 0 0 var(--s4); max-width: 560px; font-family: var(--font-display); font-weight: 300; font-size: 22px; line-height: 1.4; color: var(--green-700); text-wrap: pretty; }
+.about__paras p { max-width: 560px; font-size: 17px; line-height: 1.7; color: var(--ink); text-wrap: pretty; }
+.about__paras p + p { margin-top: 20px; }
+/* phones / tablets: value left, label right; labels share one column */
 .about__facts { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: var(--s2) var(--s3); margin-top: var(--s4); }
 .about__facts li { display: contents; }
 .about__value { font-family: var(--font-display); font-weight: 300; font-size: 32px; line-height: 1.1; color: var(--green-700); }
-.about__label { font-family: var(--font-display); font-size: 12px; line-height: 1.4; text-transform: uppercase; letter-spacing: .2em; color: var(--ink-soft); }
-@media (min-width: 600px) {
-  .about__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s3); }
-  .about__facts li { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
-}
-@media (min-width: 900px) {
-  .about { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); align-items: stretch; }
-  .about__main { grid-column: 1 / span 5; grid-row: 1; display: flex; flex-direction: column; justify-content: space-between; gap: var(--content-gap); }
-  .about__top { display: block; }
-  .about .h2 { margin-bottom: var(--head-gap); }
-  .about__quote { margin: var(--head-gap) 0 0; font-size: 24px; }
-  .about__figure { grid-column: 7 / span 6; grid-row: 1; }
+.about__label { font-family: var(--font-display); font-size: 12px; line-height: 1.4; text-transform: uppercase; letter-spacing: .2em; color: var(--ink-soft); white-space: nowrap; }
+@media (min-width: 1024px) {
+  .about { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); } /* always two equal halves */
+  .about__figure { grid-column: 2; grid-row: 1; }
+  .about__figure .photo { aspect-ratio: auto; height: 100%; }
+  .about__caption { left: 32px; right: 32px; bottom: 32px; }
+  .about__content {
+    grid-column: 1; grid-row: 1; align-self: center;
+    padding-block: var(--about-pad, var(--s6));
+    /* left edge = the container's content line (logo line): half width (100%) minus half the container */
+    padding-left: max(var(--gutter), calc(100% - var(--container) / 2));
+    padding-right: clamp(32px, 3vw, 56px);
+  }
+  .about__content > :not(.about__facts) { max-width: 560px; } /* the facts row may use the full column so EN labels stay on one row */
+  .about__quote { font-size: 24px; }
+  /* labels stay on one line; longer languages (ES/RU) wrap the third fact to a second row instead of overflowing */
+  .about__facts { display: flex; flex-wrap: wrap; gap: var(--s3) 48px; align-items: flex-start; }
+  .about__facts li { display: flex; flex-direction: column; gap: 4px; }
   .about__value { font-size: 40px; }
 }
-/* Desktop with enough height: the whole block fits one screen under the header.
-   Photo height = content height minus the caption; width follows from 4:5 (capped by the column). */
+/* Enough height: the whole block fits one screen under the header; the photo fills that height */
 @media (min-width: 1024px) and (min-height: 640px) {
-  #about {
-    --about-pad: clamp(24px, 4vh, 64px);
-    --about-h: calc(100svh - var(--header-h) - 2 * var(--about-pad)); /* content area height */
-    --about-gap: clamp(12px, 2.2vh, 32px);
-    --caption-h: calc(var(--s2) + 15px * 1.4);
-    height: calc(100svh - var(--header-h)); padding-block: var(--about-pad);
-    display: flex; align-items: center;
-  }
-  .about { width: 100%; }
-  .about__main { gap: var(--about-gap); }
-  .about__figure { justify-self: end; width: min(100%, calc((var(--about-h) - var(--caption-h)) * 4 / 5)); }
-  .about .eyebrow, .about .h2 { margin-bottom: var(--about-gap); }
+  /* min-height, not height: a longer language grows the section instead of being cut off */
+  #about { --about-pad: clamp(32px, 5vh, 72px); min-height: calc(100svh - var(--header-h)); display: grid; }
+  .about .eyebrow { margin-bottom: clamp(10px, 1.4vh, 16px); }
+  .about .h2 { margin-bottom: clamp(14px, 2vh, 24px); }
+  .about__quote { margin-bottom: clamp(20px, 3.4vh, 40px); }
+  .about__paras p + p { margin-top: clamp(12px, 1.6vh, 20px); }
+  .about__facts { margin-top: clamp(20px, 3.4vh, 40px); }
   .about .h2 { font-size: clamp(32px, 4.2vh, 52px); }
-  .about__quote { margin-top: var(--about-gap); font-size: clamp(20px, 2.4vh, 26px); }
-  .about__bottom p { font-size: clamp(16px, 1.7vh, 18px); line-height: 1.6; }
-  .about__bottom p + p { margin-top: var(--about-gap); }
-  .about__facts { margin-top: var(--about-gap); }
+  .about__quote { font-size: clamp(20px, 2.4vh, 26px); }
+  .about__paras p { font-size: clamp(16px, 1.7vh, 18px); line-height: 1.6; }
   .about__value { font-size: clamp(28px, 3.6vh, 40px); }
 }
 
