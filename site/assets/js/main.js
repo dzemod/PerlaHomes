@@ -173,6 +173,12 @@
   const onScroll = () => header.classList.toggle('is-solid', window.scrollY > 40);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+  // --header-h = real height of the header bar (not the open mobile menu); follows resizes and any shrink on scroll
+  const headerBar = header.querySelector('.header__inner');
+  const setHeaderH = () => document.documentElement.style.setProperty('--header-h', `${headerBar.getBoundingClientRect().height}px`);
+  setHeaderH();
+  if ('ResizeObserver' in window) new ResizeObserver(setHeaderH).observe(headerBar);
+  else window.addEventListener('resize', setHeaderH);
   function setMenu(open) {
     burger.setAttribute('aria-expanded', String(open));
     burger.setAttribute('aria-label', t(open ? 'nav.close' : 'nav.menu'));
