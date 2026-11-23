@@ -114,16 +114,14 @@
   function cardHTML(p) {
     const img = `assets/img/properties/${p.id}/${p.id}-1`;
     const name = local(p.name);
-    const loc = local(p.location);
-    const alt = loc ? `${name}, ${loc}` : name;
-    const missing = ['location', 'status', 'bedrooms', 'bathrooms', 'area', 'description'].filter((k) => p[k] === null || p[k] === undefined);
+    const alt = name;
+    const missing = ['status', 'bedrooms', 'bathrooms', 'area', 'description'].filter((k) => p[k] === null || p[k] === undefined);
     const tag = p.status ? `<span class="pcard__tag">${esc(t(`props.status.${p.status}`))}</span>` : '';
-    return `<li class="pcard">${missing.length ? todo(missing.join(', ')) : ''}
+    return `<li class="pcard">${p.internal ? `<!-- internal: ${esc(p.internal)} -->` : ''}${missing.length ? todo(missing.join(', ')) : ''}
       <div class="pcard__media">
         <img src="${img}-800.webp" srcset="${img}-800.webp 800w, ${img}.webp 1600w" sizes="(min-width: 1200px) 420px, (min-width: 600px) 46vw, 100vw" alt="${esc(alt)}" loading="lazy" width="800" height="600">
         ${tag}
       </div>
-      <p class="pcard__loc">${loc ? esc(loc) : ''}</p>
       <h3 class="pcard__name">${esc(name)}</h3>
       <p class="pcard__price">${p.price ? esc(price(p.price)) : ''}</p>
       <a class="btn btn--outline pcard__btn" href="#contact" data-request="${esc(p.id)}">${esc(t('props.request'))}</a>
@@ -150,7 +148,7 @@
       return;
     }
     const p = properties.properties.find((x) => String(x.id) === id);
-    if (p) msg.value = t('props.interested').replace('{name}', local(p.name));
+    if (p) msg.value = t('props.interested').replace('{name}', local(p.name)).replace('{price}', p.price ? price(p.price) : t('props.price'));
   });
 
 

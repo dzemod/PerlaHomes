@@ -1,12 +1,17 @@
 {
-  "_TODO": "Selected properties: real developments from the client. price = number in EUR (formatted per language). status = \"construction\" | \"built\" | null. null fields are not shown on the site — TODO: from client (location where null, bedrooms, bathrooms, area, description, Lakün status). Photos: assets/img/properties/<id>/<id>-1.webp (main) … -4, made by tools/make-properties.mjs. featured = the separate Featured band (unchanged).",
+  "_TODO": "Selected properties: real developments from the client. price = number in EUR (formatted per language). status = \"construction\" | \"built\" | null. null fields are not shown on the site — TODO: from client (bedrooms, bathrooms, area, description, Lakün status). Photos: assets/img/properties/<id>/<id>-1.webp (main) … -4, made by tools/make-properties.mjs. featured = the separate Featured band (unchanged). name = shown name per language (Villa + location); internal = original development name, only in an HTML comment, never shown.",
   "properties": [
     {
       "id": "jardines-de-las-lagunas-2",
-      "name": "Jardines De Las Lagunas II",
+      "internal": "Jardines De Las Lagunas II",
+      "name": {
+        "en": "Villa in Mijas",
+        "es": "Villa en Mijas",
+        "ru": "Вилла в Михасе"
+      },
       "price": 470900,
       "status": "construction",
-      "location": null,
+      "location": "Mijas",
       "bedrooms": null,
       "bathrooms": null,
       "area": null,
@@ -14,7 +19,12 @@
     },
     {
       "id": "biubay",
-      "name": "Biubay",
+      "internal": "Biubay",
+      "name": {
+        "en": "Villa in Estepona",
+        "es": "Villa en Estepona",
+        "ru": "Вилла в Эстепоне"
+      },
       "price": 6500000,
       "status": "construction",
       "location": "Estepona",
@@ -25,7 +35,12 @@
     },
     {
       "id": "atelier-4",
-      "name": "Atelier 4",
+      "internal": "Atelier 4",
+      "name": {
+        "en": "Villa in Estepona",
+        "es": "Villa en Estepona",
+        "ru": "Вилла в Эстепоне"
+      },
       "price": 3200000,
       "status": "built",
       "location": "Estepona",
@@ -36,10 +51,15 @@
     },
     {
       "id": "santa-clara-homes",
-      "name": "Santa Clara Homes",
+      "internal": "Santa Clara Homes",
+      "name": {
+        "en": "Villa in Marbella",
+        "es": "Villa en Marbella",
+        "ru": "Вилла в Марбелье"
+      },
       "price": 1250000,
       "status": "built",
-      "location": null,
+      "location": "Marbella",
       "bedrooms": null,
       "bathrooms": null,
       "area": null,
@@ -47,10 +67,15 @@
     },
     {
       "id": "lakun",
-      "name": "Lakün",
+      "internal": "Lakün",
+      "name": {
+        "en": "Villa in Mijas",
+        "es": "Villa en Mijas",
+        "ru": "Вилла в Михасе"
+      },
       "price": 580000,
       "status": null,
-      "location": null,
+      "location": "Mijas",
       "bedrooms": null,
       "bathrooms": null,
       "area": null,
@@ -58,10 +83,15 @@
     },
     {
       "id": "elysea-suites",
-      "name": "Elysea Suites",
+      "internal": "Elysea Suites",
+      "name": {
+        "en": "Villa in Mijas",
+        "es": "Villa en Mijas",
+        "ru": "Вилла в Михасе"
+      },
       "price": 985000,
       "status": "construction",
-      "location": null,
+      "location": "Mijas",
       "bedrooms": null,
       "bathrooms": null,
       "area": null,

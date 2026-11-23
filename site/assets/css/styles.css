@@ -290,7 +290,7 @@ p, li { text-wrap: pretty; }
 .pgrid { display: grid; gap: 32px; }
 @media (min-width: 600px) { .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 900px) { .pgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.pcard { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; }
+.pcard { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; }
 .pcard__media { position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: var(--milk); }
 .pcard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
 .pcard:hover .pcard__media img, .pcard:focus-within .pcard__media img { transform: scale(1.04); }
@@ -298,8 +298,7 @@ p, li { text-wrap: pretty; }
   position: absolute; top: 16px; left: 16px; padding: 6px 12px; background: var(--pearl); color: var(--green-700);
   font-family: var(--font-display); font-size: 12px; line-height: 1.4; text-transform: uppercase; letter-spacing: .12em;
 }
-.pcard__loc { min-height: calc(12px * 1.4); margin-top: 20px; font-family: var(--font-display); font-size: 12px; line-height: 1.4; text-transform: uppercase; letter-spacing: .15em; color: var(--taupe); }
-.pcard__name { margin-top: 6px; font-family: var(--font-display); font-weight: 300; text-transform: uppercase; font-size: 19px; line-height: 1.3; letter-spacing: .14em; color: var(--green-700); }
+.pcard__name { margin-top: 20px; font-family: var(--font-display); font-weight: 300; text-transform: uppercase; font-size: 19px; line-height: 1.3; letter-spacing: .14em; color: var(--green-700); }
 .pcard__price { margin-top: 6px; font-family: var(--font-display); font-size: 17px; line-height: 1.4; letter-spacing: .04em; color: var(--ink); }
 .pcard__btn { justify-self: start; align-self: end; margin-top: 20px; }
 .pcard__btn::before { transition-duration: .25s; }
