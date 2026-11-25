@@ -269,7 +269,7 @@
     "about.f3.l": "Costa del Sol",
     "props.status.construction": "En construcción",
     "props.status.built": "Terminado",
-    "props.interested": "Me interesa {name} — {price}."
+    "props.interested": "Me interesan {name} — {price}."
   },
   "ru": {
     "meta.title": "Perla Homes — бутиковое агентство недвижимости в Марбелье, Costa del Sol",
@@ -405,6 +405,6 @@
     "about.f3.l": "Costa del Sol",
     "props.status.construction": "Строится",
     "props.status.built": "Готово",
-    "props.interested": "Меня интересует {name} — {price}."
+    "props.interested": "Меня интересуют {name} — {price}."
   }
 }
