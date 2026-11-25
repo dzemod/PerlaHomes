@@ -5,7 +5,6 @@
 
   const LANGS = ['en', 'es', 'ru'];
   const OG_LOCALE = { en: 'en_GB', es: 'es_ES', ru: 'ru_RU' };
-  const WHATSAPP = '34627986515';
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let dict = {};
@@ -163,12 +162,14 @@
     const msg = document.getElementById('f-message');
     if (id === 'featured') {
       const f = properties.featured;
-      msg.value = `${t('form.requestFor')} ${field(f, 'name')}, ${field(f, 'district')}`;
+      msg.dataset.property = `${field(f, 'name')}, ${field(f, 'district')}`;
+      msg.value = `${t('form.requestFor')} ${msg.dataset.property}`;
       msg.dispatchEvent(new Event('change'));
       return;
     }
     const p = properties.properties.find((x) => String(x.id) === id);
     if (p) {
+      msg.dataset.property = p.price ? `${local(p.name)} — ${price(p.price)}` : local(p.name);
       msg.value = t('props.interested').replace('{name}', local(p.name)).replace('{price}', p.price ? price(p.price) : t('props.price'));
       msg.dispatchEvent(new Event('change'));
     }
@@ -250,14 +251,16 @@
     });
   }
 
-  /* ---------- Contact form -> WhatsApp (TODO: real backend from client) ----------
+  /* ---------- Contact form -> /api/lead (Vercel function) -> Telegram group ----------
      Validation (inline errors on blur and on submit) + anti-spam without captcha:
-     honeypot, 3-second time trap, max 3 requests per browser per 10 minutes. */
+     honeypot, 3-second time trap, max 3 requests per browser per 10 minutes.
+     The server (api/lead.js) checks everything again. */
   const contactForm = document.getElementById('contact-form');
   if (contactForm) initForm(contactForm);
   function initForm(form) {
     const success = form.querySelector('.form__success');
-    const notice = form.querySelector('.form__notice');
+    const notice = form.querySelector('.form__notice:not(.form__fail)');
+    const fail = form.querySelector('.form__fail');
     const sendBtn = form.querySelector('.form__send');
     const counter = form.querySelector('[data-count]');
     const MSG_MAX = 1000;
@@ -324,7 +327,7 @@
         if (el.closest('.field.is-invalid')) check(el);
       });
     });
-    form.addEventListener('input', () => { success.hidden = true; notice.hidden = true; });
+    form.addEventListener('input', () => { success.hidden = true; notice.hidden = true; fail.hidden = true; });
 
     // Time trap: the clock starts when the form first becomes visible
     let shownAt = 0;
@@ -343,7 +346,14 @@
     };
 
     let busy = false;
-    form.addEventListener('submit', (e) => {
+    const setSending = (on) => {
+      sendBtn.disabled = on;
+      sendBtn.dataset.i18n = on ? 'form.sendingBtn' : 'form.submit';
+      sendBtn.textContent = t(sendBtn.dataset.i18n);
+      if (on) sendBtn.setAttribute('aria-busy', 'true'); else sendBtn.removeAttribute('aria-busy');
+    };
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (busy) return;
       if (form.elements.website.value) return;                    // honeypot filled: silently ignore
@@ -352,30 +362,53 @@
       const ok = fields.map(check).every(Boolean);
       success.hidden = true;
       notice.hidden = true;
+      fail.hidden = true;
       if (!ok) { form.querySelector('[aria-invalid="true"]').focus(); return; }
 
       const sends = recentSends();
       if (sends.length >= RATE.max) { notice.hidden = false; return; }
 
       busy = true;
-      sendBtn.disabled = true;
-      sendBtn.setAttribute('aria-busy', 'true');
+      setSending(true);
       const v = (n) => form.elements[n].value.trim();
-      const lines = [
-        `${t('form.name')}: ${v('name')}`,
-        `${t('form.email')}: ${v('email')}`,
-        v('phone') && `${t('form.phone')}: ${v('phone')}`,
-        `${t('form.lang')}: ${form.elements.language.selectedOptions[0].text}`,
-        v('message'),
-      ].filter(Boolean);
-      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
-      store.set(RATE.key, JSON.stringify([...sends, Date.now()]));
-      success.hidden = false;
-      form.reset();
-      form.elements.language.value = lang;
-      fields.forEach((el) => { delete el.dataset.touched; });
-      updateCount();
-      setTimeout(() => { busy = false; sendBtn.disabled = false; sendBtn.removeAttribute('aria-busy'); }, 2000);
+      const msgEl = form.elements.message;
+      const payload = {
+        name: v('name'),
+        email: v('email'),
+        phone: v('phone'),
+        language: form.elements.language.value,
+        message: v('message'),
+        consent: form.elements.consent.checked,
+        property: msgEl.dataset.property || '',
+        siteLang: lang,
+        page: location.href,
+        website: form.elements.website.value,
+        elapsed: Date.now() - shownAt,
+      };
+      let sent = false;
+      try {
+        const res = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const out = await res.json().catch(() => null);
+        sent = res.ok && !!out && out.ok === true;
+      } catch { sent = false; }
+
+      if (sent) {
+        store.set(RATE.key, JSON.stringify([...sends, Date.now()]));
+        success.hidden = false;
+        form.reset();
+        delete msgEl.dataset.property;
+        form.elements.language.value = lang;
+        fields.forEach((el) => { delete el.dataset.touched; });
+        updateCount();
+      } else {
+        fail.hidden = false; // the typed data stays in the form
+      }
+      busy = false;
+      setSending(false);
     });
   }
 
