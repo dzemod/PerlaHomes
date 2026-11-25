@@ -360,40 +360,52 @@
         </div>
         <!-- TODO: from client — form backend / e-mail. Until then the form opens WhatsApp with the request pre-filled. -->
         <form class="form" id="contact-form" novalidate data-reveal-items>
+          <!-- Anti-spam: honeypot (hidden from people and screen readers). If it is filled, the submit is silently ignored. -->
+          <div class="form__hp" aria-hidden="true">
+            <label for="f-website">Website</label>
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100">
+          </div>
           <div class="field">
             <label for="f-name" data-i18n="form.name">Name</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+            <input id="f-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="60" autocapitalize="words" spellcheck="false" aria-invalid="false" aria-describedby="f-name-err">
             <p class="field__error" id="f-name-err" data-i18n="form.err.name">Please enter your name.</p>
           </div>
           <div class="field">
             <label for="f-email" data-i18n="form.email">E-mail</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-err">
+            <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="100" autocapitalize="off" spellcheck="false" aria-invalid="false" aria-describedby="f-email-err">
             <p class="field__error" id="f-email-err" data-i18n="form.err.email">Please enter a valid e-mail.</p>
           </div>
           <div class="field">
             <label for="f-phone" data-i18n="form.phone">Phone</label>
-            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+            <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" aria-invalid="false" aria-describedby="f-phone-err">
+            <p class="field__error" id="f-phone-err" data-i18n="form.err.phone">Enter 7 to 15 digits. You can use +, spaces, brackets and hyphens.</p>
           </div>
           <div class="field field--select">
             <label for="f-lang" data-i18n="form.lang">Preferred language</label>
-            <select id="f-lang" name="language">
+            <select id="f-lang" name="language" autocomplete="language" aria-invalid="false" aria-describedby="f-lang-err">
               <option value="en">English</option>
               <option value="es">Español</option>
               <option value="ru">Русский</option>
             </select>
+            <p class="field__error" id="f-lang-err" data-i18n="form.err.lang">Choose a language from the list.</p>
           </div>
           <div class="field field--full">
             <label for="f-message" data-i18n="form.message">Message</label>
-            <textarea id="f-message" name="message" rows="3"></textarea>
+            <textarea id="f-message" name="message" rows="3" maxlength="1000" autocomplete="off" aria-invalid="false" aria-describedby="f-message-count f-message-err"></textarea>
+            <div class="field__meta">
+              <p class="field__error" id="f-message-err" data-i18n="form.err.message.links">Please remove links and web addresses from the message.</p>
+              <p class="field__count" id="f-message-count"><span data-count>0</span> / 1000</p>
+            </div>
           </div>
           <div class="form__end field--full">
             <div class="field form__consent">
-              <label class="check"><input type="checkbox" name="consent" required aria-describedby="f-consent-err"><span class="check__box" aria-hidden="true"></span><span><span data-i18n="form.consent">I accept the</span> <a href="privacy.html" data-i18n="form.privacy">privacy policy</a></span></label>
+              <label class="check"><input type="checkbox" name="consent" required aria-invalid="false" aria-describedby="f-consent-err"><span class="check__box" aria-hidden="true"></span><span><span data-i18n="form.consent">I accept the</span> <a href="privacy.html" data-privacy-link data-i18n="form.privacy">privacy policy</a></span></label>
               <p class="field__error" id="f-consent-err" data-i18n="form.err.consent">Please accept the privacy policy.</p>
             </div>
             <button class="btn btn--green form__send" type="submit" data-i18n="form.submit">Send request</button>
           </div>
           <p class="form__success field--full" role="status" aria-live="polite" hidden><span data-i18n="form.sending">Opening WhatsApp with your request.</span></p>
+          <p class="form__notice field--full" role="alert" hidden><span data-i18n="form.limit">You have sent several requests in a short time. Please write to us directly on WhatsApp:</span> <a href="https://wa.me/34627986515" target="_blank" rel="noopener">+34 627 986 515</a></p>
         </form>
         <div class="contact__info" data-reveal-items>
           <ul class="contact__list">

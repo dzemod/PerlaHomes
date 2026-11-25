@@ -133,7 +133,16 @@
     "about.f3.l": "Costa del Sol",
     "props.status.construction": "Under construction",
     "props.status.built": "Ready",
-    "props.interested": "I’m interested in {name} — {price}."
+    "props.interested": "I’m interested in {name} — {price}.",
+    "form.err.name.length": "Name must be 2 to 60 characters.",
+    "form.err.name.chars": "Use letters, spaces, hyphens and apostrophes only.",
+    "form.err.email.required": "Please enter your e-mail.",
+    "form.err.email.length": "E-mail must be up to 100 characters.",
+    "form.err.phone": "Enter 7 to 15 digits. You can use +, spaces, brackets and hyphens.",
+    "form.err.lang": "Choose a language from the list.",
+    "form.err.message.links": "Please remove links and web addresses from the message.",
+    "form.err.message.length": "Message must be up to 1000 characters.",
+    "form.limit": "You have sent several requests in a short time. Please write to us directly on WhatsApp:"
   },
   "es": {
     "meta.title": "Perla Homes — Agencia inmobiliaria boutique en Marbella, Costa del Sol",
@@ -269,7 +278,16 @@
     "about.f3.l": "Costa del Sol",
     "props.status.construction": "En construcción",
     "props.status.built": "Terminado",
-    "props.interested": "Me interesan {name} — {price}."
+    "props.interested": "Me interesan {name} — {price}.",
+    "form.err.name.length": "El nombre debe tener entre 2 y 60 caracteres.",
+    "form.err.name.chars": "Use solo letras, espacios, guiones y apóstrofos.",
+    "form.err.email.required": "Indique su correo electrónico.",
+    "form.err.email.length": "El correo electrónico puede tener como máximo 100 caracteres.",
+    "form.err.phone": "Indique entre 7 y 15 dígitos. Puede usar +, espacios, paréntesis y guiones.",
+    "form.err.lang": "Elija un idioma de la lista.",
+    "form.err.message.links": "Elimine los enlaces y direcciones web del mensaje.",
+    "form.err.message.length": "El mensaje puede tener como máximo 1000 caracteres.",
+    "form.limit": "Ha enviado varias solicitudes en poco tiempo. Escríbanos directamente por WhatsApp:"
   },
   "ru": {
     "meta.title": "Perla Homes — бутиковое агентство недвижимости в Марбелье, Costa del Sol",
@@ -405,6 +423,15 @@
     "about.f3.l": "Costa del Sol",
     "props.status.construction": "Строится",
     "props.status.built": "Готово",
-    "props.interested": "Меня интересуют {name} — {price}."
+    "props.interested": "Меня интересуют {name} — {price}.",
+    "form.err.name.length": "Имя должно содержать от 2 до 60 символов.",
+    "form.err.name.chars": "Используйте только буквы, пробелы, дефисы и апострофы.",
+    "form.err.email.required": "Укажите e-mail.",
+    "form.err.email.length": "E-mail — не более 100 символов.",
+    "form.err.phone": "Укажите от 7 до 15 цифр. Можно использовать +, пробелы, скобки и дефисы.",
+    "form.err.lang": "Выберите язык из списка.",
+    "form.err.message.links": "Уберите из сообщения ссылки и адреса сайтов.",
+    "form.err.message.length": "Сообщение — не более 1000 символов.",
+    "form.limit": "Вы отправили несколько запросов за короткое время. Напишите нам напрямую в WhatsApp:"
   }
 }

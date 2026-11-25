@@ -145,10 +145,14 @@
     if (id === 'featured') {
       const f = properties.featured;
       msg.value = `${t('form.requestFor')} ${field(f, 'name')}, ${field(f, 'district')}`;
+      msg.dispatchEvent(new Event('change'));
       return;
     }
     const p = properties.properties.find((x) => String(x.id) === id);
-    if (p) msg.value = t('props.interested').replace('{name}', local(p.name)).replace('{price}', p.price ? price(p.price) : t('props.price'));
+    if (p) {
+      msg.value = t('props.interested').replace('{name}', local(p.name)).replace('{price}', p.price ? price(p.price) : t('props.price'));
+      msg.dispatchEvent(new Event('change'));
+    }
   });
 
 
@@ -227,42 +231,130 @@
     });
   }
 
-  /* ---------- Contact form -> WhatsApp (TODO: real backend from client) ---------- */
+  /* ---------- Contact form -> WhatsApp (TODO: real backend from client) ----------
+     Validation (inline errors on blur and on submit) + anti-spam without captcha:
+     honeypot, 3-second time trap, max 3 requests per browser per 10 minutes. */
   const form = document.getElementById('contact-form');
   const success = form.querySelector('.form__success');
-  const invalid = (el, bad) => {
-    el.closest('.field').classList.toggle('is-invalid', bad);
-    el.setAttribute('aria-invalid', String(bad));
+  const notice = form.querySelector('.form__notice');
+  const sendBtn = form.querySelector('.form__send');
+  const counter = form.querySelector('[data-count]');
+  const MSG_MAX = 1000;
+  const RATE = { key: 'perla-form-sends', max: 3, window: 10 * 60 * 1000 };
+  const MIN_FILL_MS = 3000;
+
+  const NAME_RE = /^[\p{L}\p{M}][\p{L}\p{M} '’\-]*$/u;
+  const EMAIL_RE = /^[^\s@<>()[\]\\,;:"]+@(?:[^\s@<>()[\]\\,;:".]+\.)+[^\s@<>()[\]\\,;:".\d]{2,}$/u;
+  const PHONE_CHARS = /[^\d\s+()\-]/g; // for replace()
+  const PHONE_BAD = /[^\d\s+()\-]/;    // for test()
+  // links: a scheme, "www." or a word followed by a common domain ending (.com, .ru, .xyz …)
+  const LINK_RE = /(?:https?:\/\/|www\.|[\p{L}\d-]+\.(?:com|net|org|info|biz|xyz|top|online|site|club|shop|store|live|pro|app|dev|link|click|io|ru|su|рф|es|eu|uk|de|fr|nl|pl|ua|by|kz|cn|tk|ml|ga|cf|gq|cc|ws|ly|gl)(?![\p{L}\d]))/iu;
+
+  // Each check returns an i18n error key, or '' when the value is valid
+  const rules = {
+    name: (v) => (!v ? 'form.err.name' : v.length < 2 || v.length > 60 ? 'form.err.name.length' : !NAME_RE.test(v) ? 'form.err.name.chars' : ''),
+    email: (v) => (!v ? 'form.err.email.required' : v.length > 100 ? 'form.err.email.length' : !EMAIL_RE.test(v) ? 'form.err.email' : ''),
+    phone: (v) => {
+      if (!v) return '';
+      const digits = v.replace(/\D/g, '').length;
+      return PHONE_BAD.test(v) || digits < 7 || digits > 15 ? 'form.err.phone' : '';
+    },
+    language: (v) => (LANGS.includes(v) ? '' : 'form.err.lang'),
+    message: (v) => (v.length > MSG_MAX ? 'form.err.message.length' : LINK_RE.test(v) ? 'form.err.message.links' : ''),
+    consent: (_, el) => (el.checked ? '' : 'form.err.consent'),
   };
-  form.addEventListener('input', (e) => {
-    if (e.target.closest('.field.is-invalid')) invalid(e.target, false);
-    success.hidden = true;
+  const clean = (el) => {
+    if (el.type === 'checkbox' || el.tagName === 'SELECT') return el.value;
+    let v = el.value.trim();
+    if (el.name === 'name' || el.name === 'phone') v = v.replace(/\s+/g, ' ');
+    if (v !== el.value) el.value = v;
+    return v;
+  };
+  function check(el) {
+    const key = rules[el.name](clean(el), el);
+    const field = el.closest('.field');
+    const err = field.querySelector('.field__error');
+    field.classList.toggle('is-invalid', !!key);
+    el.setAttribute('aria-invalid', String(!!key));
+    if (key) { err.dataset.i18n = key; err.textContent = t(key); }
+    return !key;
+  }
+  const fields = Object.keys(rules).map((n) => form.elements[n]);
+
+  // Phone: block anything but digits, spaces, + ( ) - while typing; strip it from pastes and autofill
+  const phone = form.elements.phone;
+  phone.addEventListener('beforeinput', (e) => {
+    if (e.data && /^insert/.test(e.inputType) && !/^insertFrom/.test(e.inputType) && PHONE_BAD.test(e.data)) e.preventDefault();
   });
+  phone.addEventListener('input', () => {
+    const v = phone.value.replace(PHONE_CHARS, '');
+    if (v !== phone.value) phone.value = v;
+  });
+
+  const updateCount = () => { counter.textContent = form.elements.message.value.length; };
+  form.elements.message.addEventListener('input', updateCount);
+  form.elements.message.addEventListener('change', updateCount);
+
+  // Errors appear on blur (once the field was touched) and on submit; a shown error updates live while typing
+  fields.forEach((el) => {
+    el.addEventListener('blur', () => { if (el.dataset.touched || el.closest('.field.is-invalid')) check(el); });
+    el.addEventListener(el.type === 'checkbox' || el.tagName === 'SELECT' ? 'change' : 'input', () => {
+      el.dataset.touched = '1';
+      if (el.closest('.field.is-invalid')) check(el);
+    });
+  });
+  form.addEventListener('input', () => { success.hidden = true; notice.hidden = true; });
+
+  // Time trap: the clock starts when the form first becomes visible
+  let shownAt = 0;
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((en) => en.isIntersecting)) { shownAt = Date.now(); io.disconnect(); }
+    });
+    io.observe(form);
+  } else shownAt = Date.now();
+
+  const recentSends = () => {
+    let list = [];
+    try { list = JSON.parse(store.get(RATE.key) || '[]'); } catch { list = []; }
+    const now = Date.now();
+    return (Array.isArray(list) ? list : []).filter((ts) => typeof ts === 'number' && now - ts < RATE.window && ts <= now);
+  };
+
+  let busy = false;
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const consent = form.consent.checked;
-    invalid(form.name, !name);
-    invalid(form.email, !okEmail);
-    invalid(form.consent, !consent);
-    if (!name || !okEmail || !consent) {
-      success.hidden = true;
-      form.querySelector('[aria-invalid="true"]').focus();
-      return;
-    }
+    if (busy) return;
+    if (form.elements.website.value) return;                    // honeypot filled: silently ignore
+    if (!shownAt || Date.now() - shownAt < MIN_FILL_MS) return; // faster than a person: ignore
+
+    const ok = fields.map(check).every(Boolean);
+    success.hidden = true;
+    notice.hidden = true;
+    if (!ok) { form.querySelector('[aria-invalid="true"]').focus(); return; }
+
+    const sends = recentSends();
+    if (sends.length >= RATE.max) { notice.hidden = false; return; }
+
+    busy = true;
+    sendBtn.disabled = true;
+    sendBtn.setAttribute('aria-busy', 'true');
+    const v = (n) => form.elements[n].value.trim();
     const lines = [
-      `${t('form.name')}: ${name}`,
-      `${t('form.email')}: ${email}`,
-      form.phone.value.trim() && `${t('form.phone')}: ${form.phone.value.trim()}`,
-      `${t('form.lang')}: ${form.language.selectedOptions[0].text}`,
-      form.message.value.trim(),
+      `${t('form.name')}: ${v('name')}`,
+      `${t('form.email')}: ${v('email')}`,
+      v('phone') && `${t('form.phone')}: ${v('phone')}`,
+      `${t('form.lang')}: ${form.elements.language.selectedOptions[0].text}`,
+      v('message'),
     ].filter(Boolean);
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
+    store.set(RATE.key, JSON.stringify([...sends, Date.now()]));
     success.hidden = false;
     form.reset();
-    form.language.value = lang;
+    form.elements.language.value = lang;
+    fields.forEach((el) => { delete el.dataset.touched; });
+    updateCount();
+    setTimeout(() => { busy = false; sendBtn.disabled = false; sendBtn.removeAttribute('aria-busy'); }, 2000);
   });
 
   /* ---------- Cookie banner (TODO: legal text + categories from client) ---------- */
