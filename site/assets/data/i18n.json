@@ -156,7 +156,9 @@
     "consent.cat.analytics.d": "Helps us understand how visitors use the site.",
     "consent.cat.marketing": "Marketing",
     "consent.cat.marketing.d": "Used to show relevant advertising on other sites.",
-    "consent.save": "Save choice"
+    "consent.save": "Save choice",
+    "privacy.meta.title": "Privacy and cookie policy — Perla Homes",
+    "privacy.meta.description": "How Perla Homes handles personal data from the contact form and which browser storage this website uses."
   },
   "es": {
     "meta.title": "Perla Homes — Agencia inmobiliaria boutique en Marbella, Costa del Sol",
@@ -315,7 +317,9 @@
     "consent.cat.analytics.d": "Nos ayudan a entender cómo se usa el sitio.",
     "consent.cat.marketing": "Marketing",
     "consent.cat.marketing.d": "Se usan para mostrar publicidad relevante en otros sitios.",
-    "consent.save": "Guardar selección"
+    "consent.save": "Guardar selección",
+    "privacy.meta.title": "Política de privacidad y cookies — Perla Homes",
+    "privacy.meta.description": "Cómo trata Perla Homes los datos personales del formulario de contacto y qué almacenamiento del navegador utiliza este sitio web."
   },
   "ru": {
     "meta.title": "Perla Homes — бутиковое агентство недвижимости в Марбелье, Costa del Sol",
@@ -474,6 +478,8 @@
     "consent.cat.analytics.d": "Помогают понять, как посетители пользуются сайтом.",
     "consent.cat.marketing": "Маркетинг",
     "consent.cat.marketing.d": "Используются для показа релевантной рекламы на других сайтах.",
-    "consent.save": "Сохранить выбор"
+    "consent.save": "Сохранить выбор",
+    "privacy.meta.title": "Политика конфиденциальности и cookie — Perla Homes",
+    "privacy.meta.description": "Как Perla Homes обрабатывает персональные данные из формы обратной связи и какое хранилище браузера использует этот сайт."
   }
 }
