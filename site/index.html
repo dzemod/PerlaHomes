@@ -35,6 +35,20 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
+  <!-- Cookie banner: first in the tab order, shown at the bottom until a choice is stored (main.js, "Cookie consent") -->
+  <section class="consent" id="consent" aria-label="Cookies and privacy" data-i18n-aria="consent.title" hidden>
+    <div class="consent__inner container">
+      <div class="consent__text">
+        <p><span data-i18n="consent.text">We only store what this site needs to work: your language and your cookie choice. We do not use analytics or advertising cookies.</span> <a href="privacy.html#cookies" data-privacy-link="cookies" data-i18n="consent.policy">Privacy and cookie policy</a></p>
+      </div>
+      <div class="consent__actions">
+        <button type="button" class="btn btn--small btn--light" data-consent-action="accept" data-i18n="consent.acceptAll">Accept all</button>
+        <button type="button" class="btn btn--small btn--light" data-consent-action="reject" data-i18n="consent.rejectAll">Reject all</button>
+        <button type="button" class="btn btn--small btn--light" data-consent-action="settings" data-i18n="consent.settings">Settings</button>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== Header ===== -->
   <header class="header" id="header">
     <nav class="header__inner" aria-label="Main">
@@ -474,18 +488,48 @@
     <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.5A12.4 12.4 0 0 0 5.3 22.2L3.5 28.5l6.5-1.7A12.4 12.4 0 1 0 16 3.5Zm0 22.7c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-3.8 1 1-3.7-.3-.4a10.3 10.3 0 1 1 8.9 4.8Zm5.7-7.7c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.4 8.4 0 0 1-4.2-3.7c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.2-.3Z"/></svg>
   </a>
 
-  <!-- Cookie banner — TODO: legal text and cookie categories from client -->
-  <div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookies" hidden>
-    <p><span data-i18n="cookie.text">This website uses cookies.</span> <a href="privacy.html" data-i18n="footer.privacy">Privacy policy</a></p>
-    <div class="cookie__actions">
-      <button type="button" class="btn btn--small btn--green" data-cookie="accept" data-i18n="cookie.accept">Accept</button>
-      <button type="button" class="btn btn--small btn--outline" data-cookie="decline" data-i18n="cookie.decline">Decline</button>
-    </div>
-  </div>
+  <!-- Cookie settings panel (shared markup with privacy.html). Analytics / Marketing rows appear only when the page has
+       a <script type="text/plain" data-consent="analytics|marketing"> — today the site has none, so only "Necessary" shows. -->
+  <dialog class="consent-panel" id="consent-panel" aria-labelledby="consent-panel-title">
+    <form method="dialog" class="consent-panel__inner">
+      <div class="consent-panel__head">
+        <h2 class="consent-panel__title" id="consent-panel-title" tabindex="-1" autofocus data-i18n="consent.panel.title">Cookie settings</h2>
+        <button type="submit" class="consent-panel__close" value="close" aria-label="Close" data-i18n-aria="consent.close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13"/></svg></button>
+      </div>
+      <p class="consent-panel__intro" data-i18n="consent.panel.intro">Choose what this site may store in your browser. You can change your choice at any time with “Cookie settings” at the bottom of every page.</p>
+      <ul class="consent-panel__list">
+        <li class="consent-row">
+          <div class="consent-row__text">
+            <p class="consent-row__name" id="c-necessary-l" data-i18n="consent.cat.necessary">Necessary</p>
+            <p class="consent-row__desc" id="c-necessary-d" data-i18n="consent.cat.necessary.d">Remembers your language and your cookie choice and protects the contact form from spam. Always on.</p>
+          </div>
+          <span class="switch"><input type="checkbox" role="switch" checked disabled aria-labelledby="c-necessary-l" aria-describedby="c-necessary-d"><span class="switch__track" aria-hidden="true"></span></span>
+        </li>
+        <li class="consent-row" data-consent-row="analytics" hidden>
+          <div class="consent-row__text">
+            <p class="consent-row__name" id="c-analytics-l" data-i18n="consent.cat.analytics">Analytics</p>
+            <p class="consent-row__desc" id="c-analytics-d" data-i18n="consent.cat.analytics.d">Helps us understand how visitors use the site.</p>
+          </div>
+          <span class="switch"><input type="checkbox" role="switch" name="analytics" aria-labelledby="c-analytics-l" aria-describedby="c-analytics-d"><span class="switch__track" aria-hidden="true"></span></span>
+        </li>
+        <li class="consent-row" data-consent-row="marketing" hidden>
+          <div class="consent-row__text">
+            <p class="consent-row__name" id="c-marketing-l" data-i18n="consent.cat.marketing">Marketing</p>
+            <p class="consent-row__desc" id="c-marketing-d" data-i18n="consent.cat.marketing.d">Used to show relevant advertising on other sites.</p>
+          </div>
+          <span class="switch"><input type="checkbox" role="switch" name="marketing" aria-labelledby="c-marketing-l" aria-describedby="c-marketing-d"><span class="switch__track" aria-hidden="true"></span></span>
+        </li>
+      </ul>
+      <p class="consent-panel__note" data-consent-none data-i18n="consent.panel.none">This site does not use analytics or marketing cookies, so there is nothing else to switch on.</p>
+      <div class="consent-panel__actions">
+        <button type="button" class="btn btn--small btn--outline" data-consent-action="save" data-i18n="consent.save">Save choice</button>
+        <button type="button" class="btn btn--small btn--green" data-consent-action="accept" data-i18n="consent.acceptAll">Accept all</button>
+      </div>
+    </form>
+  </dialog>
 
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="assets/js/vendor/gsap.min.js" defer></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -357,16 +357,91 @@
     setTimeout(() => { busy = false; sendBtn.disabled = false; sendBtn.removeAttribute('aria-busy'); }, 2000);
   });
 
-  /* ---------- Cookie banner (TODO: legal text + categories from client) ---------- */
-  const cookie = document.getElementById('cookie');
-  if (!store.get('perla-cookies')) cookie.hidden = false;
-  cookie.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-cookie]');
-    if (!b) return;
-    store.set('perla-cookies', b.dataset.cookie);
-    cookie.hidden = true;
+  /* ---------- Cookie consent ----------
+     Choice is stored in localStorage "perla-consent" = { version, date, necessary, analytics, marketing }
+     for 12 months; the banner returns after that or when CONSENT_VERSION changes (bump it when the policy changes).
+     Non-essential scripts are written as <script type="text/plain" data-consent="analytics|marketing" data-src="…">
+     and only run after that category is accepted. Today the site has none. */
+  const CONSENT_KEY = 'perla-consent';
+  const CONSENT_VERSION = 1;
+  const OPTIONAL = ['analytics', 'marketing'];
+  const banner = document.getElementById('consent');
+  const panel = document.getElementById('consent-panel');
+  const usedCats = OPTIONAL.filter((c) => document.querySelector(`script[data-consent="${c}"]`));
+  try { localStorage.removeItem('perla-cookies'); } catch { /* old banner key */ }
+
+  function readConsent() {
+    let c = null;
+    try { c = JSON.parse(store.get(CONSENT_KEY)); } catch { c = null; }
+    if (!c || c.version !== CONSENT_VERSION || !c.date) return null;
+    const expires = new Date(c.date);
+    expires.setMonth(expires.getMonth() + 12);
+    return Number.isNaN(expires.getTime()) || expires < new Date() ? null : c;
+  }
+  let consent = readConsent();
+
+  function runConsented() {
+    document.querySelectorAll('script[type="text/plain"][data-consent]').forEach((s) => {
+      if (!consent || !consent[s.dataset.consent] || s.dataset.ran) return;
+      s.dataset.ran = '1';
+      const n = document.createElement('script');
+      [...s.attributes].forEach((a) => { if (!['type', 'data-consent', 'data-src', 'data-ran'].includes(a.name)) n.setAttribute(a.name, a.value); });
+      if (s.dataset.src) n.src = s.dataset.src; else n.textContent = s.textContent;
+      s.after(n);
+    });
+  }
+
+  // While the banner is visible the WhatsApp button rides above it (--consent-h, see .wa)
+  const setConsentH = () => document.documentElement.style.setProperty('--consent-h', `${banner.offsetHeight}px`);
+  if ('ResizeObserver' in window) new ResizeObserver(setConsentH).observe(banner);
+  function showBanner(show) {
+    banner.hidden = !show;
+    document.documentElement.classList.toggle('consent-open', show);
+    if (show) setConsentH();
+  }
+
+  function saveConsent(choice) {
+    const before = consent;
+    consent = { version: CONSENT_VERSION, date: new Date().toISOString(), necessary: true, analytics: !!choice.analytics, marketing: !!choice.marketing };
+    store.set(CONSENT_KEY, JSON.stringify(consent));
+    const hadFocus = banner.contains(document.activeElement);
+    showBanner(false);
+    if (hadFocus) { const m = document.getElementById('main'); m.setAttribute('tabindex', '-1'); m.focus({ preventScroll: true }); }
+    // A withdrawn category whose scripts already ran can only be switched off by reloading the page
+    const withdrawn = before && OPTIONAL.some((c) => before[c] && !consent[c] && document.querySelector(`script[data-consent="${c}"][data-ran]`));
+    if (withdrawn) location.reload(); else runConsented();
+  }
+
+  function openPanel() {
+    OPTIONAL.forEach((c) => {
+      const row = panel.querySelector(`[data-consent-row="${c}"]`);
+      row.hidden = !usedCats.includes(c);
+      row.querySelector('input').checked = !!(consent && consent[c]);
+    });
+    panel.querySelector('[data-consent-none]').hidden = usedCats.length > 0;
+    if (typeof panel.showModal === 'function') panel.showModal(); else panel.setAttribute('open', '');
+  }
+  const closePanel = () => { if (typeof panel.close === 'function') panel.close(); else panel.removeAttribute('open'); };
+
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-consent-action]');
+    if (b) {
+      const all = Object.fromEntries(OPTIONAL.map((c) => [c, usedCats.includes(c)]));
+      switch (b.dataset.consentAction) {
+        case 'accept': saveConsent(all); closePanel(); break;
+        case 'reject': saveConsent({}); break;
+        case 'save': saveConsent(Object.fromEntries(OPTIONAL.map((c) => [c, panel.querySelector(`input[name="${c}"]`).checked]))); closePanel(); break;
+        case 'settings': openPanel(); break;
+        default:
+      }
+      return;
+    }
+    if (e.target.closest('[data-cookie-open]')) openPanel();
+    else if (e.target === panel) closePanel(); // click on the backdrop
   });
-  document.querySelector('[data-cookie-open]').addEventListener('click', () => { cookie.hidden = false; });
+
+  runConsented();
+  const consentInit = () => { if (!consent) showBanner(true); };
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -461,11 +536,13 @@
     dict = d;
     properties = p;
     applyLang(initial);
+    consentInit();
     animate();
     // The property cards render after load and push later sections down: re-run a /#section jump
     const target = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
     if (target) requestAnimationFrame(() => target.scrollIntoView({ behavior: 'instant' }));
   }).catch(() => {
+    consentInit();
     document.querySelectorAll('[data-anim="hero"]').forEach((el) => { el.style.opacity = 1; });
   });
 })();
